@@ -4,6 +4,7 @@
     <string name="newuser">New User</string>
     <string name="login">Log in</string>
     <string name="welcome">Welcome to Topspin, please sign in.</string>
+    <string name="welcome2">Welcome to Topspin, please sign in.</string>
 
 
 </resources>
