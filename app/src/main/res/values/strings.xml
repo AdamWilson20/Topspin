@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Topspin</string>
+    <string name="guest">Guest</string>
+    <string name="newuser">New User</string>
+    <string name="login">Log in</string>
+    <string name="welcome">Welcome to Topspin, please sign in.</string>
+
+
+</resources>
