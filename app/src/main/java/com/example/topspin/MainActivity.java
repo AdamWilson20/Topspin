@@ -16,11 +16,11 @@ public class MainActivity extends AppCompatActivity {
         configureNextButton();
     }
     private void configureNextButton(){
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button register = (Button) findViewById(R.id.new_user);
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, matchInfo.class));
+                startActivity(new Intent(MainActivity.this, new_user_registration.class));
             }
         });
     }
