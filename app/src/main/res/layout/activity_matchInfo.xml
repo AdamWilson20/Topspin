@@ -50,7 +50,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
+        android:layout_marginStart="183dp"
         android:layout_marginLeft="184dp"
         android:layout_marginTop="72dp"
         android:text="@string/vs"
