@@ -4,7 +4,12 @@
     <string name="newuser">New User</string>
     <string name="login">Log in</string>
     <string name="welcome">Welcome to Topspin, please sign in.</string>
-    <string name="welcome2">Welcome to Topspin, please sign in.</string>
+    <string name="old_dominion_university">Old Dominion University</string>
+    <string name="norfolk_state">Norfolk State</string>
+    <string name="view_match">View Match</string>
+    <string name="vs">Versus</string>
+
+
 
 
 </resources>
