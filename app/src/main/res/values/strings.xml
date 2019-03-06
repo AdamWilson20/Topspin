@@ -8,6 +8,10 @@
     <string name="norfolk_state">Norfolk State</string>
     <string name="view_match">View Match</string>
     <string name="vs">Versus</string>
+    <string name="input_the_following_prompts">Input the following prompts</string>
+    <string name="team_1">Team 1</string>
+    <string name="team_2">Team 2</string>
+    <string name="create_event">Create Event</string>
 
 
 </resources>
