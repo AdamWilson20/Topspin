@@ -29,6 +29,16 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="welcomepage">welcomePage</string>
+    <string name="welcomeFan">Welcome!</string>
+    <string name="fanname">FanName</string>
+    <string name="simpson_brett">Simpson, Brett</string>
+    <string name="user_role">userRole</string>
+    <string name="signed_in_as_fan">Signed in as: Fan</string>
+    <string name="view_event">view_event</string>
+    <string name="favorite_players">favorite_players</string>
+    <string name="favorite_players1">favorite players</string>
+    <string name="volunteer">Volunteer</string>
 
 
 </resources>
