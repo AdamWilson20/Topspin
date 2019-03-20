@@ -62,7 +62,7 @@
         android:layout_marginEnd="112dp"
         android:layout_marginRight="112dp"
         android:layout_marginBottom="156dp"
-        android:text="@string/create_event"
+        android:text="@string/create"
         app:layout_constraintBottom_toTopOf="@+id/calendarView2"
         app:layout_constraintEnd_toEndOf="@+id/calendarView2" />
 
