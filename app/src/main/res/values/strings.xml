@@ -14,7 +14,7 @@
     <string name="create">Create Event</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to admin main page -->
-    <string name="view_event">View Event</string>
+    <string name="view">View Event</string>
     <string name="modify_event">Modify Event</string>
     <string name="start">Start Scoring!</string>
     <!-- Strings related to login -->
