@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configureNextButton();
+        //configureNextButton();
     }
-    private void configureNextButton(){
+    /*private void configureNextButton(){
         Button register = (Button) findViewById(R.id.new_user);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,5 +23,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, new_user_registration.class));
             }
         });
-    }
+    }*/
 }
