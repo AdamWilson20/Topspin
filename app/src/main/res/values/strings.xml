@@ -42,6 +42,9 @@
     <string name="signed_in_as_guest">Signed in as: Guest</string>
     <string name="volunteer_access_code">Volunteer Access Code</string>
     <string name="sign_up">sign up</string>
+    <string name="guest_login">guestLogin</string>
+    <string name="last_name">last name</string>
+    <string name="first_name">first name</string>
 
 
 </resources>
