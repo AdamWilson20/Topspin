@@ -40,11 +40,17 @@
     <string name="favorite_players1">favorite players</string>
     <string name="volunteer">Volunteer</string>
     <string name="signed_in_as_guest">Signed in as: Guest</string>
-    <string name="volunteer_access_code">Volunteer Access Code</string>
+
     <string name="sign_up">sign up</string>
     <string name="guest_login">guestLogin</string>
     <string name="last_name">last name</string>
     <string name="first_name">first name</string>
+    <string name="user_profile_photo">user_profile_photo</string>
+    <!-- Strings related to volunteer -->
+    <string name="volunteer_access_code">Volunteer Access Code</string>
+    <string name="signed_in_as_volunteer">Signed in as: Volunteer</string>
+    <string name="view_event">view event</string>
+    <string name="start_scoring">start scoring!</string>
 
 
 </resources>
