@@ -60,6 +60,10 @@
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
+               
+               <form action = "createAccount.php" method = "post">
+                 <button type="submit">Create Account</button>
+              </form>
 
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 
