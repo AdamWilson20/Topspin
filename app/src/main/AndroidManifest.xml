@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".scoring"></activity>
         <activity android:name=".admin_main_page" />
+        <activity android:name=".matchEvent" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_login" />

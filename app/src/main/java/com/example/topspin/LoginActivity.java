@@ -21,6 +21,9 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -98,8 +101,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.home:
+                Intent intent1 = new Intent(this, LoginActivity.class);
+                this.startActivity(intent1);
+                return true;
+            case R.id.myAccount:
+                Intent intent2 = new Intent(this, admin_main_page.class);
+                this.startActivity(intent2);
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
     private void configureNextButton(){
-        Button nextButton = (Button) findViewById(R.id.nextButton);
+        Button nextButton = (Button) findViewById(R.id.nextButton );
         nextButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

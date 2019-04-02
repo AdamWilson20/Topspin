@@ -17,6 +17,8 @@
     <string name="view">View Event</string>
     <string name="modify_event">Modify Event</string>
     <string name="start">Start Scoring!</string>
+    <string name="myAccount">My Account</string>
+    <string name="EditProfile">Edit Profile</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
