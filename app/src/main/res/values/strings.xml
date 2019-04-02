@@ -4,6 +4,15 @@
     <string name="newuser">New User</string>
     <string name="login">Log in</string>
     <string name="welcome">Welcome to Topspin, please sign in.</string>
+    <string name="TennisTypeMens">Men\'s Tennis  //</string>
+    <string name="ViewScheduleHeader">ODU Men\'s Tennis 2019 Schedule</string>
+    <string name="TournamentAdd">Add Entry</string>
+    <string name="tAdd_date">Date:</string>
+    <string name="tAdd_time">Time:</string>
+    <string name="tAdd_location">Location:</string>
+    <string name="tAdd_homeaway">Home/Away?</string>
+    <string name="tAdd_oppteam">Opposing Team:</string>
+    <string name="tAdd_Header">New Tournament Details</string>
 
 
 </resources>

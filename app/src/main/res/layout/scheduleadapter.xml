@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mensTennis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/TennisTypeMens"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TournamentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mensTennis"
+        app:layout_constraintStart_toEndOf="@+id/mensTennis"
+        app:layout_constraintTop_toTopOf="@+id/mensTennis" />
+
+    <TextView
+        android:id="@+id/Divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="//"
+        app:layout_constraintBottom_toBottomOf="@+id/mensTennis"
+        app:layout_constraintStart_toEndOf="@+id/TournamentDate"
+        app:layout_constraintTop_toTopOf="@+id/mensTennis" />
+
+    <TextView
+        android:id="@+id/TournamentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mensTennis"
+        app:layout_constraintStart_toEndOf="@+id/Divider"
+        app:layout_constraintTop_toTopOf="@+id/mensTennis" />
+
+    <TextView
+        android:id="@+id/VSorAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mensTennis" />
+
+    <TextView
+        android:id="@+id/TournamentOppTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/VSorAT"
+        app:layout_constraintStart_toEndOf="@+id/VSorAT"
+        app:layout_constraintTop_toTopOf="@+id/VSorAT" />
+
+    <TextView
+        android:id="@+id/TournamentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/VSorAT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/VSorAT" />
+</android.support.constraint.ConstraintLayout>
