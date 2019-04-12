@@ -22,6 +22,7 @@ public class admin_main_page extends AppCompatActivity {
     public void defineButtons() {
         findViewById(R.id.viewEventButton).setOnClickListener(buttonClickListener);
         findViewById(R.id.button4).setOnClickListener(buttonClickListener);
+
     }
 
     private View.OnClickListener buttonClickListener = new View.OnClickListener() {

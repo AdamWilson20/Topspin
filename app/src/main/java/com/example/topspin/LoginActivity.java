@@ -119,6 +119,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent intent2 = new Intent(this, admin_main_page.class);
                 this.startActivity(intent2);
                 return true;
+            case R.id.VolunteerPage:
+                Intent intent3 = new Intent( this, volunteer.class);
+                this.startActivity(intent3);
+                return true;
 
         }
         return super.onOptionsItemSelected(item);

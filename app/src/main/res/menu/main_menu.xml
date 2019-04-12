@@ -22,4 +22,9 @@
         android:title="Settings"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/VolunteerPage"
+        android:title="Volunteer"
+        app:showAsAction="never"/>
+
 </menu>
