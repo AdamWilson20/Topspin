@@ -123,6 +123,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent intent3 = new Intent( this, volunteer.class);
                 this.startActivity(intent3);
                 return true;
+            case R.id.RegisterPage:
+                Intent intent4 = new Intent( this, RegisterActivity.class);
+                this.startActivity(intent4);
+                return true;
 
         }
         return super.onOptionsItemSelected(item);

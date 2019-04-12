@@ -20,6 +20,7 @@
         <activity android:name=".admin_main_page" />
         <activity android:name=".matchEvent" />
         <activity android:name=".volunteer"/>
+        <activity android:name=".RegisterActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_login" />
