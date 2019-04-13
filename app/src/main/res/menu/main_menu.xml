@@ -27,9 +27,4 @@
         android:title="Volunteer"
         app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/RegisterPage"
-        android:title="Register"
-        app:showAsAction="never"/>
-
 </menu>

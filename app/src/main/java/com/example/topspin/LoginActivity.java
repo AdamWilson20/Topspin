@@ -41,7 +41,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, View.OnClickListener{
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        signUp = (Button) findViewById(R.id.signUp);
+        signUp.setOnClickListener(this);
     }
 
     @Override
@@ -123,11 +127,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Intent intent3 = new Intent( this, volunteer.class);
                 this.startActivity(intent3);
                 return true;
-            case R.id.RegisterPage:
-                Intent intent4 = new Intent( this, RegisterActivity.class);
-                this.startActivity(intent4);
-                return true;
-
         }
         return super.onOptionsItemSelected(item);
 
@@ -140,6 +139,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startActivity(new Intent(LoginActivity.this, admin_main_page.class));
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == signUp) {
+            Intent register = new Intent(this, RegisterActivity.class);
+            this.startActivity(register);
+        }
     }
 
     private void populateAutoComplete() {
