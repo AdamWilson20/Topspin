@@ -71,46 +71,39 @@
     <string name="Choose">Choose Method</string>
 
 
+    //Scoring Activity Strings (Crusenberry)
+    //Score Strings
+    <string name="ScoreZero">0</string>
+    <string name="ScoreFifteen">15</string>
+    <string name="ScoreThirty">30</string>
+    <string name="ScoreForty">40</string>
+    <string name="ScoreAdvantage">Adv</string>
+    <string name="ScoreWin">Win</string>
 
+    //Tennis Technical Strings
+    <string name="FaultString">Fault</string>
+    <string name="FaultStringCaps">FAULT</string>
+    <string name="AceString">Ace</string>
+    <string name="AceStringCaps">ACE</string>
 
+    //Button Strings
+    <string name="SubmitButtonString">Submit</string>
+    <string name="CancelButtonString">Cancel</string>
+    <string name="PlusButtonString">+</string>
+    <string name="MinusButtonString">-</string>
 
+    //Misc Constant Strings
+    <string name="CurrentScoreString">Current Score</string>
+    <string name="CurrentMatchString">Current Match</string>
+    <string name="EmptyString"></string>
 
-
-        //Scoring Activity Strings (Crusenberry)
-        //Score Strings
-        <string name="ScoreZero">0</string>
-        <string name="ScoreFifteen">15</string>
-        <string name="ScoreThirty">30</string>
-        <string name="ScoreForty">40</string>
-        <string name="ScoreAdvantage">Adv</string>
-        <string name="ScoreWin">Win</string>
-
-        //Tennis Technical Strings
-        <string name="FaultString">Fault</string>
-        <string name="FaultStringCaps">FAULT</string>
-        <string name="AceString">Ace</string>
-        <string name="AceStringCaps">ACE</string>
-
-        //Button Strings
-        <string name="SubmitButtonString">Submit</string>
-        <string name="CancelButtonString">Cancel</string>
-        <string name="PlusButtonString">+</string>
-        <string name="MinusButtonString">-</string>
-
-        //Misc Constant Strings
-        <string name="CurrentScoreString">Current Score</string>
-        <string name="CurrentMatchString">Current Match</string>
-        <string name="EmptyString"></string>
-
-        //Placeholder Name Strings
-        <string name="NameLeftString">John Smith</string>
-        <string name="UniLeftString">Old Dominion University</string>
-        <string name="UniLeftStringShort">ODU</string>
-        <string name="NameRightString">Todd Packer</string>
-        <string name="UniRightString">Not Available University</string>
-        <string name="UniRightStringShort">NAU</string>
-
-
+    //Placeholder Name Strings
+    <string name="NameLeftString">John Smith</string>
+    <string name="UniLeftString">Old Dominion University</string>
+    <string name="UniLeftStringShort">ODU</string>
+    <string name="NameRightString">Todd Packer</string>
+    <string name="UniRightString">Not Available University</string>
+    <string name="UniRightStringShort">NAU</string>
 
 
 </resources>

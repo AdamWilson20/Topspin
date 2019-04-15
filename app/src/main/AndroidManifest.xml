@@ -5,9 +5,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -16,17 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".scoring"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".scoring" />
         <activity android:name=".admin_main_page" />
         <activity android:name=".matchEvent" />
-        <activity android:name=".volunteer"/>
+        <activity android:name=".volunteer" />
         <activity
             android:name=".RegisterActivity"
-            android:label="Register"/>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".new_user_registration" />
+            android:label="Register" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">

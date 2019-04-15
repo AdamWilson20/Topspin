@@ -27,4 +27,9 @@
         android:title="Volunteer"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/menuLogout"
+        android:title="Logout"
+        />
+
 </menu>

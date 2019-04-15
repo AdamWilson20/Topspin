@@ -58,4 +58,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_below="@+id/linearLayout"
+        android:id="@+id/textViewLogin"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
+        android:text="Already Registered? \n Click here to Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
