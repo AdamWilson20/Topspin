@@ -6,19 +6,19 @@ import java.util.ArrayList;
 
 public class Tournament {
 
-    //private String name;
+    private int tID;
     private String oppTeam;
     private String location;
     private String date;
     private String time;
     private Boolean isHome = true;
     private Boolean isIndoor = true;
-    private ArrayList<TennisMatch> matches;
 
     public Tournament(){}
 
-    public Tournament(String oppTeam, String location, String date, String time, Boolean isHome) {
-      //  this.name = name;
+
+    public Tournament(int id, String oppTeam, String location, String date, String time, Boolean isHome) {
+        this.tID = id;
         this.oppTeam = oppTeam;
         this.location = location;
         this.date = date;
@@ -30,7 +30,6 @@ public class Tournament {
     @Override
     public String toString() {
         return "Tournament{" +
-              //  "name='" + name + '\'' +
                 ", oppTeam='" + oppTeam + '\'' +
                 ", location='" + location + '\'' +
                 ", date=" + date +
@@ -40,13 +39,14 @@ public class Tournament {
                 '}';
     }
 
-   /* public String getName() {
-        return name;
+
+    public int gettID() {
+        return tID;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }*/
+    public void settID(int tID) {
+        this.tID = tID;
+    }
 
     public String getOppTeam() {
         return oppTeam;

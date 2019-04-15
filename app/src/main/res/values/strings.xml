@@ -13,6 +13,7 @@
     <string name="tAdd_homeaway">Home/Away?</string>
     <string name="tAdd_oppteam">Opposing Team:</string>
     <string name="tAdd_Header">New Tournament Details</string>
+    <string name="ModiffyTHeader">Modify Tournament</string>
 
 
 </resources>
