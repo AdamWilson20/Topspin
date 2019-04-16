@@ -186,5 +186,9 @@ public class AddScheduleEntry extends AppCompatActivity {
             tournaments = new ArrayList<>();
         }
     }
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this, ViewSchedule.class));
+    }
 }
 

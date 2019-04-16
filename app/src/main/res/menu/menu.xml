@@ -28,6 +28,10 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/scoring"
+        android:title="Scoring"/>
+
+    <item
         android:id="@+id/menuLogout"
         android:title="Logout"
         />

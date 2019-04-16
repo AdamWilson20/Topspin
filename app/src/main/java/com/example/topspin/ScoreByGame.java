@@ -68,7 +68,7 @@ public class ScoreByGame extends AppCompatActivity {
         match2 = new Matches(2, 2, "Pam Halpert", "none", "Ryan Howard","none", 0, 0, "In progress");
         match3 = new Matches(3, 2, "Michael scott", "none", "Toby Flenderson","none", 0, 0, "In progress");
 
-        m1set1 = new  MatchSet(1,1, 1,0,0,"In Progress");
+        m1set1 = new MatchSet(1,1, 1,0,0,"In Progress");
         m1set2 = new MatchSet(1,2,2,0,0,"In Progress");
         m1set3 = new MatchSet(1,3,3,0,0,"In Progress");
 

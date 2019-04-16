@@ -132,14 +132,14 @@ public class ViewSchedule extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
+            case R.id.scoring:
+                startActivity(new Intent(this, ScoreByGame.class));
+                break;
             case R.id.menuLogout:
                 SharedPrefManager.getInstance(this).logout();
                 finish();
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
-            /*case R.id.menuSettings:
-                Toast.makeText(this, "You clicked settings", Toast.LENGTH_LONG).show();
-                break;*/
         }
         return true;
     }
