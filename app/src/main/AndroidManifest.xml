@@ -20,6 +20,10 @@
         <activity android:name=".admin_main_page" />
         <activity android:name=".matchEvent" />
         <activity android:name=".volunteer" />
+        <activity android:name=".ModifyTournament"></activity>
+        <activity android:name=".ViewScheduleEntry" />
+        <activity android:name=".AddScheduleEntry" />
+        <activity android:name=".ViewSchedule" />
         <activity
             android:name=".RegisterActivity"
             android:label="Register" />

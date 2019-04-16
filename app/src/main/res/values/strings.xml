@@ -13,12 +13,24 @@
     <string name="team_2">Team 2</string>
     <string name="create">Create Event</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="TennisTypeMens">Men\'s Tennis  //</string>
+    <string name="ViewScheduleHeader">ODU Men\'s Tennis 2019 Schedule</string>
+    <string name="TournamentAdd">Add Entry</string>
+    <string name="tAdd_date">Date:</string>
+    <string name="tAdd_time">Time:</string>
+    <string name="tAdd_location">Location:</string>
+    <string name="tAdd_homeaway">Home/Away?</string>
+    <string name="tAdd_oppteam">Opposing Team:</string>
+    <string name="tAdd_Header">New Tournament Details</string>
+    <string name="ModiffyTHeader">Modify Tournament</string>
+
     <!-- Strings related to admin main page -->
     <string name="view">View Event</string>
     <string name="modify_event">Modify Event</string>
     <string name="start">Start Scoring!</string>
     <string name="myAccount">My Account</string>
     <string name="EditProfile">Edit Profile</string>
+
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
@@ -49,6 +61,7 @@
     <string name="last_name">last name</string>
     <string name="first_name">first name</string>
     <string name="user_profile_photo">user_profile_photo</string>
+
     <!-- Strings related to volunteer -->
     <string name="volunteer_access_code">Volunteer Access Code</string>
     <string name="signed_in_as_volunteer">Signed in as: Volunteer</string>
