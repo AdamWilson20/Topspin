@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(this, ProfileActivity.class));
-            return;
+            //return;
         }
 
         editTextUsername = (EditText) findViewById(R.id.editLoginUsername);
