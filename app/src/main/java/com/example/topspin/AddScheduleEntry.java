@@ -1,5 +1,6 @@
 package com.example.topspin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +9,28 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static java.lang.Math.abs;
 
 public class AddScheduleEntry extends AppCompatActivity {
 
-    ArrayList<Tournament> tournaments;
+    /*ArrayList<Tournament> tournaments;
     Tournament temp;
     EditText date;
     EditText time;
@@ -29,19 +40,88 @@ public class AddScheduleEntry extends AppCompatActivity {
     Boolean vSAT = false;
     int tID;
     boolean uniqueID = true;
+    */
 
+    private ArrayList<Tournament> tournaments;
+    private Tournament temp;
+    private EditText date, time, location, opposingTeam, homeAway;
+    private Boolean vSAT = false;
+    private int tID;
+    private boolean uniqueID = true;
 
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule_entry);
 
+        date = findViewById(R.id.taddDate);
+        time = findViewById(R.id.taddTime);
+        location = findViewById(R.id.taddLocation);
+        opposingTeam = findViewById(R.id.taddOppTeam);
+        homeAway = findViewById(R.id.taddHomeAway);
+
+        progressDialog = new ProgressDialog(this);
+
         loadData();
 
     }
+
+    private void createEvent(){
+
+        final String tdate = date.getText().toString().trim();
+        final String ttime = time.getText().toString().trim();
+        final String tlocation = location.getText().toString().trim();
+        final String topposingteam = opposingTeam.getText().toString().trim();
+        final String thomeaway = homeAway.getText().toString().trim();
+
+        progressDialog.setMessage("Creating event...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_CREATE_EVENT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("date", tdate);
+                params.put("time", ttime);
+                params.put("location", tlocation);
+                params.put("opposingTeam", topposingteam);
+                params.put("homeOrAway", thomeaway);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
     public void submitEntry(View view){
+        createEvent();
         Intent backToSchedule= new Intent(getApplicationContext(),ViewSchedule.class);
+
+        /*
         date = findViewById(R.id.taddDate);
         time = findViewById(R.id.taddTime);
         location = findViewById(R.id.taddLocation);
@@ -53,6 +133,12 @@ public class AddScheduleEntry extends AppCompatActivity {
         String tlocation = location.getText().toString();
         String topposingteam = opposingTeam.getText().toString();
         String thomeaway = homeAway.getText().toString();
+        */
+        final String tdate = date.getText().toString().trim();
+        final String ttime = time.getText().toString().trim();
+        final String tlocation = location.getText().toString().trim();
+        final String topposingteam = opposingTeam.getText().toString().trim();
+        final String thomeaway = homeAway.getText().toString().trim();
 
         Random rand = new Random();
         tID=rand.nextInt();
@@ -64,7 +150,7 @@ public class AddScheduleEntry extends AppCompatActivity {
                     break;
                 }
             }
-            Toast.makeText(this,String.valueOf(tID),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,String.valueOf(tID),Toast.LENGTH_SHORT).show();
         }
         if((thomeaway.equals("home")) || (thomeaway.equals("Home"))){
             vSAT = true;

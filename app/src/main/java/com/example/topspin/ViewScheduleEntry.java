@@ -38,9 +38,6 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         Intent pullId = getIntent();
         targetID = pullId.getIntExtra("ID", -1);
 
-
-
-
         date = findViewById(R.id.VETournamentDate);
         time = findViewById(R.id.VETournamentTime);
         vsat = findViewById(R.id.VEVSorAT);

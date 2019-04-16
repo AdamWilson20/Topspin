@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -29,6 +31,12 @@ public class ViewSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
+
+        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
         loadData();
         //sortTourns(tournaments);
         saveData();
@@ -114,6 +122,26 @@ public class ViewSchedule extends AppCompatActivity {
             }
 
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menuLogout:
+                SharedPrefManager.getInstance(this).logout();
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+            /*case R.id.menuSettings:
+                Toast.makeText(this, "You clicked settings", Toast.LENGTH_LONG).show();
+                break;*/
+        }
+        return true;
     }
 }
 

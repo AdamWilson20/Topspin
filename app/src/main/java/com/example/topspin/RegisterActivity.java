@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, ViewSchedule.class));
             //return;
         }
 
