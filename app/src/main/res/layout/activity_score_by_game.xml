@@ -162,6 +162,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/M1HI"
         app:layout_constraintStart_toStartOf="@+id/M1HI"
         app:layout_constraintTop_toBottomOf="@+id/M1HI" />
@@ -176,6 +177,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/M1SA3"
         app:layout_constraintStart_toEndOf="@+id/M1SA3"
         app:layout_constraintTop_toTopOf="@+id/M1SA3" />
@@ -334,6 +336,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/M2HI"
         app:layout_constraintStart_toStartOf="@+id/M2HI"
         app:layout_constraintTop_toBottomOf="@+id/M2HI" />
@@ -348,6 +351,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/M2S3A"
         app:layout_constraintStart_toEndOf="@+id/M2S3A"
         app:layout_constraintTop_toTopOf="@+id/M2S3A" />
@@ -506,6 +510,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/M3HI"
         app:layout_constraintStart_toStartOf="@+id/M3HI"
         app:layout_constraintTop_toBottomOf="@+id/M3HI" />
@@ -520,6 +525,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/M3S3A"
         app:layout_constraintStart_toEndOf="@+id/M3S3A"
         app:layout_constraintTop_toTopOf="@+id/M3S3A" />
