@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModifyTournament">
+
+    <TextView
+        android:id="@+id/MtAdd_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/ModiffyTHeader"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/MtaddDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Mtadddateprompt" />
+
+    <TextView
+        android:id="@+id/Mtadddateprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MtAdd_header" />
+
+    <TextView
+        android:id="@+id/Mtaddtimeprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_time"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/MtaddDate"
+        app:layout_constraintTop_toBottomOf="@+id/MtaddDate" />
+
+    <EditText
+        android:id="@+id/MtaddTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="@+id/Mtaddtimeprompt"
+        app:layout_constraintTop_toBottomOf="@+id/Mtaddtimeprompt" />
+
+    <TextView
+        android:id="@+id/Mtaddloactionprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_location"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/MtaddTime"
+        app:layout_constraintTop_toBottomOf="@+id/MtaddTime" />
+
+    <EditText
+        android:id="@+id/MtaddLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/Mtaddloactionprompt"
+        app:layout_constraintTop_toBottomOf="@+id/Mtaddloactionprompt" />
+
+    <TextView
+        android:id="@+id/Mtaddoppteamprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_oppteam"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/MtaddLocation"
+        app:layout_constraintTop_toBottomOf="@+id/MtaddLocation" />
+
+    <EditText
+        android:id="@+id/MtaddOppTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/Mtaddoppteamprompt"
+        app:layout_constraintTop_toBottomOf="@+id/Mtaddoppteamprompt" />
+
+    <TextView
+        android:id="@+id/Mtaddhomeawayprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_homeaway"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/MtaddOppTeam"
+        app:layout_constraintTop_toBottomOf="@+id/MtaddOppTeam" />
+
+    <EditText
+        android:id="@+id/MtaddHomeAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/Mtaddhomeawayprompt"
+        app:layout_constraintTop_toBottomOf="@+id/Mtaddhomeawayprompt" />
+
+    <Button
+        android:id="@+id/MtaddSubmitButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="finalizeChanges"
+        android:text="Submit Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

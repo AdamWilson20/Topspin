@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddScheduleEntry">
+
+    <TextView
+        android:id="@+id/tAdd_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/tAdd_Header"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/taddDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tadddateprompt" />
+
+    <TextView
+        android:id="@+id/tadddateprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tAdd_header" />
+
+    <TextView
+        android:id="@+id/taddtimeprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_time"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/taddDate"
+        app:layout_constraintTop_toBottomOf="@+id/taddDate" />
+
+    <EditText
+        android:id="@+id/taddTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="@+id/taddtimeprompt"
+        app:layout_constraintTop_toBottomOf="@+id/taddtimeprompt" />
+
+    <TextView
+        android:id="@+id/taddloactionprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_location"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/taddTime"
+        app:layout_constraintTop_toBottomOf="@+id/taddTime" />
+
+    <EditText
+        android:id="@+id/taddLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/taddloactionprompt"
+        app:layout_constraintTop_toBottomOf="@+id/taddloactionprompt" />
+
+    <TextView
+        android:id="@+id/taddoppteamprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_oppteam"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/taddLocation"
+        app:layout_constraintTop_toBottomOf="@+id/taddLocation" />
+
+    <EditText
+        android:id="@+id/taddOppTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/taddoppteamprompt"
+        app:layout_constraintTop_toBottomOf="@+id/taddoppteamprompt" />
+
+    <TextView
+        android:id="@+id/taddhomeawayprompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/tAdd_homeaway"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/taddOppTeam"
+        app:layout_constraintTop_toBottomOf="@+id/taddOppTeam" />
+
+    <EditText
+        android:id="@+id/taddHomeAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/taddhomeawayprompt"
+        app:layout_constraintTop_toBottomOf="@+id/taddhomeawayprompt" />
+
+    <Button
+        android:id="@+id/taddSubmitButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="submitEntry"
+        android:text="Submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
