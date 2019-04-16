@@ -2,8 +2,10 @@ package com.example.topspin;
 
 public class MatchSet {
 
-    private int eventID;
+
+
     private int matchID;
+    private int setID;
     private int setNumber;
     private int homeScore;
     private int awayScore;
@@ -11,21 +13,25 @@ public class MatchSet {
 
     public MatchSet(){}
 
-    public MatchSet(int eventID, int matchID, int setNumber, int homeScore, int awayScore, String result) {
-        this.eventID = eventID;
+    public MatchSet(int matchID, int setID, int setNumber, int homeScore, int awayScore, String result) {
+
+
+
         this.matchID = matchID;
+        this.setID = setID;
         this.setNumber = setNumber;
         this.homeScore = homeScore;
         this.awayScore = awayScore;
         this.result = result;
     }
 
-    public int getEventID() {
-        return eventID;
+
+    public int getSetID() {
+        return setID;
     }
 
-    public void setEventID(int eventID) {
-        this.eventID = eventID;
+    public void setSetID(int setID) {
+        this.setID = setID;
     }
 
     public int getMatchID() {
