@@ -140,6 +140,11 @@ public class ViewSchedule extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
+                //This settings menu is just a placeholder for Player Roster.
+            case R.id.Settings:
+                startActivity(new Intent(this, playerRoster.class));
+                break;
+
         }
         return true;
     }

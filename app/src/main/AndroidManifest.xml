@@ -32,6 +32,7 @@
         <activity android:name=".ModifyTournament" />
         <activity android:name=".ViewScheduleEntry" />
         <activity android:name=".AddScheduleEntry" />
+        <activity android:name=".playerRoster"/>
         <activity
             android:name=".ViewSchedule"
             android:label="Schedule"/>
