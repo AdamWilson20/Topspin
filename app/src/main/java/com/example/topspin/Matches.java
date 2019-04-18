@@ -3,6 +3,7 @@ package com.example.topspin;
 public class Matches {
     private int matchID;
     private int eventID;
+    private String matchType;
     private String homePlayer1;
     private String homePlayer2;
     private String awayPlayer1;
@@ -13,9 +14,10 @@ public class Matches {
 
     public Matches(){}
 
-    public Matches(int matchID, int eventID, String homePlayer1, String homePlayer2, String awayPlayer1, String awayPlayer2, int homeTeamSets, int awayTeamSets, String result) {
+    public Matches(int matchID, int eventID, String matchType, String homePlayer1, String homePlayer2, String awayPlayer1, String awayPlayer2, int homeTeamSets, int awayTeamSets, String result) {
         this.matchID = matchID;
         this.eventID = eventID;
+        this.matchType = matchType;
         this.homePlayer1 = homePlayer1;
         this.homePlayer2 = homePlayer2;
         this.awayPlayer1 = awayPlayer1;
@@ -39,6 +41,14 @@ public class Matches {
 
     public void setEventID(int eventID) {
         this.eventID = eventID;
+    }
+
+    public String getMatchType() {
+        return matchType;
+    }
+
+    public void setMatchType(String matchType) {
+        this.matchType = matchType;
     }
 
     public String getHomePlayer1() {

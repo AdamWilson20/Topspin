@@ -6,20 +6,20 @@ public class MatchSet {
 
     private int matchID;
     private int setID;
-    private int setNumber;
+   // private int setNumber;
     private int homeScore;
     private int awayScore;
     private String result;
 
     public MatchSet(){}
 
-    public MatchSet(int matchID, int setID, int setNumber, int homeScore, int awayScore, String result) {
+    public MatchSet(int matchID, int setID, int homeScore, int awayScore, String result) {
 
 
 
         this.matchID = matchID;
         this.setID = setID;
-        this.setNumber = setNumber;
+       // this.setNumber = setNumber;
         this.homeScore = homeScore;
         this.awayScore = awayScore;
         this.result = result;
@@ -42,13 +42,13 @@ public class MatchSet {
         this.matchID = matchID;
     }
 
-    public int getSetNumber() {
+  /*  public int getSetNumber() {
         return setNumber;
     }
 
     public void setSetNumber(int setNumber) {
         this.setNumber = setNumber;
-    }
+    }*/
 
     public int getHomeScore() {
         return homeScore;

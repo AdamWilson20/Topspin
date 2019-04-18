@@ -530,4 +530,15 @@
         app:layout_constraintStart_toEndOf="@+id/M3S3A"
         app:layout_constraintTop_toTopOf="@+id/M3S3A" />
 
+    <Button
+        android:id="@+id/TestUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="tryUpdate"
+        android:layout_marginBottom="8dp"
+        android:text="Test Match Updates"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.topspin;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ScoreByGame extends AppCompatActivity {
 
+    private ProgressDialog progressDialog;
 
     private int setNumberm1;
     private int setNumberm2;
@@ -31,6 +45,7 @@ public class ScoreByGame extends AppCompatActivity {
     private ImageButton m1hi, m1hd, m1ai, m1ad;
     private ImageButton m2hi, m2hd, m2ai, m2ad;
     private ImageButton m3hi, m3hd, m3ai, m3ad;
+
 
 
     @Override
@@ -63,22 +78,27 @@ public class ScoreByGame extends AppCompatActivity {
         m3hi = findViewById(R.id.M3HI); m3hd = findViewById(R.id.M3HD);
         m3ai = findViewById(R.id.M3AI); m3ad = findViewById(R.id.M3AD);
 
+
+
+        progressDialog = new ProgressDialog(this);
+
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 2, "Jim Halpert", "none", "Dwight Schrute","none", 0, 0, "In progress");
-        match2 = new Matches(2, 2, "Pam Halpert", "none", "Ryan Howard","none", 0, 0, "In progress");
-        match3 = new Matches(3, 2, "Michael scott", "none", "Toby Flenderson","none", 0, 0, "In progress");
+        match1 = new Matches(1, 1, "Singles", "Jim Halpert", "none", "Dwight Schrute","none", 0, 0, "In progress");
+        match2 = new Matches(2, 2, "Singles", "Pam Halpert", "none", "Ryan Howard","none", 0, 0, "In progress");
+        match3 = new Matches(3, 2, "Singles", "Michael scott", "none", "Toby Flenderson","none", 0, 0, "In progress");
 
-        m1set1 = new MatchSet(1,1, 1,0,0,"In Progress");
-        m1set2 = new MatchSet(1,2,2,0,0,"In Progress");
-        m1set3 = new MatchSet(1,3,3,0,0,"In Progress");
+        m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
+        m1set2 = new MatchSet(1,2,0,0,"In Progress");
+        m1set3 = new MatchSet(1,3,0,0,"In Progress");
 
-        m2set1 = new MatchSet(2,1,1,0,0,"In Progress");
-        m2set2 = new MatchSet(2,2,2, 0,0,"In Progress");
-        m2set3 = new MatchSet(2,3,3,0,0,"In Progress");
+        m2set1 = new MatchSet(2,1,0,0,"In Progress");
+        m2set2 = new MatchSet(2,2, 0,0,"In Progress");
+        m2set3 = new MatchSet(2,3,0,0,"In Progress");
 
-        m3set1 = new MatchSet(3,1,1, 0,0,"In Progress");
-        m3set2 = new MatchSet(3,2,2, 0,0,"In Progress");
-        m3set3 = new MatchSet(3,3,3, 0,0,"In Progress");
+        m3set1 = new MatchSet(3,1, 0,0,"In Progress");
+        m3set2 = new MatchSet(3,2, 0,0,"In Progress");
+        m3set3 = new MatchSet(3,3, 0,0,"In Progress");
+        //*/
 
         //Set textViews
         m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
@@ -125,7 +145,8 @@ public class ScoreByGame extends AppCompatActivity {
                             match1.setHomeTeamSets(match1.getHomeTeamSets()+1);
                             m1set1.setHomeScore(m1set1.getHomeScore()+1);
                             m1set1.setResult(match1.getHomePlayer1());
-                            //updateSet(match1, m1set1,'h');
+                            updateSet(m1set1);
+                            updateMatch(match1);
 
                         }else if(m1set1.getHomeScore()==5){
                             if(m1set1.getAwayScore() < 5){
@@ -133,15 +154,16 @@ public class ScoreByGame extends AppCompatActivity {
                                 match1.setHomeTeamSets(match1.getHomeTeamSets()+1);
                                 m1set1.setHomeScore(m1set1.getHomeScore()+1);
                                 m1set1.setResult(match1.getHomePlayer1());
-                                //  updateSet(match1, m1set1,'h');
+                                updateSet(m1set1);
+                                updateMatch(match1);
                             }else{
                                 //increment
                                 m1set1.setHomeScore(m1set1.getHomeScore()+1);
-                                // upDateGame(m1set1, 'h');
+                                updateSet(m1set1);
                             }
                         }else{ //increment
                             m1set1.setHomeScore(m1set1.getHomeScore()+1);
-                            // upDateGame(m1set1, 'h');
+                            updateSet(m1set1);
                         }
                         m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
                         break;
@@ -158,7 +180,8 @@ public class ScoreByGame extends AppCompatActivity {
                             if(checkMatchWin(match1)){
                                 match1.setResult(match1.getHomePlayer1());
                             }
-                            //updateSet(match1, m1set1,'h');
+                            updateSet(m1set1);
+                            updateMatch(match1);
 
                         }else if(m1set2.getHomeScore()==5){
                             if(m1set2.getAwayScore() < 5){
@@ -169,17 +192,17 @@ public class ScoreByGame extends AppCompatActivity {
                                 if(checkMatchWin(match1)){
                                     match1.setResult(match1.getHomePlayer1());
                                 }
-
-                                //  updateSet(match1, m1set1,'h');
+                                updateSet(m1set1);
+                                updateMatch(match1);
                             }else{
                                 //increment
                                 m1set2.setHomeScore(m1set2.getHomeScore()+1);
-                                // upDateGame(m1set1, 'h');
+                                updateSet(m1set1);
                             }
                         }else{
                             //increment
                             m1set2.setHomeScore(m1set2.getHomeScore()+1);
-                            // upDateGame(m1set1, 'h');
+                            updateSet(m1set1);
                         }
 
                         m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
@@ -193,7 +216,8 @@ public class ScoreByGame extends AppCompatActivity {
                             m1set3.setHomeScore(m1set3.getHomeScore()+1);
                             m1set3.setResult(match1.getHomePlayer1());
                             match1.setResult(match1.getHomePlayer1());
-                            //updateSet(match1, m1set3,'h');
+                            updateSet(m1set1);
+                            updateMatch(match1);
 
                         }else if(m1set3.getHomeScore()==5){
                             if(m1set3.getAwayScore()< 5){
@@ -202,16 +226,17 @@ public class ScoreByGame extends AppCompatActivity {
                                 m1set3.setHomeScore(m1set3.getHomeScore()+1);
                                 m1set3.setResult(match1.getHomePlayer1());
                                 match1.setResult(match1.getHomePlayer1());
-                                // updateSet(match1, m1set3,'h');
+                                updateSet(m1set1);
+                                updateMatch(match1);
                             }else{
                                 //increment
                                 m1set3.setHomeScore(m1set3.getHomeScore()+1);
-                                // upDateGame(m1set3, 'h');
+                                updateSet(m1set1);
                             }
                         }else{
                             //increment
                             m1set3.setHomeScore(m1set3.getHomeScore()+1);
-                            // upDateGame(m1set3, 'h');
+                            updateSet(m1set1);
                         }
 
                         m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
@@ -227,119 +252,7 @@ public class ScoreByGame extends AppCompatActivity {
         m1ai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(m1set1.getResult().equals("In Progress")){
-                    setNumberm1 = 1;
-                }else if(m1set2.getResult().equals("In Progress")){
-                    setNumberm1 = 2;
-                }else if(m1set3.getResult().equals("In Progress")){
-                    setNumberm1 = 3;
-                }
 
-
-                if(checkMatchWin(match1)){
-                    setNumberm1 = 0;
-                    Toast.makeText(getApplicationContext(), " Game is over, winner: " + match1.getResult(), Toast.LENGTH_LONG).show();
-                }
-                switch(setNumberm1){
-                    case 1:{
-                        if (m1set1.getAwayScore() == 6){
-                            //set won
-                            match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                            m1set1.setAwayScore(m1set1.getAwayScore()+1);
-                            m1set1.setResult(match1.getAwayPlayer1());
-                            //updateSet(match1, m1set1,'h');
-
-                        }else if(m1set1.getAwayScore()==5){
-                            if(m1set1.getHomeScore() < 5){
-                                //set won
-                                match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                                m1set1.setAwayScore(m1set1.getAwayScore()+1);
-                                m1set1.setResult(match1.getAwayPlayer1());
-                                //  updateSet(match1, m1set1,'h');
-                            }else{
-                                //increment
-                                m1set1.setAwayScore(m1set1.getAwayScore()+1);
-                                // upDateGame(m1set1, 'h');
-                            }
-                        }else{ //increment
-                            m1set1.setAwayScore(m1set1.getAwayScore()+1);
-                            // upDateGame(m1set1, 'h');
-                        }
-                        m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
-                        break;
-                    }
-                    case 2:{
-                        if(checkMatchWin(match1)){
-                            break;
-                        }
-                        if (m1set2.getAwayScore() == 6){
-                            //set won
-                            match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                            m1set2.setAwayScore(m1set2.getAwayScore()+1);
-                            m1set2.setResult(match1.getAwayPlayer1());
-                            if(checkMatchWin(match1)){
-                                match1.setResult(match1.getAwayPlayer1());
-                            }
-                            //updateSet(match1, m1set1,'h');
-
-                        }else if(m1set2.getAwayScore()==5){
-                            if(m1set2.getHomeScore() < 5){
-                                //set won
-                                match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                                m1set2.setAwayScore(m1set2.getAwayScore()+1);
-                                m1set2.setResult(match1.getAwayPlayer1());
-                                if(checkMatchWin(match1)){
-                                    match1.setResult(match1.getAwayPlayer1());
-                                }
-                                //  updateSet(match1, m1set1,'h');
-                            }else{
-                                //increment
-                                m1set2.setAwayScore(m1set2.getAwayScore()+1);
-                                // upDateGame(m1set1, 'h');
-                            }
-                        }else{
-                            //increment
-                            m1set2.setAwayScore(m1set2.getAwayScore()+1);
-                            // upDateGame(m1set1, 'h');
-                        }
-
-                        m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
-                        break;
-
-                    }
-                    case 3:{
-                        if (m1set3.getAwayScore() == 6){
-                            //set won
-                            match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                            m1set3.setAwayScore(m1set3.getAwayScore()+1);
-                            m1set3.setResult(match1.getAwayPlayer1());
-                            match1.setResult(match1.getAwayPlayer1());
-                            //updateSet(match1, m1set3,'h');
-
-                        }else if(m1set3.getAwayScore()==5){
-                            if(m1set3.getHomeScore()< 5){
-                                //set won
-                                match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
-                                m1set3.setAwayScore(m1set3.getAwayScore()+1);
-                                m1set3.setResult(match1.getAwayPlayer1());
-                                match1.setResult(match1.getAwayPlayer1());
-                                // updateSet(match1, m1set3,'h');
-                            }else{
-                                //increment
-                                m1set3.setAwayScore(m1set3.getAwayScore()+1);
-                                // upDateGame(m1set3, 'h');
-                            }
-                        }else{
-                            //increment
-                            m1set3.setAwayScore(m1set3.getAwayScore()+1);
-                            // upDateGame(m1set3, 'h');
-                        }
-
-                        m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
-                        break;
-
-                    }
-                }
 
             }
         });
@@ -593,12 +506,92 @@ public class ScoreByGame extends AppCompatActivity {
 
     }
 
-    /////Data change methods
-    public void upDateGame(MatchSet set, char team){
+    public void updateSet( final MatchSet changedSet){
 
+        progressDialog.setMessage("Updating Set...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_UPDATE_SET,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(changedSet.getMatchID()));
+                params.put("setID", String.valueOf(changedSet.getSetID()));
+                params.put("homeScore", String.valueOf(changedSet.getHomeScore()));
+                params.put("awayScore", String.valueOf(changedSet.getAwayScore()));
+                params.put("result", changedSet.getResult());
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
-    public void updateSet(Matches match, MatchSet set, char team){
 
+    public void updateMatch(final Matches changedMatch){
+
+        progressDialog.setMessage("Updating Match...");
+        progressDialog.show();
+        Toast.makeText(this, String.valueOf(match1.getHomeTeamSets()), Toast.LENGTH_LONG).show();
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_UPDATE_MATCH,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(getApplicationContext(), " It didn't Work", Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(changedMatch.getMatchID()));
+                params.put("eventID", String.valueOf(changedMatch.getEventID()));
+                params.put("homeTeamSets", String.valueOf(changedMatch.getHomeTeamSets()));
+                params.put("awayTeamSets", String.valueOf(changedMatch.getAwayTeamSets()));
+                params.put("result", changedMatch.getResult());
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
 
@@ -608,6 +601,135 @@ public class ScoreByGame extends AppCompatActivity {
         }else{
             return false;
         }
+    }
+    public void tryUpdate(View view){
+        match1.setHomeTeamSets(2);
+        match1.setAwayTeamSets(1);
+        match1.setResult(match1.getHomePlayer1());
+        //Toast.makeText(this, String.valueOf(match1.getHomeTeamSets()), Toast.LENGTH_LONG).show();
+        updateMatch(match1);
+    }
+    private void incrementScore(Matches changedMatch, MatchSet changedSet){
+        if(m1set1.getResult().equals("In Progress")){
+            setNumberm1 = 1;
+        }else if(m1set2.getResult().equals("In Progress")){
+            setNumberm1 = 2;
+        }else if(m1set3.getResult().equals("In Progress")){
+            setNumberm1 = 3;
+        }
+
+
+        if(checkMatchWin(match1)){
+            setNumberm1 = 0;
+            Toast.makeText(getApplicationContext(), " Game is over, winner: " + match1.getResult(), Toast.LENGTH_LONG).show();
+        }
+        switch(setNumberm1){
+            case 1:{
+                if (m1set1.getAwayScore() == 6){
+                    //set won
+                    match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                    m1set1.setAwayScore(m1set1.getAwayScore()+1);
+                    m1set1.setResult(match1.getAwayPlayer1());
+                    //updateSet(match1, m1set1,'h');
+
+                }else if(m1set1.getAwayScore()==5){
+                    if(m1set1.getHomeScore() < 5){
+                        //set won
+                        match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                        m1set1.setAwayScore(m1set1.getAwayScore()+1);
+                        m1set1.setResult(match1.getAwayPlayer1());
+                        //  updateSet(match1, m1set1,'h');
+                    }else{
+                        //increment
+                        m1set1.setAwayScore(m1set1.getAwayScore()+1);
+                        // upDateGame(m1set1, 'h');
+                    }
+                }else{ //increment
+                    m1set1.setAwayScore(m1set1.getAwayScore()+1);
+                    // upDateGame(m1set1, 'h');
+                }
+                m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
+                break;
+            }
+            case 2:{
+                if(checkMatchWin(match1)){
+                    break;
+                }
+                if (m1set2.getAwayScore() == 6){
+                    //set won
+                    match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                    m1set2.setAwayScore(m1set2.getAwayScore()+1);
+                    m1set2.setResult(match1.getAwayPlayer1());
+                    if(checkMatchWin(match1)){
+                        match1.setResult(match1.getAwayPlayer1());
+                    }
+                    //updateSet(match1, m1set1,'h');
+
+                }else if(m1set2.getAwayScore()==5){
+                    if(m1set2.getHomeScore() < 5){
+                        //set won
+                        match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                        m1set2.setAwayScore(m1set2.getAwayScore()+1);
+                        m1set2.setResult(match1.getAwayPlayer1());
+                        if(checkMatchWin(match1)){
+                            match1.setResult(match1.getAwayPlayer1());
+                        }
+                        //  updateSet(match1, m1set1,'h');
+                    }else{
+                        //increment
+                        m1set2.setAwayScore(m1set2.getAwayScore()+1);
+                        // upDateGame(m1set1, 'h');
+                    }
+                }else{
+                    //increment
+                    m1set2.setAwayScore(m1set2.getAwayScore()+1);
+                    // upDateGame(m1set1, 'h');
+                }
+
+                m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
+                break;
+
+            }
+            case 3:{
+                if (m1set3.getAwayScore() == 6){
+                    //set won
+                    match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                    m1set3.setAwayScore(m1set3.getAwayScore()+1);
+                    m1set3.setResult(match1.getAwayPlayer1());
+                    match1.setResult(match1.getAwayPlayer1());
+                    //updateSet(match1, m1set3,'h');
+
+                }else if(m1set3.getAwayScore()==5){
+                    if(m1set3.getHomeScore()< 5){
+                        //set won
+                        match1.setAwayTeamSets(match1.getAwayTeamSets()+1);
+                        m1set3.setAwayScore(m1set3.getAwayScore()+1);
+                        m1set3.setResult(match1.getAwayPlayer1());
+                        match1.setResult(match1.getAwayPlayer1());
+                        // updateSet(match1, m1set3,'h');
+                    }else{
+                        //increment
+                        m1set3.setAwayScore(m1set3.getAwayScore()+1);
+                        // upDateGame(m1set3, 'h');
+                    }
+                }else{
+                    //increment
+                    m1set3.setAwayScore(m1set3.getAwayScore()+1);
+                    // upDateGame(m1set3, 'h');
+                }
+
+                m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
+                break;
+
+            }
+        }
+    }
+
+    public void getMatchs(){
+
+    }
+    public void getSets(){
+
     }
 
 }
