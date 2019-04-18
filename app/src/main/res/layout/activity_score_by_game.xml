@@ -96,7 +96,7 @@
         app:layout_constraintTop_toTopOf="@+id/M1S1A" />
 
     <TextView
-        android:id="@+id/M1SA3"
+        android:id="@+id/M1S3A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -137,7 +137,7 @@
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_up_float"
         android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/M1SA3"
+        app:layout_constraintBottom_toTopOf="@+id/M1S3A"
         app:layout_constraintStart_toEndOf="@+id/M1S3H"
         app:layout_constraintTop_toTopOf="@+id/M1S3H" />
 
@@ -178,9 +178,9 @@
         android:src="@android:drawable/arrow_down_float"
         android:tint="@color/colorPrimaryDark"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/M1SA3"
-        app:layout_constraintStart_toEndOf="@+id/M1SA3"
-        app:layout_constraintTop_toTopOf="@+id/M1SA3" />
+        app:layout_constraintBottom_toBottomOf="@+id/M1S3A"
+        app:layout_constraintStart_toEndOf="@+id/M1S3A"
+        app:layout_constraintTop_toTopOf="@+id/M1S3A" />
 
     <TextView
         android:id="@+id/Match2header"
