@@ -27,7 +27,7 @@ public class ScoreByGame extends AppCompatActivity {
 
     private int setNumberm1;
     private int setNumberm2;
-    private int setNumberm3;
+    private int setNumber;
 
     Matches match1, match2, match3;
     MatchSet m1set1, m1set2, m1set3;
@@ -619,9 +619,9 @@ public class ScoreByGame extends AppCompatActivity {
         }
 
 
-        if(checkMatchWin(match1)){
+        if(checkMatchWin(changedMatch)){
             setNumberm1 = 0;
-            Toast.makeText(getApplicationContext(), " Game is over, winner: " + match1.getResult(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
         }
         switch(setNumberm1){
             case 1:{

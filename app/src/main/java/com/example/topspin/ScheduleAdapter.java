@@ -12,8 +12,7 @@ import java.util.List;
 public class ScheduleAdapter extends ArrayAdapter<Tournament> {
     private final List<Tournament> list;
     private final Activity context;
-    boolean checkAll_flag = false;
-    boolean checkItem_flag = false;
+
 
 
     // View lookup cache
