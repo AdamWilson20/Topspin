@@ -5,6 +5,7 @@ public class Player {
     // I would recommend dropping the standing attribute
     // and adding the attributes from the website at http://www.odusports.com/ViewArticle.dbml?ATCLID=210331019&DB_OEM_ID=31100&Q_SEASON=2018
     //The Extra entries would be classYear, Major, and High school all Strings and easy to use
+    //NOTED will fix shortly.
     private String name;
     private String standing;
     private String hometown;
