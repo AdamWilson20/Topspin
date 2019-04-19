@@ -16,13 +16,16 @@ public class playerRoster extends AppCompatActivity {
         setContentView(R.layout.activity_player_roster);
         ListView mListView = (ListView) findViewById(R.id.listPlayer);
 
+
         //Create Roster objects
-        Player adam = new Player("Adam","Senior","Virginia","5'8","160");
 
         //Add the Player objects to an ArrayList
         ArrayList<Player> rosterList = new ArrayList<>();
-        rosterList.add(adam);
+        for(int i = 0 ;i < 20; i++){
+            Player adam = new Player("Adam","Senior","Virginia","5'8","160");
+            rosterList.add(adam);
 
+        }
         PlayerListAdapater adapter = new PlayerListAdapater(this, R.layout.adapter_player, rosterList);
         mListView.setAdapter(adapter);
 
