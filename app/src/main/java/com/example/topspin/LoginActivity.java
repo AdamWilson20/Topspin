@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this, ViewSchedule.class));
+            startActivity(new Intent(this, ScoreByGame.class));
             //return;
         }
 

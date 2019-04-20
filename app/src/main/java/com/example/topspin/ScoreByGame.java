@@ -16,9 +16,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +41,8 @@ public class ScoreByGame extends AppCompatActivity {
     private String result;
     private int homeTeamSets;
     private int awayTeamSets;
+
+    ArrayList<Matches> matchList = new ArrayList<>();
 
 
 
@@ -96,9 +100,9 @@ public class ScoreByGame extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 1, " ", " ", " ", " "," ", 0, 0, " ");
-        match2 = new Matches(2, 2, "Singles", "Pam Halpert", "none", "Ryan Howard","none", 0, 0, "In progress");
-        match3 = new Matches(3, 2, "Singles", "Michael scott", "none", "Toby Flenderson","none", 0, 0, "In progress");
+        match1 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
+        match2 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
+        match3 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
 
         m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
         m1set2 = new MatchSet(1,2,0,0,"In Progress");
@@ -112,13 +116,13 @@ public class ScoreByGame extends AppCompatActivity {
         m3set2 = new MatchSet(3,8, 0,0,"In Progress");
         m3set3 = new MatchSet(3,9, 0,0,"In Progress");
         //*/
-        getMatch1();
+        getMatches();
 
 
 
 
         //Set textViews
-       // m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+        m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
         m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
         m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
 
@@ -641,8 +645,8 @@ public class ScoreByGame extends AppCompatActivity {
         return number;
     }
 
-    public void  getMatch1(){
-        progressDialog.show();
+    public void getMatch(){
+        //   progressDialog.show();
 
 
 
@@ -658,22 +662,27 @@ public class ScoreByGame extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")){
 
+
+
+
                                 match1.setMatchType(obj.getString("matchType"));
                                 match1.setHomePlayer1(obj.getString("homePlayer1"));
                                 match1.setHomePlayer2(obj.getString("homePlayer2"));
                                 match1.setAwayPlayer1(obj.getString("awayPlayer1"));
-                                match1.setAwayPlayer2( obj.getString("awayPlayer2"));
+                                match1.setAwayPlayer2(obj.getString("awayPlayer2"));
                                 match1.setHomeTeamSets(obj.getInt("homeTeamSets"));
                                 match1.setAwayTeamSets(obj.getInt("awayTeamSets"));
                                 match1.setResult(obj.getString("result"));
-                               // Toast.makeText(getApplicationContext(), match1.getHomePlayer1(),Toast.LENGTH_LONG).show();
+                                // Toast.makeText(getApplicationContext(), match1.getHomePlayer1(),Toast.LENGTH_LONG).show();
 
                                 m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+
 
                             }else{
                                 Toast.makeText(getApplicationContext(), "error occurred", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
                             e.printStackTrace();
                         }
@@ -692,6 +701,78 @@ public class ScoreByGame extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("matchID", String.valueOf(match1.getMatchID()));
                 params.put("eventID", String.valueOf(match1.getEventID()));
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    public void  getMatches(){
+     //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_MATCHES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                                for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                Matches temp = new Matches(obj.getInt("matchID"),
+                                        obj.getInt("eventID"),
+                                        obj.getString("matchType"),
+                                        obj.getString("homePlayer1"),
+                                        obj.getString("homePlayer2"),
+                                        obj.getString("awayPlayer1"),
+                                        obj.getString("awayPlayer2"),
+                                        obj.getInt("homeTeamSets"),
+                                        obj.getInt("awayTeamSets"),
+                                        obj.getString("result"));
+                                matchList.add(temp);}
+
+                            match1 = matchList.get(0);
+                            match2 = matchList.get(1);
+                            match3 = matchList.get(2);
+
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+                            m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
+                            m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
+
+
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("eventID", String.valueOf(1));
+                params.put("matchType", "Singles");
+
 
 
                 return params;
