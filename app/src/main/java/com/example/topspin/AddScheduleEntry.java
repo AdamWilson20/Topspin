@@ -30,18 +30,6 @@ import static java.lang.Math.abs;
 
 public class AddScheduleEntry extends AppCompatActivity {
 
-    /*ArrayList<Tournament> tournaments;
-    Tournament temp;
-    EditText date;
-    EditText time;
-    EditText location;
-    EditText opposingTeam;
-    EditText homeAway;
-    Boolean vSAT = false;
-    int tID;
-    boolean uniqueID = true;
-    */
-
     private ArrayList<Tournament> tournaments;
     private Tournament temp;
     private EditText date, time, location, opposingTeam, homeAway;
@@ -121,25 +109,13 @@ public class AddScheduleEntry extends AppCompatActivity {
         createEvent();
         Intent backToSchedule= new Intent(getApplicationContext(),ViewSchedule.class);
 
-        /*
-        date = findViewById(R.id.taddDate);
-        time = findViewById(R.id.taddTime);
-        location = findViewById(R.id.taddLocation);
-        opposingTeam = findViewById(R.id.taddOppTeam);
-        homeAway = findViewById(R.id.taddHomeAway);
-
-        String tdate = date.getText().toString();
-        String ttime = time.getText().toString();
-        String tlocation = location.getText().toString();
-        String topposingteam = opposingTeam.getText().toString();
-        String thomeaway = homeAway.getText().toString();
-        */
         final String tdate = date.getText().toString().trim();
         final String ttime = time.getText().toString().trim();
         final String tlocation = location.getText().toString().trim();
         final String topposingteam = opposingTeam.getText().toString().trim();
         final String thomeaway = homeAway.getText().toString().trim();
 
+        //Remove once database is integrated into view schedule
         Random rand = new Random();
         tID=rand.nextInt();
         while(!uniqueID){
