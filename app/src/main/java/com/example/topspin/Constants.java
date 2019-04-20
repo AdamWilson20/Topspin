@@ -12,6 +12,7 @@ public class Constants {
     public static final String URL_GET_MATCH = ROOT_URL+"get_match.php";
     public static final String URL_GET_MATCHES = ROOT_URL+"get_matches.php";
     public static final String URL_UPDATE_MATCH = ROOT_URL+"update_match.php";
+    public static final String URL_GET_EVENTS = ROOT_URL+"getEvents.php";
 
 
 }

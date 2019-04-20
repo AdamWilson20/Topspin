@@ -1,7 +1,9 @@
 package com.example.topspin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,8 +14,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.annotation.Target;
 import java.lang.reflect.Type;
@@ -21,10 +30,13 @@ import java.util.ArrayList;
 
 public class ViewSchedule extends AppCompatActivity {
 
-    ArrayList<Tournament> tournaments;
-    ScheduleAdapter schedule;
-    ListView scheduleList;
-    Tournament target;
+    private ArrayList<Tournament> tournaments;
+    private Tournament target;
+    private ListView scheduleList;
+    private ScheduleAdapter schedule;
+    private Boolean status = false;
+
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -32,28 +44,51 @@ public class ViewSchedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule);
 
-        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
+        scheduleList = findViewById(R.id.scheduleList);
+        new FetchEventsAsyncTask().execute();
+    }
+
+    /**
+     * Fetches the list of movies from the server
+     */
+    private class FetchEventsAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //Display progress bar
+            progressDialog = new ProgressDialog(ViewSchedule.this);
+            progressDialog.setMessage("Please wait...");
+            //progressDialog.setIndeterminate(false);
+            //progressDialog.setCancelable(false);
+            progressDialog.show();
         }
 
-        loadData();
-        //sortTourns(tournaments);
-        saveData();
+        @Override
+        protected String doInBackground(String... params) {
+            getSchedule();
+            while (status == false){}
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            status = false;
+            progressDialog.dismiss();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    populateSchedule();
+                }
+            });
+        }
+
+    }
+
+    /**
+     * Updating parsed JSON data into ListView
+     * */
+    private void populateSchedule() {
         schedule = new ScheduleAdapter(this, tournaments);
-        scheduleList = findViewById(R.id.scheduleList);
         scheduleList.setAdapter(schedule);
-
-
-
-        /*if(tournaments.size() < 1) {
-            for (int i = 0; i < 6; i++) {
-                Tournament temp = new Tournament("test", "test", "test", "test", true);
-                tournaments.add(temp);
-                schedule.notifyDataSetChanged();
-            }//*/
-
-        //    }
 
         scheduleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,61 +103,63 @@ public class ViewSchedule extends AppCompatActivity {
 
             }
         });
+    }
 
+    // Query the data base and populate the results in ArrayList<Tournament> tournaments
+    public void getSchedule(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.URL_GET_EVENTS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
 
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            if(!obj.getBoolean("error")) {
+                                tournaments = new ArrayList<>();
+                                final int num_rows = obj.getInt("num_rows");
+                                for (int i = 0; i < num_rows; i++) {
+                                    int tID = obj.getInt("tID" + i);
+                                    String tdate = obj.getString("date" + i);
+                                    String ttime = obj.getString("time" + i);
+                                    String tlocation = obj.getString("location" + i);
+                                    String topposingteam = obj.getString("oppTeam" + i);
+                                    Integer thomeaway = obj.getInt("isHome" + i);
+                                    Boolean boolHomeAway = true;
+                                    if (thomeaway == 0) {
+                                        boolHomeAway = false;
+                                    }
+                                    target = new Tournament(tID, topposingteam, tlocation, tdate, ttime, boolHomeAway);
+                                    tournaments.add(target);
+                                }
+                            }
+                            //Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            status = true;
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                            status = true;
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        status = true;
+                    }
+                });
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     public void addEntry(View view){
         Intent addEntry = new Intent(this, AddScheduleEntry.class);
-        saveData();
+        //saveData();
         startActivity(addEntry);
         finish();
     }
 
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(tournaments);
-        editor.putString("tournament schedule", json);
-        editor.apply();
-    }
-
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("tournament schedule", null);
-        Type type = new TypeToken<ArrayList<Tournament>>() {
-        }.getType();
-        tournaments = gson.fromJson(json, type);
-
-        if (tournaments == null) {
-            tournaments = new ArrayList<>();
-        }
-    }
-
-    public void sortTourns(ArrayList<Tournament> tournaments){
-        int targetIndex;
-        for(int i = 1; i < tournaments.size(); i++){
-            targetIndex = i;
-            for(int j = i -1; i>=0; j--){
-
-                //  if(tournaments.getPosition(i).getDate.isAfter(tournaments.getPosition(j).getDate){
-                if((tournaments.get(i).getDate().compareTo(tournaments.get(j).getDate())) > 0){
-                    break;
-                }else{
-                    targetIndex--;
-                }
-
-                if(targetIndex!=i){
-                    target = tournaments.get(i);
-                    tournaments.set(i,tournaments.get(targetIndex));
-                    tournaments.set(targetIndex,target);
-                }
-            }
-
-        }
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
