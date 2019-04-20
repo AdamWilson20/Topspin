@@ -32,7 +32,7 @@ public class ScoreByGame extends AppCompatActivity {
     private int setNumberm2;
     private int setNumberm3;
 
-    String homePlayer1;
+    private String homePlayer1;
     private String homePlayer2;
     private String awayPlayer1;
     private String awayPlayer2;
@@ -43,6 +43,7 @@ public class ScoreByGame extends AppCompatActivity {
     private int awayTeamSets;
 
     ArrayList<Matches> matchList = new ArrayList<>();
+    ArrayList<MatchSet> setList = new ArrayList<>();
 
 
 
@@ -100,9 +101,9 @@ public class ScoreByGame extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
-        match2 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
-        match3 = new Matches(0, 1, "", "", "", "","", 0, 0, "");
+        match1 = new Matches(1, 1, "Singles", "", "", "","", 0, 0, "In Progress");
+        match2 = new Matches(2, 1, "Singles", "", "", "","", 0, 0, "In Progress");
+        match3 = new Matches(3, 1, "Singles", "", "", "","", 0, 0, "In Progress");
 
         m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
         m1set2 = new MatchSet(1,2,0,0,"In Progress");
@@ -115,11 +116,14 @@ public class ScoreByGame extends AppCompatActivity {
         m3set1 = new MatchSet(3,7, 0,0,"In Progress");
         m3set2 = new MatchSet(3,8, 0,0,"In Progress");
         m3set3 = new MatchSet(3,9, 0,0,"In Progress");
-        //*/
+
+
+
+
         getMatches();
-
-
-
+        getSetsM1();
+        getSetsM2();
+        getSetsM3();
 
         //Set textViews
         m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
@@ -137,10 +141,10 @@ public class ScoreByGame extends AppCompatActivity {
         m3s1h.setText(String.valueOf(m3set1.getHomeScore())); m3s1a.setText(String.valueOf(m3set1.getAwayScore()));
         m3s2h.setText(String.valueOf(m3set2.getHomeScore())); m3s2a.setText(String.valueOf(m3set2.getAwayScore()));
         m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
+//
 
 
-
-       /*//updateMatch(match1);
+        updateMatch(match1);
         updateMatch(match2);
         updateMatch(match3);
 
@@ -154,7 +158,10 @@ public class ScoreByGame extends AppCompatActivity {
 
         updateSet(m3set1);
         updateSet(m3set2);
-        updateSet(m3set3);//*/
+        updateSet(m3set3);
+
+
+
 
         /**
          * This is the start of Match 1's icrement listeners
@@ -180,7 +187,6 @@ public class ScoreByGame extends AppCompatActivity {
                         break;
                     }
                 }
-                Toast.makeText(getApplicationContext(), match1.getHomePlayer1(),Toast.LENGTH_LONG).show();
             }
 
         });
@@ -353,8 +359,8 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(changedSet.getMatchID()));
                 params.put("setID", String.valueOf(changedSet.getSetID()));
+                params.put("matchID", String.valueOf(changedSet.getMatchID()));
                 params.put("homeScore", String.valueOf(changedSet.getHomeScore()));
                 params.put("awayScore", String.valueOf(changedSet.getAwayScore()));
                 params.put("result", changedSet.getResult());
@@ -711,7 +717,7 @@ public class ScoreByGame extends AppCompatActivity {
     }
 
     public void  getMatches(){
-     //   progressDialog.show();
+        progressDialog.show();
 
 
 
@@ -784,7 +790,214 @@ public class ScoreByGame extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
-    public void getSets(){
+    public void getSetsM1(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+                            m1set1 = setList.get(0); m1set2 = setList.get(1); m1set3 = setList.get(2);
+
+                            m1s1h.setText(String.valueOf(m1set1.getHomeScore())); m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
+                            m1s2h.setText(String.valueOf(m1set2.getHomeScore())); m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
+                            m1s3h.setText(String.valueOf(m1set3.getHomeScore())); m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
+
+
+
+
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(1));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void getSetsM2(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+                            m2set1 = setList.get(0); m2set2 = setList.get(1); m2set3 = setList.get(2);
+
+
+                            m2s1h.setText(String.valueOf(m2set1.getHomeScore())); m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
+                            m2s2h.setText(String.valueOf(m2set2.getHomeScore())); m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
+                            m2s3h.setText(String.valueOf(m2set3.getHomeScore())); m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
+
+
+
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(2));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void getSetsM3(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+
+                            m3set1 = setList.get(0); m3set2 = setList.get(1); m3set3 = setList.get(2);
+
+
+
+                            m3s1h.setText(String.valueOf(m3set1.getHomeScore())); m3s1a.setText(String.valueOf(m3set1.getAwayScore()));
+                            m3s2h.setText(String.valueOf(m3set2.getHomeScore())); m3s2a.setText(String.valueOf(m3set2.getAwayScore()));
+                            m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
+
+
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(3));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
 
