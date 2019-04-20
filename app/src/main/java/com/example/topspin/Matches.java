@@ -27,6 +27,11 @@ public class Matches {
         this.result = result;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     public int getMatchID() {
         return matchID;
     }
