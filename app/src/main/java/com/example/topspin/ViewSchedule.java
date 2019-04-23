@@ -49,13 +49,13 @@ public class ViewSchedule extends AppCompatActivity {
     }
 
     /**
-     * Fetches the list of movies from the server
+     *
      */
     private class FetchEventsAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //Display progress bar
+            // Display progress bar
             progressDialog = new ProgressDialog(ViewSchedule.this);
             progressDialog.setMessage("Please wait...");
             //progressDialog.setIndeterminate(false);

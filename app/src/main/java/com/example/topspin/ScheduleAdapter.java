@@ -27,7 +27,6 @@ public class ScheduleAdapter extends ArrayAdapter<Tournament> {
         //protected CheckBox checkbox;
     }
 
-
     public ScheduleAdapter(Activity context, List<Tournament>list) {
         super(context, R.layout.scheduleadapter, list);
         this.context = context;

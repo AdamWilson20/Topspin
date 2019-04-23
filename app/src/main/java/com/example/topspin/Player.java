@@ -62,4 +62,6 @@ public class Player {
     public void setWeight(String weight) {
         this.weight = weight;
     }
+
+    public String getFullName(){return firstName + " " +lastName;}
 }

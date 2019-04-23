@@ -31,7 +31,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="19dp"
         android:text="@string/ODU_men_roster"
-        app:layout_constraintBottom_toTopOf="@+id/rosterList"
+        app:layout_constraintBottom_toTopOf="@+id/listPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

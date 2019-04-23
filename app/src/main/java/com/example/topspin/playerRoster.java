@@ -30,23 +30,25 @@ import java.util.List;
 
 public class playerRoster extends AppCompatActivity {
 
-    ListView listView;
-    ArrayList<Player> players;
-    Player target;
+    private ArrayList<Player> players;
+    private Player target;
+    private ListView listView;
+    private RosterAdapter roster;
     boolean status = false;
+
     private ProgressDialog progressDialog;
-    private PlayerListAdapater playerRoster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_roster);
-        listView = (ListView) findViewById(R.id.listPlayer);
-        Button buttonAdd = findViewById(R.id.addPlayer);
 
+        listView = (ListView) findViewById(R.id.listPlayer);
+        new playerRoster.FetchRosterAsyncTask().execute();
+        Button buttonAdd = findViewById(R.id.addPlayer);
     }
 
-    private class FetchEventsAsyncTask extends AsyncTask<String, Void, String> {
+    private class FetchRosterAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -80,8 +82,8 @@ public class playerRoster extends AppCompatActivity {
     }
 
     private void populateRoster() {
-        playerRoster = new PlayerListAdapater(players, this);
-        listView.setAdapter(playerRoster);
+        roster = new RosterAdapter(this, players);
+        listView.setAdapter(roster);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,10 +91,10 @@ public class playerRoster extends AppCompatActivity {
 
                 int tempID = players.get(position).getPlayerID();
                 Toast.makeText(getApplicationContext(), String.valueOf(tempID), Toast.LENGTH_SHORT).show();
-                //Intent startViewModify;
-                //startViewModify = new Intent(getApplicationContext(), ViewScheduleEntry.class);
-                //startViewModify.putExtra("ID",tempID);
-                //startActivity(startViewModify);
+                Intent startViewModify;
+                startViewModify = new Intent(getApplicationContext(), ViewScheduleEntry.class);
+                startViewModify.putExtra("ID",tempID);
+                startActivity(startViewModify);
 
             }
         });
