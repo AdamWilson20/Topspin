@@ -6,32 +6,38 @@ public class Player {
     // and adding the attributes from the website at http://www.odusports.com/ViewArticle.dbml?ATCLID=210331019&DB_OEM_ID=31100&Q_SEASON=2018
     //The Extra entries would be classYear, Major, and High school all Strings and easy to use
     //NOTED will fix shortly.
-    private String name;
-    private String standing;
-    private String hometown;
+    private int playerID;
+    private String firstName;
+    private String lastName;
     private String height;
     private String weight;
+    private String year;
+    private String hometown;
 
 
-    public Player(String name, String standing, String hometown, String height, String weight) {
-        this.name = name;
-        this.standing = standing;
+
+    public Player(int playerID,String firstName, String lastName,String height, String weight, String year, String hometown) {
+        this.playerID = playerID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.year = year;
         this.hometown = hometown;
         this.height = height;
         this.weight = weight;
     }
-
-    public String getName(){
-        return name;
+    public int getPlayerID(){return playerID;}
+    public void setPlayerID(int playerID){this.playerID = playerID;}
+    public String getFirstName(){
+        return firstName;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-    public String getStanding() {
-        return standing;
+    public String getYear() {
+        return year;
     }
     public void setStanding(String standing) {
-        this.standing = standing;
+        this.year = year;
     }
 
     public String getHometown() {
