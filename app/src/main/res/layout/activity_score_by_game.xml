@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ScoreByGame">
 
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer" />
 
@@ -40,9 +40,10 @@
         android:id="@+id/M1S1H"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/Match1HomePlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M1S1H"
         app:layout_constraintStart_toEndOf="@+id/M1S1H"
         app:layout_constraintTop_toTopOf="@+id/M1S1H" />
@@ -65,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M1S2H"
         app:layout_constraintStart_toEndOf="@+id/M1S2H"
         app:layout_constraintTop_toTopOf="@+id/M1S2H" />
@@ -74,9 +75,10 @@
         android:id="@+id/M1S1A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/Match1AwayPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M1S1A"
         app:layout_constraintStart_toEndOf="@+id/M1S1A"
         app:layout_constraintTop_toTopOf="@+id/M1S1A" />
@@ -99,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M1S2A"
         app:layout_constraintStart_toEndOf="@+id/M1S2A"
         app:layout_constraintTop_toTopOf="@+id/M1S2A" />
@@ -125,57 +127,69 @@
         app:layout_constraintEnd_toEndOf="@+id/M1S3H"
         app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
 
-    <ImageButton
+    <Button
         android:id="@+id/M1HI"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerInside"
+        android:text="+"
+        android:textSize="18sp"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/M1HD"
+        app:layout_constraintStart_toEndOf="@+id/M1HD"
+        app:layout_constraintTop_toTopOf="@+id/M1HD"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/M1AI"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
+        android:text="+"
+        android:textSize="18sp"
         android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/M1AD"
+        app:layout_constraintStart_toEndOf="@+id/M1AD"
+        app:layout_constraintTop_toTopOf="@+id/M1AD" />
+
+    <Button
+        android:id="@+id/M1HD"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:text="-"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:tint="@color/colorPrimaryDark"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/M1S3A"
         app:layout_constraintStart_toEndOf="@+id/M1S3H"
         app:layout_constraintTop_toTopOf="@+id/M1S3H" />
 
-    <ImageButton
-        android:id="@+id/M1AI"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/M1AD"
-        app:layout_constraintEnd_toEndOf="@+id/M1AD"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/M1AD" />
-
-    <ImageButton
-        android:id="@+id/M1HD"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/M1HI"
-        app:layout_constraintStart_toStartOf="@+id/M1HI"
-        app:layout_constraintTop_toBottomOf="@+id/M1HI" />
-
-    <ImageButton
+    <Button
         android:id="@+id/M1AD"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
+        android:text="-"
+        android:textSize="20sp"
         android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/M1S3A"
         app:layout_constraintStart_toEndOf="@+id/M1S3A"
         app:layout_constraintTop_toTopOf="@+id/M1S3A" />
@@ -234,9 +248,10 @@
         android:id="@+id/M2S1H"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2HomePlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -246,9 +261,10 @@
         android:id="@+id/M2S1A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2AwayPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -260,7 +276,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2S1H"
         app:layout_constraintStart_toEndOf="@+id/M2S1H"
         app:layout_constraintTop_toTopOf="@+id/M2S1H" />
@@ -271,7 +287,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2S2H"
         app:layout_constraintStart_toEndOf="@+id/M2S2H"
         app:layout_constraintTop_toTopOf="@+id/M2S2H" />
@@ -282,7 +298,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2S1A"
         app:layout_constraintStart_toEndOf="@+id/M2S1A"
         app:layout_constraintTop_toTopOf="@+id/M2S1A" />
@@ -293,61 +309,73 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M2S2A"
         app:layout_constraintStart_toEndOf="@+id/M2S2A"
         app:layout_constraintTop_toTopOf="@+id/M2S2A" />
 
-    <ImageButton
+    <Button
         android:id="@+id/M2HI"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="8dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_up_float"
+        android:text="+"
+        android:textSize="18sp"
         android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/M2HD"
+        app:layout_constraintStart_toEndOf="@+id/M2HD"
+        app:layout_constraintTop_toTopOf="@+id/M2HD" />
+
+    <Button
+        android:id="@+id/M2AI"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/arrow_up_float"
+        android:text="+"
+        android:textSize="18sp"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/M2AD"
+        app:layout_constraintStart_toEndOf="@+id/M2AD"
+        app:layout_constraintTop_toBottomOf="@+id/M2AD" />
+
+    <Button
+        android:id="@+id/M2HD"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/arrow_down_float"
+        android:text="-"
+        android:textSize="20sp"
+        android:tint="@color/colorPrimaryDark"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/M2S3A"
         app:layout_constraintStart_toEndOf="@+id/M2S3H"
         app:layout_constraintTop_toTopOf="@+id/M2S3H" />
 
-    <ImageButton
-        android:id="@+id/M2AI"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/M2AD"
-        app:layout_constraintEnd_toEndOf="@+id/M2AD"
-        app:layout_constraintStart_toStartOf="@+id/M2AD" />
-
-    <ImageButton
-        android:id="@+id/M2HD"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/M2HI"
-        app:layout_constraintStart_toStartOf="@+id/M2HI"
-        app:layout_constraintTop_toBottomOf="@+id/M2HI" />
-
-    <ImageButton
+    <Button
         android:id="@+id/M2AD"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
+        android:text="-"
+        android:textSize="20sp"
         android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/M2S3A"
         app:layout_constraintStart_toEndOf="@+id/M2S3A"
         app:layout_constraintTop_toTopOf="@+id/M2S3A" />
@@ -379,7 +407,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView63" />
 
@@ -388,7 +416,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer" />
 
@@ -396,9 +424,10 @@
         android:id="@+id/M3S1H"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/M3AwayPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -410,7 +439,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M3S1H"
         app:layout_constraintStart_toEndOf="@+id/M3S1H"
         app:layout_constraintTop_toTopOf="@+id/M3S1H" />
@@ -421,7 +450,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M3S2H"
         app:layout_constraintStart_toEndOf="@+id/M3S2H"
         app:layout_constraintTop_toTopOf="@+id/M3S2H" />
@@ -430,9 +459,10 @@
         android:id="@+id/M3S1A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginLeft="65dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M3AwayPlayer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -444,7 +474,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M3S1A"
         app:layout_constraintStart_toEndOf="@+id/M3S1A"
         app:layout_constraintTop_toTopOf="@+id/M3S1A" />
@@ -455,7 +485,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="0"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/M3S2A"
         app:layout_constraintStart_toEndOf="@+id/M3S2A"
         app:layout_constraintTop_toBottomOf="@+id/M3S2H" />
@@ -470,56 +500,68 @@
         app:layout_constraintEnd_toEndOf="@+id/M3S3H"
         app:layout_constraintTop_toBottomOf="@+id/Match3header" />
 
-    <ImageButton
+    <Button
         android:id="@+id/M3HI"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="8dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_up_float"
+        android:text="+"
+        android:textSize="18sp"
         android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/M3HD"
+        app:layout_constraintStart_toEndOf="@+id/M3HD"
+        app:layout_constraintTop_toTopOf="@+id/M3HD" />
+
+    <Button
+        android:id="@+id/M3AI"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/arrow_up_float"
+        android:text="+"
+        android:textSize="18sp"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="@+id/M3AD"
+        app:layout_constraintStart_toEndOf="@+id/M3AD"
+        app:layout_constraintTop_toTopOf="@+id/M3AD" />
+
+    <Button
+        android:id="@+id/M3HD"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/arrow_down_float"
+        android:text="-"
+        android:textSize="20sp"
+        android:tint="@color/colorPrimaryDark"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/M3S3A"
         app:layout_constraintStart_toEndOf="@+id/M3S3H"
         app:layout_constraintTop_toTopOf="@+id/M3S3H" />
 
-    <ImageButton
-        android:id="@+id/M3AI"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/M3AD"
-        app:layout_constraintEnd_toEndOf="@+id/M3AD"
-        app:layout_constraintStart_toStartOf="@+id/M3AD" />
-
-    <ImageButton
-        android:id="@+id/M3HD"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/M3HI"
-        app:layout_constraintStart_toStartOf="@+id/M3HI"
-        app:layout_constraintTop_toBottomOf="@+id/M3HI" />
-
-    <ImageButton
+    <Button
         android:id="@+id/M3AD"
-        android:layout_width="25dp"
+        android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
+        android:text="-"
+        android:textSize="20sp"
         android:tint="@color/colorPrimaryDark"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/M3S3A"
         app:layout_constraintStart_toEndOf="@+id/M3S3A"
         app:layout_constraintTop_toTopOf="@+id/M3S3A" />
