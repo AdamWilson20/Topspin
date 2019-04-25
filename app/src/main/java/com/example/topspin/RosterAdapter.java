@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
+//import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,8 @@ import java.util.List;
 public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
-    ImageLoader imageLoader = RequestHandler.getInstance(this).getImageLoader();
+    ImageLoader imageLoader;
+    //ImageLoader imageLoader = RequestHandler.getInstance().getImageLoader();
 
 
 
@@ -81,28 +82,23 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             convertView.setTag(R.id.textView19, viewHolder.hometown);
             // convertView.setTag(R.id.check, viewHolder.checkbox);
 
-        }
-        if(imageLoader == null)
-        {
-            imageLoader = RequestHandler.getInstance().getImageLoader();
-            NetworkImageView thumbNail = (NetworkImageView) convertView
-                    .findViewById(R.id.imageView5);
-
-
-        }
-
-
-
-            else {
+        }else{
             viewHolder = (RosterAdapter.ViewHolder) convertView.getTag();
 
         }
-
+        if(imageLoader == null)
+        {
+            imageLoader = RequestHandler.getInstance(context).getImageLoader();
+        }
+        NetworkImageView thumbNail = (NetworkImageView) convertView
+                .findViewById(R.id.imageView5);
+        Player p = list.get(position);
+        thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
         //thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
         // viewHolder.checkbox.setTag(position); // This line is important.
         //viewHolder.playerImage.setImageURI(Uri.parse(list.get(position).getPlayerImage()));
         viewHolder.fullName.setText(list.get(position).getFullName());
-        thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
+        //thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
         viewHolder.height.setText(list.get(position).getHeight());
         viewHolder.weight.setText(list.get(position).getWeight());
         viewHolder.year.setText(list.get(position).getYear());
