@@ -2,12 +2,18 @@ package com.example.topspin;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +21,15 @@ import java.util.List;
 public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
+    ImageLoader imageLoader = RequestHandler.getInstance(this).getImageLoader();
+
 
 
 
     // View lookup cache
     static class ViewHolder {
+        protected ImageView playerImage;
         protected TextView fullName;
-
         protected TextView height;
         protected TextView weight;
         protected TextView year;
@@ -37,6 +45,8 @@ public class RosterAdapter extends ArrayAdapter<Player>{
         this.list = list;
     }
 
+
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
@@ -45,11 +55,12 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             LayoutInflater inflator = context.getLayoutInflater();
             convertView = inflator.inflate(R.layout.adapter_player, null);
             viewHolder = new RosterAdapter.ViewHolder();
+            //viewHolder.playerImage = (ImageView) convertView.findViewById(R.id.imageView5);
             viewHolder.fullName = (TextView) convertView.findViewById(R.id.textView15);
-            viewHolder.height = (TextView) convertView.findViewById(R.id.textView16);
-            viewHolder.weight = (TextView) convertView.findViewById(R.id.textView17);
-            viewHolder.year = (TextView) convertView.findViewById(R.id.textView18);
-            viewHolder.hometown = (TextView) convertView.findViewById(R.id.textView19);
+            viewHolder.height = (TextView) convertView.findViewById(R.id.textView18);
+            viewHolder.weight = (TextView) convertView.findViewById(R.id.textView19);
+            viewHolder.year = (TextView) convertView.findViewById(R.id.textView16);
+            viewHolder.hometown = (TextView) convertView.findViewById(R.id.textView17);
            /* viewHolder.checkbox = (CheckBox) convertView.findViewById(R.id.check);
             viewHolder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -60,6 +71,9 @@ public class RosterAdapter extends ArrayAdapter<Player>{
                 }
             });*/
             convertView.setTag(viewHolder);
+            //convertView.setTag(R.id.imageView5, viewHolder.playerImage);
+
+
             convertView.setTag(R.id.textView15, viewHolder.fullName);
             convertView.setTag(R.id.textView16, viewHolder.height);
             convertView.setTag(R.id.textView17, viewHolder.weight);
@@ -67,14 +81,28 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             convertView.setTag(R.id.textView19, viewHolder.hometown);
             // convertView.setTag(R.id.check, viewHolder.checkbox);
 
-        } else {
-            viewHolder = (RosterAdapter.ViewHolder) convertView.getTag();
+        }
+        if(imageLoader == null)
+        {
+            imageLoader = RequestHandler.getInstance().getImageLoader();
+            NetworkImageView thumbNail = (NetworkImageView) convertView
+                    .findViewById(R.id.imageView5);
+
 
         }
 
 
+
+            else {
+            viewHolder = (RosterAdapter.ViewHolder) convertView.getTag();
+
+        }
+
+        //thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
         // viewHolder.checkbox.setTag(position); // This line is important.
+        //viewHolder.playerImage.setImageURI(Uri.parse(list.get(position).getPlayerImage()));
         viewHolder.fullName.setText(list.get(position).getFullName());
+        thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
         viewHolder.height.setText(list.get(position).getHeight());
         viewHolder.weight.setText(list.get(position).getWeight());
         viewHolder.year.setText(list.get(position).getYear());

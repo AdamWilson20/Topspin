@@ -18,6 +18,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +52,19 @@ public class playerRoster extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listPlayer);
         new playerRoster.FetchRosterAsyncTask().execute();
         Button buttonAdd = findViewById(R.id.addPlayer);
+
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisk(true).cacheInMemory(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .displayer(new FadeInBitmapDisplayer(300)).build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                getApplicationContext())
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new WeakMemoryCache())
+                .discCacheSize(100 * 1024 * 1024).build();
+
+        ImageLoader.getInstance().init(config);
     }
 
     private class FetchRosterAsyncTask extends AsyncTask<String, Void, String> {
@@ -101,6 +120,7 @@ public class playerRoster extends AppCompatActivity {
                                 final int num_rows = obj.getInt("num_rows");
                                 for (int i = 0; i < num_rows; i++) {
                                     int playerID = obj.getInt("playerID" + i);
+                                    String playerImage = obj.getString("playerImage" + i);
                                     String firstName = obj.getString("firstName" + i);
                                     String lastName = obj.getString("lastName" + i);
                                     String height = obj.getString("height" + i);
@@ -108,7 +128,7 @@ public class playerRoster extends AppCompatActivity {
                                     String year = obj.getString("year" + i);
                                     String hometown = obj.getString("hometown" + i);
 
-                                    target = new Player(playerID, firstName, lastName, height, weight, year, hometown);
+                                    target = new Player(playerID, playerImage, firstName, lastName, height, weight, year, hometown);
                                     players.add(target);
                                 }
                             }
