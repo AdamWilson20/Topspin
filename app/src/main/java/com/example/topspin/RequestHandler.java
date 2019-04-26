@@ -4,12 +4,14 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 public class RequestHandler {
     private static RequestHandler instance;
     private RequestQueue requestQueue;
     private static Context ctx;
+    private ImageLoader mImageLoader;
 
     private RequestHandler(Context context) {
         ctx = context;
@@ -32,8 +34,18 @@ public class RequestHandler {
         return requestQueue;
     }
 
+
+    public ImageLoader getImageLoader(){
+        getRequestQueue();
+        if(mImageLoader == null) {
+            mImageLoader = new ImageLoader(this.requestQueue, new LruBitmapCache());
+        }
+        return this.mImageLoader;
+    }
+
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
+
 }
 

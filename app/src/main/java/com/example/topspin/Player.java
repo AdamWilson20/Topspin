@@ -7,6 +7,7 @@ public class Player {
     //The Extra entries would be classYear, Major, and High school all Strings and easy to use
     //NOTED will fix shortly.
     private int playerID;
+    private String playerImage;
     private String firstName;
     private String lastName;
     private String height;
@@ -16,8 +17,9 @@ public class Player {
 
 
 
-    public Player(int playerID,String firstName, String lastName,String height, String weight, String year, String hometown) {
+    public Player(int playerID,String playerImage,String firstName, String lastName,String height, String weight, String year, String hometown) {
         this.playerID = playerID;
+        this.playerImage = playerImage;
         this.firstName = firstName;
         this.lastName = lastName;
         this.year = year;
@@ -64,4 +66,7 @@ public class Player {
     }
 
     public String getFullName(){return firstName + " " +lastName;}
+
+    public String getPlayerImage(){return playerImage;}
+    public void setPlayerImage(String playerImage){this.playerImage = playerImage;}
 }
