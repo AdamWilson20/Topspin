@@ -38,6 +38,7 @@ public class ViewSchedule extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
+    private String eventID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,6 +185,14 @@ public class ViewSchedule extends AppCompatActivity {
 
         }
         return true;
+    }
+
+
+    public void launchMatch(View view){
+        Intent goNext = new Intent(getApplicationContext(), ScoreByGame.class);
+        goNext.putExtra("eventID", eventID);
+
+        startActivity(goNext);
     }
 }
 

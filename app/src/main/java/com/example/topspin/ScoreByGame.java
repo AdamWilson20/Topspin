@@ -1,13 +1,11 @@
 package com.example.topspin;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,9 +46,9 @@ public class ScoreByGame extends AppCompatActivity {
    private MatchSet m2set1, m2set2, m2set3;
    private MatchSet m3set1, m3set2, m3set3;
 
-    private TextView m1hp, m1ap;
-    private TextView m2hp, m2ap;
-    private TextView m3hp, m3ap;
+    private TextView m1hp1, m1ap1, m1hp2, m1ap2;
+    private TextView m2hp1, m2ap1, m2hp2, m2ap2;
+    private TextView m3hp1, m3ap1, m3hp2, m3ap2;
 
     private TextView m1s1h, m1s2h, m1s3h, m1s1a, m1s2a, m1s3a;
     private TextView m2s1h, m2s2h, m2s3h, m2s1a, m2s2a, m2s3a;
@@ -66,17 +64,22 @@ public class ScoreByGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_by_game);
-        /*
+/*
         //Get the eventID from the calling activity
         Intent getID = getIntent();
-        eventID = getID.getIntExtra("EVENTID", 0);
-        matchType = getID.getStringExtra("MATCHTYPE");//*/
+        eventID = getID.getIntExtra("eventID", 1);
+        matchType = getID.getStringExtra("MATCHTYPE");*/
 
 
         //Set player Views 'm' = match number, 'h' = home, 'a' = away, 'p' = player
-        m1hp = findViewById(R.id.Match1HomePlayer); m1ap = findViewById(R.id.Match1AwayPlayer);
-        m2hp = findViewById(R.id.M2HomePlayer); m2ap = findViewById(R.id.M2AwayPlayer);
-        m3hp = findViewById(R.id.M3HomePlayer); m3ap = findViewById(R.id.M3AwayPlayer);
+        m1hp1 = findViewById(R.id.Match1HomePlayer1); m1ap1 = findViewById(R.id.Match1AwayPlayer1);
+        m1hp2 = findViewById(R.id.Match1HomePlayer2); m1ap2 = findViewById(R.id.Match1AwayPlayer2);
+
+        m2hp1 = findViewById(R.id.M2HomePlayer1); m2ap1 = findViewById(R.id.M2AwayPlayer1);
+        m2hp2 = findViewById(R.id.M2HomePlayer2); m2ap2 = findViewById(R.id.M2AwayPlayer2);
+
+        m3hp1 = findViewById(R.id.M3HomePlayer1); m3ap1 = findViewById(R.id.M3AwayPlayer1);
+        m3hp2 = findViewById(R.id.M3HomePlayer2); m3ap2 = findViewById(R.id.M3AwayPlayer2);
 
         //set set column views 'm' = match number, 'h' = home, 'a' = away, 's' = set number
         m1s1h = findViewById(R.id.M1S1H); m1s2h = findViewById(R.id.M1S2H); m1s3h = findViewById(R.id.M1S3H);
@@ -103,9 +106,9 @@ public class ScoreByGame extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 1, "Singles", "", "", "","", 0, 0, "In Progress");
-        match2 = new Matches(2, 1, "Singles", "", "", "","", 0, 0, "In Progress");
-        match3 = new Matches(3, 1, "Singles", "", "", "","", 0, 0, "In Progress");
+        match1 = new Matches(1, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match2 = new Matches(2, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match3 = new Matches(3, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
 
         m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
         m1set2 = new MatchSet(1,2,0,0,"In Progress");
@@ -128,9 +131,14 @@ public class ScoreByGame extends AppCompatActivity {
         getSetsM3();
 
         //Set textViews
-        m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
-        m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
-        m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
+        m1hp1.setText(match1.getHomePlayer1()); m1ap1.setText(match1.getAwayPlayer1());
+        m1hp2.setText(match1.getHomePlayer2()); m1ap2.setText(match2.getAwayPlayer1());
+
+        m2hp1.setText(match2.getHomePlayer1()); m2ap1.setText(match2.getAwayPlayer1());
+        m2hp2.setText(match2.getHomePlayer2()); m2ap2.setText(match2.getAwayPlayer2());
+
+        m3hp1.setText(match3.getHomePlayer1()); m3ap1.setText(match3.getAwayPlayer1());
+        m3hp2.setText(match3.getHomePlayer2()); m3ap2.setText(match3.getAwayPlayer2());
 
         m1s1h.setText(String.valueOf(m1set1.getHomeScore())); m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
         m1s2h.setText(String.valueOf(m1set2.getHomeScore())); m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
@@ -144,6 +152,7 @@ public class ScoreByGame extends AppCompatActivity {
         m3s2h.setText(String.valueOf(m3set2.getHomeScore())); m3s2a.setText(String.valueOf(m3set2.getAwayScore()));
         m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
 //
+
 
 
         updateMatch(match1);
@@ -166,7 +175,7 @@ public class ScoreByGame extends AppCompatActivity {
 
 
         /**
-         * This is the start of Match 1's icrement listeners
+         * This is the start of Match 1's increment listeners
          */
         m1hi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -440,6 +449,7 @@ public class ScoreByGame extends AppCompatActivity {
         progressDialog.setMessage("Updating Set...");
         progressDialog.show();
 
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_UPDATE_SET,
                 new Response.Listener<String>() {
@@ -543,7 +553,7 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                     changedSet1.setAwayScore(changedSet1.getAwayScore()+1);
-                    changedSet1.setResult(changedMatch.getAwayPlayer1());
+                    changedSet1.setResult("Complete - Away");
                     updateSet(changedSet1);
                     updateMatch(changedMatch);
 
@@ -552,7 +562,7 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                         changedSet1.setAwayScore(changedSet1.getAwayScore()+1);
-                        changedSet1.setResult(changedMatch.getAwayPlayer1());
+                        changedSet1.setResult("Complete - Away");
                         updateSet(changedSet1);
                         updateMatch(changedMatch);
                     }else{
@@ -572,9 +582,9 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                     changedSet2.setAwayScore(changedSet2.getAwayScore()+1);
-                    changedSet2.setResult(changedMatch.getAwayPlayer1());
+                    changedSet2.setResult("Complete - Away");
                     if(checkMatchWin(changedMatch)){
-                        changedMatch.setResult(changedMatch.getAwayPlayer1());
+                        changedMatch.setResult("Complete - Away");
                     }
                     updateSet(changedSet2);
                     updateMatch(changedMatch);
@@ -584,9 +594,9 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                         changedSet2.setAwayScore(changedSet2.getAwayScore()+1);
-                        changedSet2.setResult(changedMatch.getAwayPlayer1());
+                        changedSet2.setResult("Complete - Away");
                         if(checkMatchWin(changedMatch)){
-                            changedMatch.setResult(changedMatch.getAwayPlayer1());
+                            changedMatch.setResult("Complete - Away");
                         }
                         updateSet(changedSet2);
                         updateMatch(changedMatch);
@@ -606,8 +616,8 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                     changedSet3.setAwayScore(changedSet3.getAwayScore()+1);
-                    changedSet3.setResult(changedMatch.getAwayPlayer1());
-                    changedMatch.setResult(changedMatch.getAwayPlayer1());
+                    changedSet3.setResult("Complete - Away");
+                    changedMatch.setResult("Complete - Away");
 
                     updateSet(changedSet3);
                     updateMatch(changedMatch);
@@ -617,8 +627,8 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                         changedSet3.setAwayScore(changedSet3.getAwayScore()+1);
-                        changedSet3.setResult(changedMatch.getAwayPlayer1());
-                        changedMatch.setResult(changedMatch.getAwayPlayer1());
+                        changedSet3.setResult("Complete - Away");
+                        changedMatch.setResult("Complete - Away");
 
                         updateSet(changedSet3);
                         updateMatch(changedMatch);
@@ -651,7 +661,7 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                     changedSet1.setHomeScore(changedSet1.getHomeScore()+1);
-                    changedSet1.setResult(changedMatch.getHomePlayer1());
+                    changedSet1.setResult("Complete - Home");
                     updateSet(changedSet1);
                     updateMatch(changedMatch);
 
@@ -660,7 +670,7 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                         changedSet1.setHomeScore(changedSet1.getHomeScore()+1);
-                        changedSet1.setResult(changedMatch.getHomePlayer1());
+                        changedSet1.setResult("Complete - Home");
                         updateSet(changedSet1);
                         updateMatch(changedMatch);
                     }else{
@@ -680,9 +690,9 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                     changedSet2.setHomeScore(changedSet2.getHomeScore()+1);
-                    changedSet2.setResult(changedMatch.getHomePlayer1());
+                    changedSet2.setResult("Complete - Home");
                     if(checkMatchWin(changedMatch)){
-                        changedMatch.setResult(changedMatch.getHomePlayer1());
+                        changedMatch.setResult("Complete - Home");
                     }
                     updateSet(changedSet2);
                     updateMatch(changedMatch);
@@ -692,9 +702,9 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                         changedSet2.setHomeScore(changedSet2.getHomeScore()+1);
-                        changedSet2.setResult(changedMatch.getHomePlayer1());
+                        changedSet2.setResult("Complete - Home");
                         if(checkMatchWin(changedMatch)){
-                            changedMatch.setResult(changedMatch.getHomePlayer1());
+                            changedMatch.setResult("Complete - Home");
                         }
                         updateSet(changedSet2);
                         updateMatch(changedMatch);
@@ -714,8 +724,8 @@ public class ScoreByGame extends AppCompatActivity {
                     //set won
                     changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                     changedSet3.setHomeScore(changedSet3.getHomeScore()+1);
-                    changedSet3.setResult(changedMatch.getHomePlayer1());
-                    changedMatch.setResult(changedMatch.getHomePlayer1());
+                    changedSet3.setResult("Complete - Home");
+                    changedMatch.setResult("Complete - Home");
 
                     updateSet(changedSet3);
                     updateMatch(changedMatch);
@@ -725,8 +735,8 @@ public class ScoreByGame extends AppCompatActivity {
                         //set won
                         changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                         changedSet3.setHomeScore(changedSet3.getHomeScore()+1);
-                        changedSet3.setResult(changedMatch.getHomePlayer1());
-                        changedMatch.setResult(changedMatch.getHomePlayer1());
+                        changedSet3.setResult("Complete - Home");
+                        changedMatch.setResult("Complete - Home");
 
                         updateSet(changedSet3);
                         updateMatch(changedMatch);
@@ -749,7 +759,7 @@ public class ScoreByGame extends AppCompatActivity {
 
     public void decrementScoreHome(Matches changedMatch, MatchSet changedSet1, MatchSet changedSet2, MatchSet changedSet3, int setNumber){
 
-        if(changedMatch.getResult().equals(changedMatch.getAwayPlayer1())){
+        if(changedMatch.getResult().equals("Complete - Away")){
             setNumber = 0;
         }
 
@@ -757,7 +767,7 @@ public class ScoreByGame extends AppCompatActivity {
             case 1:{
                 if((changedSet1.getHomeScore()== 5)&& (changedSet1.getAwayScore() == 6)){
                     changedSet1.setHomeScore(changedSet1.getHomeScore()-1);
-                    changedSet1.setResult(changedMatch.getAwayPlayer1());
+                    changedSet1.setResult("Complete - Away");
                     updateSet(changedSet1);
 
                 }else if(changedSet1.getHomeScore() > 0){
@@ -769,7 +779,7 @@ public class ScoreByGame extends AppCompatActivity {
             case 2:{
                 if((changedSet2.getHomeScore()== 5)&& (changedSet2.getAwayScore() == 6)){
                     changedSet2.setHomeScore(changedSet2.getHomeScore()-1);
-                    changedSet2.setResult(changedMatch.getAwayPlayer1());
+                    changedSet2.setResult("Complete - Away");
                     changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()+1);
                     updateSet(changedSet2);
                     updateMatch(changedMatch);
@@ -778,7 +788,7 @@ public class ScoreByGame extends AppCompatActivity {
                     changedSet2.setHomeScore(changedSet2.getHomeScore()-1);
                     updateSet(changedSet2);
                 }else if(changedSet2.getHomeScore()==  0){
-                    if(changedSet1.getResult().equals(changedMatch.getHomePlayer1())){
+                    if(changedSet1.getResult().equals("Complete - Home")){
                         changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()-1);
                         changedSet1.setResult("In Progress");
                         changedSet1.setHomeScore(changedSet1.getHomeScore()-1);
@@ -793,14 +803,14 @@ public class ScoreByGame extends AppCompatActivity {
             case 3:{
                 if((changedSet3.getHomeScore()== 5)&& (changedSet3.getAwayScore() == 6)){
                     changedSet3.setHomeScore(changedSet3.getHomeScore()-1);
-                    changedSet3.setResult(changedMatch.getAwayPlayer1());
+                    changedSet3.setResult("Complete - Away");
                     updateSet(changedSet3);
                     updateMatch(changedMatch);
                 }else if(changedSet3.getHomeScore() > 0){
                     changedSet3.setHomeScore(changedSet3.getHomeScore()-1);
                     updateSet(changedSet3);
                 }else if(changedSet3.getHomeScore()==0){
-                    if(changedSet2.getResult().equals(changedMatch.getHomePlayer1())){
+                    if(changedSet2.getResult().equals("Complete - Home")){
                         changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()-1);
                         changedSet2.setResult("In Progress");
                         changedSet2.setHomeScore(changedSet2.getHomeScore()-1);
@@ -817,7 +827,7 @@ public class ScoreByGame extends AppCompatActivity {
 
     public void decrementScoreAway(Matches changedMatch, MatchSet changedSet1, MatchSet changedSet2, MatchSet changedSet3, int setNumber){
 
-        if(changedMatch.getResult().equals(changedMatch.getHomePlayer1())){
+        if(changedMatch.getResult().equals("Complete - Home")){
             setNumber = 0;
         }
 
@@ -825,7 +835,7 @@ public class ScoreByGame extends AppCompatActivity {
             case 1:{
                 if((changedSet1.getAwayScore()== 5)&& (changedSet1.getHomeScore() == 6)){
                     changedSet1.setAwayScore(changedSet1.getAwayScore()-1);
-                    changedSet1.setResult(changedMatch.getHomePlayer1());
+                    changedSet1.setResult("Complete - Home");
                     updateSet(changedSet1);
 
                 }else if(changedSet1.getAwayScore() > 0){
@@ -837,7 +847,7 @@ public class ScoreByGame extends AppCompatActivity {
             case 2:{
                 if((changedSet2.getAwayScore()== 5)&& (changedSet2.getHomeScore() == 6)){
                     changedSet2.setAwayScore(changedSet2.getAwayScore()-1);
-                    changedSet2.setResult(changedMatch.getHomePlayer1());
+                    changedSet2.setResult("Complete - Home");
                     changedMatch.setHomeTeamSets(changedMatch.getHomeTeamSets()+1);
                     updateSet(changedSet2);
                     updateMatch(changedMatch);
@@ -846,7 +856,7 @@ public class ScoreByGame extends AppCompatActivity {
                     changedSet2.setAwayScore(changedSet2.getAwayScore()-1);
                     updateSet(changedSet2);
                 }else if(changedSet2.getAwayScore()==  0){
-                    if(changedSet1.getResult().equals(changedMatch.getAwayPlayer1())){
+                    if(changedSet1.getResult().equals("Complete - Away")){
                         changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()-1);
                         changedSet1.setResult("In Progress");
                         changedSet1.setAwayScore(changedSet1.getAwayScore()-1);
@@ -861,14 +871,14 @@ public class ScoreByGame extends AppCompatActivity {
             case 3:{
                 if((changedSet3.getAwayScore()== 5)&& (changedSet3.getHomeScore() == 6)){
                     changedSet3.setAwayScore(changedSet3.getAwayScore()-1);
-                    changedSet3.setResult(changedMatch.getHomePlayer1());
+                    changedSet3.setResult("Complete - Home");
                     updateSet(changedSet3);
                     updateMatch(changedMatch);
                 }else if(changedSet3.getAwayScore() > 0){
                     changedSet3.setAwayScore(changedSet3.getAwayScore()-1);
                     updateSet(changedSet3);
                 }else if(changedSet3.getAwayScore()==0){
-                    if(changedSet2.getResult().equals(changedMatch.getAwayPlayer1())){
+                    if(changedSet2.getResult().equals("Complete - Away")){
                         changedMatch.setAwayTeamSets(changedMatch.getAwayTeamSets()-1);
                         changedSet2.setResult("In Progress");
                         changedSet2.setAwayScore(changedSet2.getAwayScore()-1);
@@ -925,7 +935,6 @@ public class ScoreByGame extends AppCompatActivity {
                                 match1.setResult(obj.getString("result"));
                                 // Toast.makeText(getApplicationContext(), match1.getHomePlayer1(),Toast.LENGTH_LONG).show();
 
-                                m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
 
                             }else{
@@ -1002,12 +1011,16 @@ public class ScoreByGame extends AppCompatActivity {
                             match2 = matchList.get(1);
                             match3 = matchList.get(2);
 
-                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
-                            m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
-                            m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
+                            m1hp1.setText(match1.getHomePlayer1()); m1ap1.setText(match1.getAwayPlayer1());
+                            m1hp2.setText(match1.getHomePlayer2()); m1ap2.setText(match1.getAwayPlayer2());
+
+                            m2hp1.setText(match2.getHomePlayer1()); m2ap1.setText(match2.getAwayPlayer1());
+                            m2hp2.setText(match2.getHomePlayer2()); m2ap2.setText(match2.getAwayPlayer2());
+
+                            m3hp1.setText(match3.getHomePlayer1()); m3ap1.setText(match3.getAwayPlayer1());
+                            m3hp2.setText(match3.getHomePlayer2()); m3ap2.setText(match3.getAwayPlayer2());
 
 
-                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
 
                         } catch (JSONException e) {
@@ -1073,9 +1086,6 @@ public class ScoreByGame extends AppCompatActivity {
 
 
 
-                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
-
-
                         } catch (JSONException e) {
                             //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
@@ -1094,7 +1104,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(1));
+                params.put("matchID", String.valueOf(eventID));
                 params.put("matchType", "Singles");
 
 
@@ -1140,10 +1150,6 @@ public class ScoreByGame extends AppCompatActivity {
                             m2s1h.setText(String.valueOf(m2set1.getHomeScore())); m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
                             m2s2h.setText(String.valueOf(m2set2.getHomeScore())); m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
                             m2s3h.setText(String.valueOf(m2set3.getHomeScore())); m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
-
-
-
-                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
 
                         } catch (JSONException e) {
@@ -1212,9 +1218,6 @@ public class ScoreByGame extends AppCompatActivity {
                             m3s1h.setText(String.valueOf(m3set1.getHomeScore())); m3s1a.setText(String.valueOf(m3set1.getAwayScore()));
                             m3s2h.setText(String.valueOf(m3set2.getHomeScore())); m3s2a.setText(String.valueOf(m3set2.getAwayScore()));
                             m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
-
-
-                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
 
                         } catch (JSONException e) {

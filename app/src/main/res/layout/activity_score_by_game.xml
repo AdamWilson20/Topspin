@@ -1,569 +1,767 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScoreByGame">
 
 
-    <TextView
-        android:id="@+id/Match1Header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Match 1"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Match1HomePlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <TextView
+            android:id="@+id/Match1Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Match 1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-    <TextView
-        android:id="@+id/Match1AwayPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer" />
+        <TextView
+            android:id="@+id/Match1HomePlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M1S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
 
-    <TextView
-        android:id="@+id/M1S1H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/Match1HomePlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Match1HomePlayer" />
+        <TextView
+            android:id="@+id/Match1AwayPlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M1S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M1S2H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M1S1H"
-        app:layout_constraintStart_toEndOf="@+id/M1S1H"
-        app:layout_constraintTop_toTopOf="@+id/M1S1H" />
+        <TextView
+            android:id="@+id/Match1HomePlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M1S1H"
+            app:layout_constraintStart_toStartOf="@+id/Match1HomePlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer1" />
 
-    <TextView
-        android:id="@+id/M1S3H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M1S2H"
-        app:layout_constraintStart_toEndOf="@+id/M1S2H"
-        app:layout_constraintTop_toTopOf="@+id/M1S2H" />
+        <TextView
+            android:id="@+id/Match1AwayPlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M1S1A"
+            app:layout_constraintStart_toStartOf="@+id/Match1AwayPlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/Match1AwayPlayer1" />
 
-    <TextView
-        android:id="@+id/M1S1A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/Match1AwayPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Match1AwayPlayer" />
+        <TextView
+            android:id="@+id/M1S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/Match1HomePlayer2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Match1HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M1S2A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M1S1A"
-        app:layout_constraintStart_toEndOf="@+id/M1S1A"
-        app:layout_constraintTop_toTopOf="@+id/M1S1A" />
+        <TextView
+            android:id="@+id/M1S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S1H"
+            app:layout_constraintStart_toEndOf="@+id/M1S1H"
+            app:layout_constraintTop_toTopOf="@+id/M1S1H" />
 
-    <TextView
-        android:id="@+id/M1S3A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M1S2A"
-        app:layout_constraintStart_toEndOf="@+id/M1S2A"
-        app:layout_constraintTop_toTopOf="@+id/M1S2A" />
+        <TextView
+            android:id="@+id/M1S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S2H"
+            app:layout_constraintStart_toEndOf="@+id/M1S2H"
+            app:layout_constraintTop_toTopOf="@+id/M1S2H" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Player:"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
+        <TextView
+            android:id="@+id/M1S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/Match1AwayPlayer2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Match1AwayPlayer1" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Set: 1    2     3"
-        app:layout_constraintBottom_toTopOf="@+id/M1S2H"
-        app:layout_constraintEnd_toEndOf="@+id/M1S3H"
-        app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
+        <TextView
+            android:id="@+id/M1S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S1A"
+            app:layout_constraintStart_toEndOf="@+id/M1S1A"
+            app:layout_constraintTop_toTopOf="@+id/M1S1A" />
 
-    <Button
-        android:id="@+id/M1HI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerInside"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@+id/M1HD"
-        app:layout_constraintStart_toEndOf="@+id/M1HD"
-        app:layout_constraintTop_toTopOf="@+id/M1HD"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/M1S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S2A"
+            app:layout_constraintStart_toEndOf="@+id/M1S2A"
+            app:layout_constraintTop_toTopOf="@+id/M1S2A" />
 
-    <Button
-        android:id="@+id/M1AI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@+id/M1AD"
-        app:layout_constraintStart_toEndOf="@+id/M1AD"
-        app:layout_constraintTop_toTopOf="@+id/M1AD" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   Set: \n1   2   3"
+            app:layout_constraintBottom_toTopOf="@+id/M1S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M1S3H"
+            app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
 
-    <Button
-        android:id="@+id/M1HD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:text="-"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/M1S3A"
-        app:layout_constraintStart_toEndOf="@+id/M1S3H"
-        app:layout_constraintTop_toTopOf="@+id/M1S3H" />
+        <Button
+            android:id="@+id/M1HI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/M1HD"
+            app:layout_constraintStart_toEndOf="@+id/M1HD"
+            app:layout_constraintTop_toTopOf="@+id/M1HD"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/M1AD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:text="-"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/M1S3A"
-        app:layout_constraintStart_toEndOf="@+id/M1S3A"
-        app:layout_constraintTop_toTopOf="@+id/M1S3A" />
+        <Button
+            android:id="@+id/M1AI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/M1AD"
+            app:layout_constraintStart_toEndOf="@+id/M1AD"
+            app:layout_constraintTop_toTopOf="@+id/M1AD" />
 
-    <TextView
-        android:id="@+id/Match2header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Match 2"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Match1AwayPlayer" />
+        <Button
+            android:id="@+id/M1HD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:text="-"
+            android:textAllCaps="false"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S3H"
+            app:layout_constraintStart_toEndOf="@+id/M1S3H"
+            app:layout_constraintTop_toTopOf="@+id/M1S3H" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Player:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Match2header" />
+        <Button
+            android:id="@+id/M1AD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:text="-"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M1S3A"
+            app:layout_constraintStart_toEndOf="@+id/M1S3A"
+            app:layout_constraintTop_toTopOf="@+id/M1S3A" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Set: 1     2    3"
-        app:layout_constraintBottom_toTopOf="@+id/M2S2H"
-        app:layout_constraintEnd_toEndOf="@+id/M2S3H"
-        app:layout_constraintTop_toBottomOf="@+id/Match2header" />
+        <TextView
+            android:id="@+id/Match2header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Match 2"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match1AwayPlayer2" />
 
-    <TextView
-        android:id="@+id/M2HomePlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   Set: \n1   2   3"
+            app:layout_constraintBottom_toTopOf="@+id/M2S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M2S3H"
+            app:layout_constraintTop_toBottomOf="@+id/Match2header" />
 
-    <TextView
-        android:id="@+id/M2AwayPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/M2HomePlayer" />
+        <TextView
+            android:id="@+id/M2HomePlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M2S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match2header" />
 
-    <TextView
-        android:id="@+id/M2S1H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2HomePlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/M2HomePlayer" />
+        <TextView
+            android:id="@+id/M2AwayPlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M2S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M2HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M2S1A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2AwayPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/M2AwayPlayer" />
+        <TextView
+            android:id="@+id/M2S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2HomePlayer2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M2HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M2S2H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2S1H"
-        app:layout_constraintStart_toEndOf="@+id/M2S1H"
-        app:layout_constraintTop_toTopOf="@+id/M2S1H" />
+        <TextView
+            android:id="@+id/M2S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2AwayPlayer1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M2AwayPlayer1" />
 
-    <TextView
-        android:id="@+id/M2S3H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2S2H"
-        app:layout_constraintStart_toEndOf="@+id/M2S2H"
-        app:layout_constraintTop_toTopOf="@+id/M2S2H" />
+        <TextView
+            android:id="@+id/M2S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S1H"
+            app:layout_constraintStart_toEndOf="@+id/M2S1H"
+            app:layout_constraintTop_toTopOf="@+id/M2S1H" />
 
-    <TextView
-        android:id="@+id/M2S2A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2S1A"
-        app:layout_constraintStart_toEndOf="@+id/M2S1A"
-        app:layout_constraintTop_toTopOf="@+id/M2S1A" />
+        <TextView
+            android:id="@+id/M2S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S2H"
+            app:layout_constraintStart_toEndOf="@+id/M2S2H"
+            app:layout_constraintTop_toTopOf="@+id/M2S2H" />
 
-    <TextView
-        android:id="@+id/M2S3A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M2S2A"
-        app:layout_constraintStart_toEndOf="@+id/M2S2A"
-        app:layout_constraintTop_toTopOf="@+id/M2S2A" />
+        <TextView
+            android:id="@+id/M2S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S1A"
+            app:layout_constraintStart_toEndOf="@+id/M2S1A"
+            app:layout_constraintTop_toTopOf="@+id/M2S1A" />
 
-    <Button
-        android:id="@+id/M2HI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@+id/M2HD"
-        app:layout_constraintStart_toEndOf="@+id/M2HD"
-        app:layout_constraintTop_toTopOf="@+id/M2HD" />
+        <TextView
+            android:id="@+id/M2S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S2A"
+            app:layout_constraintStart_toEndOf="@+id/M2S2A"
+            app:layout_constraintTop_toTopOf="@+id/M2S2A" />
 
-    <Button
-        android:id="@+id/M2AI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toTopOf="@+id/M2AD"
-        app:layout_constraintStart_toEndOf="@+id/M2AD"
-        app:layout_constraintTop_toBottomOf="@+id/M2AD" />
+        <Button
+            android:id="@+id/M2HI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_up_float"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/M2HD"
+            app:layout_constraintStart_toEndOf="@+id/M2HD"
+            app:layout_constraintTop_toTopOf="@+id/M2HD" />
 
-    <Button
-        android:id="@+id/M2HD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:text="-"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/M2S3A"
-        app:layout_constraintStart_toEndOf="@+id/M2S3H"
-        app:layout_constraintTop_toTopOf="@+id/M2S3H" />
+        <Button
+            android:id="@+id/M2AI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_up_float"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toTopOf="@+id/M2AD"
+            app:layout_constraintStart_toEndOf="@+id/M2AD"
+            app:layout_constraintTop_toBottomOf="@+id/M2AD" />
 
-    <Button
-        android:id="@+id/M2AD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:text="-"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/M2S3A"
-        app:layout_constraintStart_toEndOf="@+id/M2S3A"
-        app:layout_constraintTop_toTopOf="@+id/M2S3A" />
+        <Button
+            android:id="@+id/M2HD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_down_float"
+            android:text="-"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S3H"
+            app:layout_constraintStart_toEndOf="@+id/M2S3H"
+            app:layout_constraintTop_toTopOf="@+id/M2S3H" />
 
-    <TextView
-        android:id="@+id/Match3header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Match 3"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/M2AwayPlayer" />
+        <Button
+            android:id="@+id/M2AD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_down_float"
+            android:text="-"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M2S3A"
+            app:layout_constraintStart_toEndOf="@+id/M2S3A"
+            app:layout_constraintTop_toTopOf="@+id/M2S3A" />
 
-    <TextView
-        android:id="@+id/textView63"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Player:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Match3header" />
+        <TextView
+            android:id="@+id/Match3header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="Match 3"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M2AwayPlayer2" />
 
-    <TextView
-        android:id="@+id/M3HomePlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView63" />
+        <TextView
+            android:id="@+id/M3HomePlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M3S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match3header" />
 
-    <TextView
-        android:id="@+id/M3AwayPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer" />
+        <TextView
+            android:id="@+id/M3AwayPlayer1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M3S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M3S1H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/M3AwayPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/M3HomePlayer" />
+        <TextView
+            android:id="@+id/M3S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3HomePlayer2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M3HomePlayer2" />
 
-    <TextView
-        android:id="@+id/M3S2H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M3S1H"
-        app:layout_constraintStart_toEndOf="@+id/M3S1H"
-        app:layout_constraintTop_toTopOf="@+id/M3S1H" />
+        <TextView
+            android:id="@+id/M3S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S1H"
+            app:layout_constraintStart_toEndOf="@+id/M3S1H"
+            app:layout_constraintTop_toTopOf="@+id/M3S1H" />
 
-    <TextView
-        android:id="@+id/M3S3H"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M3S2H"
-        app:layout_constraintStart_toEndOf="@+id/M3S2H"
-        app:layout_constraintTop_toTopOf="@+id/M3S2H" />
+        <TextView
+            android:id="@+id/M3S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S2H"
+            app:layout_constraintStart_toEndOf="@+id/M3S2H"
+            app:layout_constraintTop_toTopOf="@+id/M3S2H" />
 
-    <TextView
-        android:id="@+id/M3S1A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M3AwayPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/M3AwayPlayer" />
+        <TextView
+            android:id="@+id/M3S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3AwayPlayer1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M3AwayPlayer1" />
 
-    <TextView
-        android:id="@+id/M3S2A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M3S1A"
-        app:layout_constraintStart_toEndOf="@+id/M3S1A"
-        app:layout_constraintTop_toTopOf="@+id/M3S1A" />
+        <TextView
+            android:id="@+id/M3S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S1A"
+            app:layout_constraintStart_toEndOf="@+id/M3S1A"
+            app:layout_constraintTop_toTopOf="@+id/M3S1A" />
 
-    <TextView
-        android:id="@+id/M3S3A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="0"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/M3S2A"
-        app:layout_constraintStart_toEndOf="@+id/M3S2A"
-        app:layout_constraintTop_toBottomOf="@+id/M3S2H" />
+        <TextView
+            android:id="@+id/M3S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S2A"
+            app:layout_constraintStart_toEndOf="@+id/M3S2A"
+            app:layout_constraintTop_toTopOf="@+id/M3S2A" />
 
-    <TextView
-        android:id="@+id/textView72"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Set: 1    2     3"
-        app:layout_constraintBottom_toTopOf="@+id/M3S2H"
-        app:layout_constraintEnd_toEndOf="@+id/M3S3H"
-        app:layout_constraintTop_toBottomOf="@+id/Match3header" />
+        <TextView
+            android:id="@+id/textView72"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   Set: \n1   2   3"
+            app:layout_constraintBottom_toTopOf="@+id/M3S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M3S3H"
+            app:layout_constraintTop_toBottomOf="@+id/Match3header" />
 
-    <Button
-        android:id="@+id/M3HI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@+id/M3HD"
-        app:layout_constraintStart_toEndOf="@+id/M3HD"
-        app:layout_constraintTop_toTopOf="@+id/M3HD" />
+        <Button
+            android:id="@+id/M3HI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_up_float"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/M3HD"
+            app:layout_constraintStart_toEndOf="@+id/M3HD"
+            app:layout_constraintTop_toTopOf="@+id/M3HD" />
 
-    <Button
-        android:id="@+id/M3AI"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_up_float"
-        android:text="+"
-        android:textSize="18sp"
-        android:tint="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@+id/M3AD"
-        app:layout_constraintStart_toEndOf="@+id/M3AD"
-        app:layout_constraintTop_toTopOf="@+id/M3AD" />
+        <Button
+            android:id="@+id/M3AI"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_up_float"
+            android:text="+"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/M3AD"
+            app:layout_constraintStart_toEndOf="@+id/M3AD"
+            app:layout_constraintTop_toTopOf="@+id/M3AD" />
 
-    <Button
-        android:id="@+id/M3HD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:text="-"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/M3S3A"
-        app:layout_constraintStart_toEndOf="@+id/M3S3H"
-        app:layout_constraintTop_toTopOf="@+id/M3S3H" />
+        <Button
+            android:id="@+id/M3HD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_down_float"
+            android:text="-"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S3H"
+            app:layout_constraintStart_toEndOf="@+id/M3S3H"
+            app:layout_constraintTop_toTopOf="@+id/M3S3H" />
 
-    <Button
-        android:id="@+id/M3AD"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/arrow_down_float"
-        android:text="-"
-        android:textSize="20sp"
-        android:tint="@color/colorPrimaryDark"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/M3S3A"
-        app:layout_constraintStart_toEndOf="@+id/M3S3A"
-        app:layout_constraintTop_toTopOf="@+id/M3S3A" />
+        <Button
+            android:id="@+id/M3AD"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@android:drawable/arrow_down_float"
+            android:text="-"
+            android:textSize="36sp"
+            android:tint="@color/colorPrimaryDark"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/M3S3A"
+            app:layout_constraintStart_toEndOf="@+id/M3S3A"
+            app:layout_constraintTop_toTopOf="@+id/M3S3A" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Doubles Matches"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/M2HomePlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M2S1H"
+            app:layout_constraintStart_toStartOf="@+id/M2HomePlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M2HomePlayer1" />
+
+        <TextView
+            android:id="@+id/M2AwayPlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M2S1A"
+            app:layout_constraintStart_toStartOf="@+id/M2AwayPlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M2AwayPlayer1" />
+
+        <TextView
+            android:id="@+id/M3HomePlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M3S1H"
+            app:layout_constraintStart_toStartOf="@+id/M3HomePlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer1" />
+
+        <TextView
+            android:id="@+id/M3AwayPlayer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M3S1A"
+            app:layout_constraintStart_toStartOf="@+id/M3AwayPlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M3AwayPlayer1" />
+
+        <TextView
+            android:id="@+id/SinglesHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Singles Matches"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M3AwayPlayer2" />
+
+        <TextView
+            android:id="@+id/M4HomePlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SinglesHeader" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="200dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SinglesHeader" />
+
+        <TextView
+            android:id="@+id/M4HomePlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/M4HomePlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer1" />
+
+        <TextView
+            android:id="@+id/M4AwayPlayer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/M4HomePlayer2"
+            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer2" />
+
+        <TextView
+            android:id="@+id/M4AwayPlayer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/M4AwayPlayer1"
+            app:layout_constraintTop_toBottomOf="@+id/M4AwayPlayer1" />
+
+        <TextView
+            android:id="@+id/M4S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M4AwayPlayer1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer1" />
+
+        <TextView
+            android:id="@+id/M4S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S1H"
+            app:layout_constraintStart_toEndOf="@+id/M4S1H"
+            app:layout_constraintTop_toTopOf="@+id/M4S1H"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/M4S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S2H"
+            app:layout_constraintStart_toEndOf="@+id/M4S2H"
+            app:layout_constraintTop_toTopOf="@+id/M4S2H" />
+
+        <TextView
+            android:id="@+id/M4S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="805dp" />
+
+        <TextView
+            android:id="@+id/M4S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="219dp"
+            tools:layout_editor_absoluteY="727dp" />
+
+        <TextView
+            android:id="@+id/M4S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="278dp"
+            tools:layout_editor_absoluteY="824dp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>
