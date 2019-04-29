@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScoreByGame extends AppCompatActivity {
+public class ScoreByGameSingles extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
@@ -31,6 +31,9 @@ public class ScoreByGame extends AppCompatActivity {
     private int setNumberm1;
     private int setNumberm2;
     private int setNumberm3;
+    private int setNumberm4;
+    private int setNumberm5;
+    private int setNumberm6;
 
 
     private String matchType = "Singles";
@@ -40,29 +43,41 @@ public class ScoreByGame extends AppCompatActivity {
 
 
 
-   private Matches match1, match2, match3;
-   private MatchSet m1set1, m1set2, m1set3;
-   private MatchSet m2set1, m2set2, m2set3;
-   private MatchSet m3set1, m3set2, m3set3;
+    private Matches match1, match2, match3, match4, match5, match6;
+    private MatchSet m1set1, m1set2, m1set3;
+    private MatchSet m2set1, m2set2, m2set3;
+    private MatchSet m3set1, m3set2, m3set3;
+    private MatchSet m4set1, m4set2, m4set3;
+    private MatchSet m5set1, m5set2, m5set3;
+    private MatchSet m6set1, m6set2, m6set3;
 
-    private TextView m1hp1, m1ap1, m1hp2, m1ap2;
-    private TextView m2hp1, m2ap1, m2hp2, m2ap2;
-    private TextView m3hp1, m3ap1, m3hp2, m3ap2;
+    private TextView m1hp, m1ap;
+    private TextView m2hp, m2ap;
+    private TextView m3hp, m3ap;
+    private TextView m4hp, m4ap;
+    private TextView m5hp, m5ap;
+    private TextView m6hp, m6ap;
 
     private TextView m1s1h, m1s2h, m1s3h, m1s1a, m1s2a, m1s3a;
     private TextView m2s1h, m2s2h, m2s3h, m2s1a, m2s2a, m2s3a;
     private TextView m3s1h, m3s2h, m3s3h, m3s1a, m3s2a, m3s3a;
+    private TextView m4s1h, m4s2h, m4s3h, m4s1a, m4s2a, m4s3a;
+    private TextView m5s1h, m5s2h, m5s3h, m5s1a, m5s2a, m5s3a;
+    private TextView m6s1h, m6s2h, m6s3h, m6s1a, m6s2a, m6s3a;
 
     private Button m1hi, m1hd, m1ai, m1ad;
     private Button m2hi, m2hd, m2ai, m2ad;
     private Button m3hi, m3hd, m3ai, m3ad;
+    private Button m4hi, m4hd, m4ai, m4ad;
+    private Button m5hi, m5hd, m5ai, m5ad;
+    private Button m6hi, m6hd, m6ai, m6ad;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_by_game);
+        setContentView(R.layout.activity_score_by_game_singles);
 /*
         //Get the eventID from the calling activity
         Intent getID = getIntent();
@@ -71,55 +86,92 @@ public class ScoreByGame extends AppCompatActivity {
 
 
         //Set player Views 'm' = match number, 'h' = home, 'a' = away, 'p' = player
-        m1hp1 = findViewById(R.id.Match1HomePlayer1); m1ap1 = findViewById(R.id.Match1AwayPlayer1);
-        m1hp2 = findViewById(R.id.Match1HomePlayer2); m1ap2 = findViewById(R.id.Match1AwayPlayer2);
+        m1hp = findViewById(R.id.M4HomePlayer); m1ap = findViewById(R.id.M4AwayPlayer);
 
-        m2hp1 = findViewById(R.id.M2HomePlayer1); m2ap1 = findViewById(R.id.M2AwayPlayer1);
-        m2hp2 = findViewById(R.id.M2HomePlayer2); m2ap2 = findViewById(R.id.M2AwayPlayer2);
+        m2hp = findViewById(R.id.M5HomePlayer); m2ap = findViewById(R.id.M5AwayPlayer);
 
-        m3hp1 = findViewById(R.id.M3HomePlayer1); m3ap1 = findViewById(R.id.M3AwayPlayer1);
-        m3hp2 = findViewById(R.id.M3HomePlayer2); m3ap2 = findViewById(R.id.M3AwayPlayer2);
+        m3hp = findViewById(R.id.M6HomePlayer); m3ap = findViewById(R.id.M6AwayPlayer);
+
+        m4hp = findViewById(R.id.M7HomePlayer); m4ap = findViewById(R.id.M7AwayPlayer);
+
+        m5hp = findViewById(R.id.M8HomePlayer); m5ap = findViewById(R.id.M8AwayPlayer);
+
+        m6hp = findViewById(R.id.M9HomePlayer); m6ap = findViewById(R.id.M9AwayPlayer);
+
 
         //set set column views 'm' = match number, 'h' = home, 'a' = away, 's' = set number
-        m1s1h = findViewById(R.id.M1S1H); m1s2h = findViewById(R.id.M1S2H); m1s3h = findViewById(R.id.M1S3H);
-        m1s1a = findViewById(R.id.M1S1A); m1s2a = findViewById(R.id.M1S2A); m1s3a = findViewById(R.id.M1S3A);
+        m1s1h = findViewById(R.id.M4S1H); m1s2h = findViewById(R.id.M4S2H); m1s3h = findViewById(R.id.M4S3H);
+        m1s1a = findViewById(R.id.M4S1A); m1s2a = findViewById(R.id.M4S2A); m1s3a = findViewById(R.id.M4S3A);
 
-        m2s1h = findViewById(R.id.M2S1H); m2s2h = findViewById(R.id.M2S2H); m2s3h = findViewById(R.id.M2S3H);
-        m2s1a = findViewById(R.id.M2S1A); m2s2a = findViewById(R.id.M2S2A); m2s3a = findViewById(R.id.M2S3A);
+        m2s1h = findViewById(R.id.M5S1H); m2s2h = findViewById(R.id.M5S2H); m2s3h = findViewById(R.id.M5S3H);
+        m2s1a = findViewById(R.id.M5S1A); m2s2a = findViewById(R.id.M5S2A); m2s3a = findViewById(R.id.M5S3A);
 
-        m3s1h = findViewById(R.id.M3S1H); m3s2h = findViewById(R.id.M3S2H); m3s3h = findViewById(R.id.M3S3H);
-        m3s1a = findViewById(R.id.M3S1A); m3s2a = findViewById(R.id.M3S2A); m3s3a = findViewById(R.id.M3S3A);
+        m3s1h = findViewById(R.id.M6S1H); m3s2h = findViewById(R.id.M6S2H); m3s3h = findViewById(R.id.M6S3H);
+        m3s1a = findViewById(R.id.M6S1A); m3s2a = findViewById(R.id.M6S2A); m3s3a = findViewById(R.id.M6S3A);
+
+        m4s1h = findViewById(R.id.M7S1H); m4s2h = findViewById(R.id.M7S2H); m4s3h = findViewById(R.id.M7S3H);
+        m4s1a = findViewById(R.id.M7S1A); m4s2a = findViewById(R.id.M7S2A); m4s3a = findViewById(R.id.M7S3A);
+
+        m5s1h = findViewById(R.id.M8S1H); m5s2h = findViewById(R.id.M8S2H); m5s3h = findViewById(R.id.M8S3H);
+        m5s1a = findViewById(R.id.M8S1A); m5s2a = findViewById(R.id.M8S2A); m5s3a = findViewById(R.id.M8S3A);
+
+        m6s1h = findViewById(R.id.M9S1H); m6s2h = findViewById(R.id.M9S2H); m6s3h = findViewById(R.id.M9S3H);
+        m6s1a = findViewById(R.id.M9S1A); m6s2a = findViewById(R.id.M9S2A); m6s3a = findViewById(R.id.M9S3A);
 
         //Set increment/decrement buttons 'm' = match number, 'h' = home, 'a' = away, 'i' = increment, 'd' = decrement
-        m1hi = findViewById(R.id.M1HI); m1hd = findViewById(R.id.M1HD);
-        m1ai = findViewById(R.id.M1AI); m1ad = findViewById(R.id.M1AD);
+        m1hi = findViewById(R.id.M4HI); m1hd = findViewById(R.id.M4HD);
+        m1ai = findViewById(R.id.M4AI); m1ad = findViewById(R.id.M4AD);
 
-        m2hi = findViewById(R.id.M2HI); m2hd = findViewById(R.id.M2HD);
-        m2ai = findViewById(R.id.M2AI); m2ad = findViewById(R.id.M2AD);
+        m2hi = findViewById(R.id.M5HI); m2hd = findViewById(R.id.M5HD);
+        m2ai = findViewById(R.id.M5AI); m2ad = findViewById(R.id.M5AD);
 
-        m3hi = findViewById(R.id.M3HI); m3hd = findViewById(R.id.M3HD);
-        m3ai = findViewById(R.id.M3AI); m3ad = findViewById(R.id.M3AD);
+        m3hi = findViewById(R.id.M6HI); m3hd = findViewById(R.id.M6HD);
+        m3ai = findViewById(R.id.M6AI); m3ad = findViewById(R.id.M6AD);
+
+        m4hi = findViewById(R.id.M7HI); m4hd = findViewById(R.id.M7HD);
+        m4ai = findViewById(R.id.M7AI); m4ad = findViewById(R.id.M7AD);
+
+        m5hi = findViewById(R.id.M8HI); m5hd = findViewById(R.id.M8HD);
+        m5ai = findViewById(R.id.M8AI); m5ad = findViewById(R.id.M8AD);
+
+        m6hi = findViewById(R.id.M9HI); m6hd = findViewById(R.id.M9HD);
+        m6ai = findViewById(R.id.M9AI); m6ad = findViewById(R.id.M9AD);
 
 
 
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
-        match2 = new Matches(2, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
-        match3 = new Matches(3, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match1 = new Matches(4, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match2 = new Matches(5, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match3 = new Matches(6, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match4 = new Matches(7, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match5 = new Matches(8, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match6 = new Matches(9, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
 
-        m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
-        m1set2 = new MatchSet(1,2,0,0,"In Progress");
-        m1set3 = new MatchSet(1,3,0,0,"In Progress");
+        m1set1 = new  MatchSet(4,10, 0,0,"In Progress");
+        m1set2 = new MatchSet(4,11,0,0,"In Progress");
+        m1set3 = new MatchSet(4,12,0,0,"In Progress");
 
-        m2set1 = new MatchSet(2,4,0,0,"In Progress");
-        m2set2 = new MatchSet(2,5, 0,0,"In Progress");
-        m2set3 = new MatchSet(2,6,0,0,"In Progress");
+        m2set1 = new MatchSet(5,13,0,0,"In Progress");
+        m2set2 = new MatchSet(5,14, 0,0,"In Progress");
+        m2set3 = new MatchSet(5,15,0,0,"In Progress");
 
-        m3set1 = new MatchSet(3,7, 0,0,"In Progress");
-        m3set2 = new MatchSet(3,8, 0,0,"In Progress");
-        m3set3 = new MatchSet(3,9, 0,0,"In Progress");
+        m3set1 = new MatchSet(6,16, 0,0,"In Progress");
+        m3set2 = new MatchSet(6,17, 0,0,"In Progress");
+        m3set3 = new MatchSet(6,18, 0,0,"In Progress");
+
+        m4set1 = new MatchSet(7,19, 0,0,"In Progress");
+        m4set2 = new MatchSet(7,20, 0,0,"In Progress");
+        m4set3 = new MatchSet(7,21, 0,0,"In Progress");
+
+        m5set1 = new MatchSet(8,22, 0,0,"In Progress");
+        m5set2 = new MatchSet(8,23, 0,0,"In Progress");
+        m5set3 = new MatchSet(8,24, 0,0,"In Progress");
+
+        m6set1 = new MatchSet(9,25, 0,0,"In Progress");
+        m6set2 = new MatchSet(9,26, 0,0,"In Progress");
+        m6set3 = new MatchSet(9,27, 0,0,"In Progress");
 
 
 
@@ -128,16 +180,16 @@ public class ScoreByGame extends AppCompatActivity {
         getSetsM1();
         getSetsM2();
         getSetsM3();
+        getSetsM4();
+        getSetsM5();
+        getSetsM6();
 
         //Set textViews
-        m1hp1.setText(match1.getHomePlayer1()); m1ap1.setText(match1.getAwayPlayer1());
-        m1hp2.setText(match1.getHomePlayer2()); m1ap2.setText(match2.getAwayPlayer1());
+        m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
-        m2hp1.setText(match2.getHomePlayer1()); m2ap1.setText(match2.getAwayPlayer1());
-        m2hp2.setText(match2.getHomePlayer2()); m2ap2.setText(match2.getAwayPlayer2());
+        m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
 
-        m3hp1.setText(match3.getHomePlayer1()); m3ap1.setText(match3.getAwayPlayer1());
-        m3hp2.setText(match3.getHomePlayer2()); m3ap2.setText(match3.getAwayPlayer2());
+        m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
 
         m1s1h.setText(String.valueOf(m1set1.getHomeScore())); m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
         m1s2h.setText(String.valueOf(m1set2.getHomeScore())); m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
@@ -150,6 +202,18 @@ public class ScoreByGame extends AppCompatActivity {
         m3s1h.setText(String.valueOf(m3set1.getHomeScore())); m3s1a.setText(String.valueOf(m3set1.getAwayScore()));
         m3s2h.setText(String.valueOf(m3set2.getHomeScore())); m3s2a.setText(String.valueOf(m3set2.getAwayScore()));
         m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
+
+        m4s1h.setText(String.valueOf(m4set1.getHomeScore())); m4s1a.setText(String.valueOf(m4set1.getAwayScore()));
+        m4s2h.setText(String.valueOf(m4set2.getHomeScore())); m4s2a.setText(String.valueOf(m4set2.getAwayScore()));
+        m4s3h.setText(String.valueOf(m4set3.getHomeScore())); m4s3a.setText(String.valueOf(m4set3.getAwayScore()));
+
+        m5s1h.setText(String.valueOf(m5set1.getHomeScore())); m5s1a.setText(String.valueOf(m5set1.getAwayScore()));
+        m5s2h.setText(String.valueOf(m5set2.getHomeScore())); m5s2a.setText(String.valueOf(m5set2.getAwayScore()));
+        m5s3h.setText(String.valueOf(m5set3.getHomeScore())); m5s3a.setText(String.valueOf(m5set3.getAwayScore()));
+
+        m6s1h.setText(String.valueOf(m6set1.getHomeScore())); m6s1a.setText(String.valueOf(m6set1.getAwayScore()));
+        m6s2h.setText(String.valueOf(m6set2.getHomeScore())); m6s2a.setText(String.valueOf(m6set2.getAwayScore()));
+        m6s3h.setText(String.valueOf(m6set3.getHomeScore())); m6s3a.setText(String.valueOf(m6set3.getAwayScore()));
 //
 
 
@@ -157,6 +221,9 @@ public class ScoreByGame extends AppCompatActivity {
         updateMatch(match1);
         updateMatch(match2);
         updateMatch(match3);
+        updateMatch(match4);
+        updateMatch(match5);
+        updateMatch(match6);
 
         updateSet(m1set1);
         updateSet(m1set2);
@@ -170,11 +237,23 @@ public class ScoreByGame extends AppCompatActivity {
         updateSet(m3set2);
         updateSet(m3set3);
 
+        updateSet(m4set1);
+        updateSet(m4set2);
+        updateSet(m4set3);
+
+        updateSet(m5set1);
+        updateSet(m5set2);
+        updateSet(m5set3);
+
+        updateSet(m6set1);
+        updateSet(m6set2);
+        updateSet(m6set3);
+
 
 
 
         /**
-         * This is the start of Match 1's increment listeners
+         * Match 1's listeners
          */
         m1hi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,9 +306,41 @@ public class ScoreByGame extends AppCompatActivity {
             }
         });
 
+        m1hd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm1 = findSetNumber(m1set1, m1set2, m1set3);
+                decrementScoreHome(match1,m1set1,m1set2, m1set3, setNumberm1);
+                m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
+                m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
+
+                m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
+                m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
+
+                m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
+                m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
+            }
+        });
+
+        m1ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm1 = findSetNumber(m1set1, m1set2, m1set3);
+                decrementScoreAway(match1,m1set1,m1set2, m1set3, setNumberm1);
+                m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
+                m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
+
+                m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
+                m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
+
+                m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
+                m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
+            }
+        });
+
 
         /**
-         * This is the start of match 2's increment listeners
+         * Match 2's listeners
          */
 
         m2hi.setOnClickListener(new View.OnClickListener() {
@@ -284,6 +395,42 @@ public class ScoreByGame extends AppCompatActivity {
             }
         });
 
+        m2hd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm2 = findSetNumber(m2set1, m2set2, m2set3);
+                decrementScoreHome(match2,m2set1,m2set2, m2set3, setNumberm2);
+                m2s1h.setText(String.valueOf(m2set1.getHomeScore()));
+                m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
+
+                m2s2h.setText(String.valueOf(m2set2.getHomeScore()));
+                m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
+
+                m2s3h.setText(String.valueOf(m2set3.getHomeScore()));
+                m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
+            }
+        });
+
+        m2ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm2 = findSetNumber(m2set1, m2set2, m2set3);
+                decrementScoreAway(match2,m2set1,m2set2, m2set3, setNumberm2);
+                m2s1h.setText(String.valueOf(m2set1.getHomeScore()));
+                m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
+
+                m2s2h.setText(String.valueOf(m2set2.getHomeScore()));
+                m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
+
+                m2s3h.setText(String.valueOf(m2set3.getHomeScore()));
+                m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
+            }
+        });
+
+
+        /**
+         *  Match 3's listeners
+         */
         m3hi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -334,79 +481,8 @@ public class ScoreByGame extends AppCompatActivity {
                 }
 
             }
-        });//*/
-
-
-        //Start of Decrement Listeners
-        //match1
-        m1hd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setNumberm1 = findSetNumber(m1set1, m1set2, m1set3);
-                decrementScoreHome(match1,m1set1,m1set2, m1set3, setNumberm1);
-                        m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
-                        m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
-
-                        m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
-                        m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
-
-                        m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
-                        m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
-            }
         });
 
-        m1ad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setNumberm1 = findSetNumber(m1set1, m1set2, m1set3);
-                decrementScoreAway(match1,m1set1,m1set2, m1set3, setNumberm1);
-                m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
-                m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
-
-                m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
-                m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
-
-                m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
-                m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
-            }
-        });
-
-        ///Match2
-
-        m2hd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setNumberm2 = findSetNumber(m2set1, m2set2, m2set3);
-                decrementScoreHome(match2,m2set1,m2set2, m2set3, setNumberm2);
-                m2s1h.setText(String.valueOf(m2set1.getHomeScore()));
-                m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
-
-                m2s2h.setText(String.valueOf(m2set2.getHomeScore()));
-                m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
-
-                m2s3h.setText(String.valueOf(m2set3.getHomeScore()));
-                m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
-            }
-        });
-
-        m2ad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setNumberm2 = findSetNumber(m2set1, m2set2, m2set3);
-                decrementScoreAway(match2,m2set1,m2set2, m2set3, setNumberm2);
-                m2s1h.setText(String.valueOf(m2set1.getHomeScore()));
-                m2s1a.setText(String.valueOf(m2set1.getAwayScore()));
-
-                m2s2h.setText(String.valueOf(m2set2.getHomeScore()));
-                m2s2a.setText(String.valueOf(m2set2.getAwayScore()));
-
-                m2s3h.setText(String.valueOf(m2set3.getHomeScore()));
-                m2s3a.setText(String.valueOf(m2set3.getAwayScore()));
-            }
-        });
-
-
-        ///Match3
 
         m3hd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -437,6 +513,265 @@ public class ScoreByGame extends AppCompatActivity {
 
                 m3s3h.setText(String.valueOf(m3set3.getHomeScore()));
                 m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
+            }
+        });
+
+
+        /**
+         * Match 4's listeners
+         */
+        m4hi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm4 = findSetNumber(m4set1,m4set2,m4set3);
+
+                incrementScoreHome(match4,m4set1,m4set2,m4set3,setNumberm4);
+
+                switch(setNumberm4){
+                    case 1:{
+                        m4s1h.setText(String.valueOf(m4set1.getHomeScore()));
+                        break;
+                    }
+                    case 2:{
+                        m4s2h.setText(String.valueOf(m4set2.getHomeScore()));
+                        break;
+                    }
+                    case 3:{
+                        m4s3h.setText(String.valueOf(m4set3.getHomeScore()));
+                        break;
+                    }
+                }
+            }
+
+        });
+
+
+        m4ai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setNumberm4 = findSetNumber(m4set1,m4set2,m4set3);
+
+                incrementScoreAway(match4,m4set1,m4set2,m4set3,setNumberm4);
+
+                switch(setNumberm4){
+                    case 1:{
+                        m4s1a.setText(String.valueOf(m4set1.getAwayScore()));
+                        break;
+                    }
+                    case 2:{
+                        m4s2a.setText(String.valueOf(m4set2.getAwayScore()));
+                        break;
+                    }
+                    case 3:{
+                        m4s3a.setText(String.valueOf(m4set3.getAwayScore()));
+                        break;
+                    }
+                }
+            }
+        });
+
+        m4hd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm4 = findSetNumber(m4set1, m4set2, m4set3);
+                decrementScoreHome(match4,m4set1,m4set2, m4set3, setNumberm4);
+                m4s1h.setText(String.valueOf(m4set1.getHomeScore()));
+                m4s1a.setText(String.valueOf(m4set1.getAwayScore()));
+
+                m4s2h.setText(String.valueOf(m4set2.getHomeScore()));
+                m4s2a.setText(String.valueOf(m4set2.getAwayScore()));
+
+                m4s3h.setText(String.valueOf(m4set3.getHomeScore()));
+                m4s3a.setText(String.valueOf(m4set3.getAwayScore()));
+            }
+        });
+
+        m4ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm4 = findSetNumber(m4set1, m4set2, m4set3);
+                decrementScoreAway(match4,m4set1,m4set2, m4set3, setNumberm4);
+                m4s1h.setText(String.valueOf(m4set1.getHomeScore()));
+                m4s1a.setText(String.valueOf(m4set1.getAwayScore()));
+
+                m4s2h.setText(String.valueOf(m4set2.getHomeScore()));
+                m4s2a.setText(String.valueOf(m4set2.getAwayScore()));
+
+                m4s3h.setText(String.valueOf(m4set3.getHomeScore()));
+                m4s3a.setText(String.valueOf(m4set3.getAwayScore()));
+            }
+        });
+
+        /**
+         * Match 5's listeners
+         */
+        m5hi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm5 = findSetNumber(m5set1,m5set2,m5set3);
+
+                incrementScoreHome(match5,m5set1,m5set2,m5set3,setNumberm5);
+
+                switch(setNumberm5){
+                    case 1:{
+                        m5s1h.setText(String.valueOf(m5set1.getHomeScore()));
+                        break;
+                    }
+                    case 2:{
+                        m5s2h.setText(String.valueOf(m5set2.getHomeScore()));
+                        break;
+                    }
+                    case 3:{
+                        m5s3h.setText(String.valueOf(m5set3.getHomeScore()));
+                        break;
+                    }
+                }
+            }
+
+        });
+
+
+        m5ai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setNumberm5 = findSetNumber(m5set1,m5set2,m5set3);
+
+                incrementScoreAway(match5,m5set1,m5set2,m5set3,setNumberm5);
+
+                switch(setNumberm5){
+                    case 1:{
+                        m5s1a.setText(String.valueOf(m5set1.getAwayScore()));
+                        break;
+                    }
+                    case 2:{
+                        m5s2a.setText(String.valueOf(m5set2.getAwayScore()));
+                        break;
+                    }
+                    case 3:{
+                        m5s3a.setText(String.valueOf(m5set3.getAwayScore()));
+                        break;
+                    }
+                }
+            }
+        });
+
+        m5hd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm5 = findSetNumber(m5set1, m5set2, m5set3);
+                decrementScoreHome(match5,m5set1,m5set2, m5set3, setNumberm5);
+                m5s1h.setText(String.valueOf(m5set1.getHomeScore()));
+                m5s1a.setText(String.valueOf(m5set1.getAwayScore()));
+
+                m5s2h.setText(String.valueOf(m5set2.getHomeScore()));
+                m5s2a.setText(String.valueOf(m5set2.getAwayScore()));
+
+                m5s3h.setText(String.valueOf(m5set3.getHomeScore()));
+                m5s3a.setText(String.valueOf(m5set3.getAwayScore()));
+            }
+        });
+
+        m5ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm5 = findSetNumber(m5set1, m5set2, m5set3);
+                decrementScoreAway(match5,m5set1,m5set2, m5set3, setNumberm5);
+                m5s1h.setText(String.valueOf(m5set1.getHomeScore()));
+                m5s1a.setText(String.valueOf(m5set1.getAwayScore()));
+
+                m5s2h.setText(String.valueOf(m5set2.getHomeScore()));
+                m5s2a.setText(String.valueOf(m5set2.getAwayScore()));
+
+                m5s3h.setText(String.valueOf(m5set3.getHomeScore()));
+                m5s3a.setText(String.valueOf(m5set3.getAwayScore()));
+            }
+        });
+
+        /**
+         * Match 6's listeners
+         */
+        m6hi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm6 = findSetNumber(m6set1,m6set2,m6set3);
+
+                incrementScoreHome(match6,m6set1,m6set2,m6set3,setNumberm6);
+
+                switch(setNumberm6){
+                    case 1:{
+                        m6s1h.setText(String.valueOf(m6set1.getHomeScore()));
+                        break;
+                    }
+                    case 2:{
+                        m6s2h.setText(String.valueOf(m6set2.getHomeScore()));
+                        break;
+                    }
+                    case 3:{
+                        m6s3h.setText(String.valueOf(m6set3.getHomeScore()));
+                        break;
+                    }
+                }
+            }
+
+        });
+
+
+        m6ai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setNumberm6 = findSetNumber(m6set1,m6set2,m6set3);
+
+                incrementScoreAway(match6,m6set1,m6set2,m6set3,setNumberm6);
+
+                switch(setNumberm6){
+                    case 1:{
+                        m6s1a.setText(String.valueOf(m6set1.getAwayScore()));
+                        break;
+                    }
+                    case 2:{
+                        m6s2a.setText(String.valueOf(m6set2.getAwayScore()));
+                        break;
+                    }
+                    case 3:{
+                        m6s3a.setText(String.valueOf(m6set3.getAwayScore()));
+                        break;
+                    }
+                }
+            }
+        });
+
+        m6hd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm1 = findSetNumber(m6set1, m6set2, m6set3);
+                decrementScoreHome(match6,m6set1,m6set2, m6set3, setNumberm6);
+                m6s1h.setText(String.valueOf(m6set1.getHomeScore()));
+                m6s1a.setText(String.valueOf(m6set1.getAwayScore()));
+
+                m6s2h.setText(String.valueOf(m6set2.getHomeScore()));
+                m6s2a.setText(String.valueOf(m6set2.getAwayScore()));
+
+                m6s3h.setText(String.valueOf(m6set3.getHomeScore()));
+                m6s3a.setText(String.valueOf(m6set3.getAwayScore()));
+            }
+        });
+
+        m6ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNumberm6 = findSetNumber(m6set1, m6set2, m6set3);
+                decrementScoreAway(match6,m6set1,m6set2, m6set3, setNumberm6);
+                m6s1h.setText(String.valueOf(m6set1.getHomeScore()));
+                m6s1a.setText(String.valueOf(m6set1.getAwayScore()));
+
+                m6s2h.setText(String.valueOf(m6set2.getHomeScore()));
+                m6s2a.setText(String.valueOf(m6set2.getAwayScore()));
+
+                m6s3h.setText(String.valueOf(m6set3.getHomeScore()));
+                m6s3a.setText(String.valueOf(m6set3.getAwayScore()));
             }
         });
 
@@ -544,7 +879,7 @@ public class ScoreByGame extends AppCompatActivity {
 
         if(checkMatchWin(changedMatch)){
             setNumber = 0;
-           // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
         }
         switch(setNumber){
             case 1:{
@@ -652,7 +987,7 @@ public class ScoreByGame extends AppCompatActivity {
 
         if(checkMatchWin(changedMatch)){
             setNumber = 0;
-           // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
         }
         switch(setNumber){
             case 1:{
@@ -984,7 +1319,7 @@ public class ScoreByGame extends AppCompatActivity {
                             Log.i("tagconvertstr", "["+response+"]");
                             JSONArray array = new JSONArray(response);
 
-                                for(int i = 0; i < array.length(); i++){
+                            for(int i = 0; i < array.length(); i++){
                                 JSONObject obj = array.getJSONObject(i);
                                 Matches temp = new Matches(obj.getInt("matchID"),
                                         obj.getInt("eventID"),
@@ -1009,15 +1344,21 @@ public class ScoreByGame extends AppCompatActivity {
                             match1 = matchList.get(0);
                             match2 = matchList.get(1);
                             match3 = matchList.get(2);
+                            match4 = matchList.get(3);
+                            match5 = matchList.get(4);
+                            match6 = matchList.get(5);
 
-                            m1hp1.setText(match1.getHomePlayer1()); m1ap1.setText(match1.getAwayPlayer1());
-                            m1hp2.setText(match1.getHomePlayer2()); m1ap2.setText(match1.getAwayPlayer2());
+                            m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
-                            m2hp1.setText(match2.getHomePlayer1()); m2ap1.setText(match2.getAwayPlayer1());
-                            m2hp2.setText(match2.getHomePlayer2()); m2ap2.setText(match2.getAwayPlayer2());
+                            m2hp.setText(match2.getHomePlayer1()); m2ap.setText(match2.getAwayPlayer1());
 
-                            m3hp1.setText(match3.getHomePlayer1()); m3ap1.setText(match3.getAwayPlayer1());
-                            m3hp2.setText(match3.getHomePlayer2()); m3ap2.setText(match3.getAwayPlayer2());
+                            m3hp.setText(match3.getHomePlayer1()); m3ap.setText(match3.getAwayPlayer1());
+
+                            m4hp.setText(match4.getHomePlayer1()); m4ap.setText(match4.getAwayPlayer1());
+
+                            m5hp.setText(match5.getHomePlayer1()); m5ap.setText(match5.getAwayPlayer1());
+
+                            m6hp.setText(match6.getHomePlayer1()); m6ap.setText(match6.getAwayPlayer1());
 
 
 
@@ -1103,7 +1444,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(eventID));
+                params.put("matchID", String.valueOf(match1.getMatchID()));
                 params.put("matchType", "Singles");
 
 
@@ -1169,7 +1510,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(2));
+                params.put("matchID", String.valueOf(match2.getMatchID()));
                 params.put("matchType", "Singles");
 
 
@@ -1237,7 +1578,209 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(3));
+                params.put("matchID", String.valueOf(match3.getMatchID()));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void getSetsM4(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+
+                            m4set1 = setList.get(0); m4set2 = setList.get(1); m4set3 = setList.get(2);
+
+
+
+                            m4s1h.setText(String.valueOf(m4set1.getHomeScore())); m4s1a.setText(String.valueOf(m4set1.getAwayScore()));
+                            m4s2h.setText(String.valueOf(m3set2.getHomeScore())); m4s2a.setText(String.valueOf(m4set2.getAwayScore()));
+                            m4s3h.setText(String.valueOf(m4set3.getHomeScore())); m4s3a.setText(String.valueOf(m4set3.getAwayScore()));
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(match4.getMatchID()));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void getSetsM5(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+
+                            m5set1 = setList.get(0); m5set2 = setList.get(1); m5set3 = setList.get(2);
+
+                            m5s1h.setText(String.valueOf(m5set1.getHomeScore())); m5s1a.setText(String.valueOf(m5set1.getAwayScore()));
+                            m5s2h.setText(String.valueOf(m5set2.getHomeScore())); m5s2a.setText(String.valueOf(m5set2.getAwayScore()));
+                            m5s3h.setText(String.valueOf(m5set3.getHomeScore())); m5s3a.setText(String.valueOf(m5set3.getAwayScore()));
+
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(match5.getMatchID()));
+                params.put("matchType", "Singles");
+
+
+
+                return params;
+            }
+        };
+
+
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void getSetsM6(){
+        //   progressDialog.show();
+
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_SETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            Log.i("tagconvertstr", "["+response+"]");
+                            JSONArray array = new JSONArray(response);
+
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject obj = array.getJSONObject(i);
+                                MatchSet temp = new MatchSet(obj.getInt("setID"),
+                                        obj.getInt("matchID"),
+                                        obj.getInt("homeScore"),
+                                        obj.getInt("awayScore"),
+                                        obj.getString("result"));
+                                setList.add(temp);}
+
+
+                            m6set1 = setList.get(0); m6set2 = setList.get(1); m6set3 = setList.get(2);
+
+
+                            m6s1h.setText(String.valueOf(m6set1.getHomeScore())); m6s1a.setText(String.valueOf(m6set1.getAwayScore()));
+                            m6s2h.setText(String.valueOf(m6set2.getHomeScore())); m6s2a.setText(String.valueOf(m6set2.getAwayScore()));
+                            m6s3h.setText(String.valueOf(m6set3.getHomeScore())); m6s3a.setText(String.valueOf(m6set3.getAwayScore()));
+
+
+                        } catch (JSONException e) {
+                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
+
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("matchID", String.valueOf(match6.getMatchID()));
                 params.put("matchType", "Singles");
 
 
@@ -1253,3 +1796,6 @@ public class ScoreByGame extends AppCompatActivity {
     }
 
 }
+
+
+

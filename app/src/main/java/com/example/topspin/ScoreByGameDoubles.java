@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScoreByGame extends AppCompatActivity {
+public class ScoreByGameDoubles extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
@@ -33,17 +33,17 @@ public class ScoreByGame extends AppCompatActivity {
     private int setNumberm3;
 
 
-    private String matchType = "Singles";
+    private String matchType = "Doubles";
 
     ArrayList<Matches> matchList = new ArrayList<>();
     ArrayList<MatchSet> setList = new ArrayList<>();
 
 
 
-   private Matches match1, match2, match3;
-   private MatchSet m1set1, m1set2, m1set3;
-   private MatchSet m2set1, m2set2, m2set3;
-   private MatchSet m3set1, m3set2, m3set3;
+    private Matches match1, match2, match3;
+    private MatchSet m1set1, m1set2, m1set3;
+    private MatchSet m2set1, m2set2, m2set3;
+    private MatchSet m3set1, m3set2, m3set3;
 
     private TextView m1hp1, m1ap1, m1hp2, m1ap2;
     private TextView m2hp1, m2ap1, m2hp2, m2ap2;
@@ -62,7 +62,7 @@ public class ScoreByGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_by_game);
+        setContentView(R.layout.activity_score_by_game_doubles);
 /*
         //Get the eventID from the calling activity
         Intent getID = getIntent();
@@ -105,9 +105,9 @@ public class ScoreByGame extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
-        match2 = new Matches(2, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
-        match3 = new Matches(3, 1, "Singles", null, null, null,null, 0, 0, "In Progress");
+        match1 = new Matches(1, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
+        match2 = new Matches(2, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
+        match3 = new Matches(3, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
 
         m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
         m1set2 = new MatchSet(1,2,0,0,"In Progress");
@@ -344,14 +344,14 @@ public class ScoreByGame extends AppCompatActivity {
             public void onClick(View v) {
                 setNumberm1 = findSetNumber(m1set1, m1set2, m1set3);
                 decrementScoreHome(match1,m1set1,m1set2, m1set3, setNumberm1);
-                        m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
-                        m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
+                m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
+                m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
 
-                        m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
-                        m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
+                m1s2h.setText(String.valueOf(m1set2.getHomeScore()));
+                m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
 
-                        m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
-                        m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
+                m1s3h.setText(String.valueOf(m1set3.getHomeScore()));
+                m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
             }
         });
 
@@ -544,7 +544,7 @@ public class ScoreByGame extends AppCompatActivity {
 
         if(checkMatchWin(changedMatch)){
             setNumber = 0;
-           // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
         }
         switch(setNumber){
             case 1:{
@@ -652,7 +652,7 @@ public class ScoreByGame extends AppCompatActivity {
 
         if(checkMatchWin(changedMatch)){
             setNumber = 0;
-           // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), " Game is over, winner: " + changedMatch.getResult(), Toast.LENGTH_LONG).show();
         }
         switch(setNumber){
             case 1:{
@@ -984,7 +984,7 @@ public class ScoreByGame extends AppCompatActivity {
                             Log.i("tagconvertstr", "["+response+"]");
                             JSONArray array = new JSONArray(response);
 
-                                for(int i = 0; i < array.length(); i++){
+                            for(int i = 0; i < array.length(); i++){
                                 JSONObject obj = array.getJSONObject(i);
                                 Matches temp = new Matches(obj.getInt("matchID"),
                                         obj.getInt("eventID"),
@@ -1103,7 +1103,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(eventID));
+                params.put("matchID", String.valueOf(match1.getMatchID()));
                 params.put("matchType", "Singles");
 
 
@@ -1169,7 +1169,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(2));
+                params.put("matchID", String.valueOf(match2.getMatchID()));
                 params.put("matchType", "Singles");
 
 
@@ -1237,7 +1237,7 @@ public class ScoreByGame extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("matchID", String.valueOf(3));
+                params.put("matchID", String.valueOf(match3.getMatchID()));
                 params.put("matchType", "Singles");
 
 

@@ -28,8 +28,12 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/scoring"
-        android:title="Scoring"/>
+    android:id="@+id/scoring_doubles"
+    android:title="Scoring Doubles"/>
+
+    <item
+        android:id="@+id/scoring_singles"
+        android:title="Scoring Singles"/>
 
     <item
         android:id="@+id/menuLogout"

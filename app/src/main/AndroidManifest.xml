@@ -15,15 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".LoginActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ScoreByGameSingles"></activity>
+        <activity android:name=".ScoreByGameDoubles" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ScoreByGame"></activity>
+        <activity android:name=".ScoreByGame" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".scoring" />
         <activity android:name=".admin_main_page" />
@@ -32,11 +33,11 @@
         <activity android:name=".ModifyTournament" />
         <activity android:name=".ViewScheduleEntry" />
         <activity android:name=".AddScheduleEntry" />
-        <activity android:name=".playerRoster"/>
-        <activity android:name=".AddPlayerEntry"/>
+        <activity android:name=".playerRoster" />
+        <activity android:name=".AddPlayerEntry" />
         <activity
             android:name=".ViewSchedule"
-            android:label="Schedule"/>
+            android:label="Schedule" />
         <activity
             android:name=".RegisterActivity"
             android:label="Register" />
