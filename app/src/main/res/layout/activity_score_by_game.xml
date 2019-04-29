@@ -10,15 +10,19 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:drawable/editbox_background">
 
         <TextView
             android:id="@+id/Match1Header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/alert_light_frame"
             android:text="Match 1"
-            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -27,30 +31,27 @@
             android:id="@+id/Match1HomePlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M1S1H"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
+            app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
         <TextView
             android:id="@+id/Match1AwayPlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M1S1A"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
         <TextView
             android:id="@+id/Match1HomePlayer2"
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M1S1H"
@@ -70,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M1S1A"
@@ -80,12 +83,13 @@
             android:id="@+id/M1S1H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/Match1HomePlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Match1HomePlayer2" />
+            app:layout_constraintTop_toTopOf="@+id/Match1HomePlayer1" />
 
         <TextView
             android:id="@+id/M1S2H"
@@ -93,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M1S1H"
             app:layout_constraintStart_toEndOf="@+id/M1S1H"
             app:layout_constraintTop_toTopOf="@+id/M1S1H" />
@@ -104,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M1S2H"
             app:layout_constraintStart_toEndOf="@+id/M1S2H"
             app:layout_constraintTop_toTopOf="@+id/M1S2H" />
@@ -113,9 +117,10 @@
             android:id="@+id/M1S1A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="0"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/Match1AwayPlayer2"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/Match1AwayPlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/Match1AwayPlayer1" />
@@ -126,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M1S1A"
             app:layout_constraintStart_toEndOf="@+id/M1S1A"
             app:layout_constraintTop_toTopOf="@+id/M1S1A" />
@@ -137,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M1S2A"
             app:layout_constraintStart_toEndOf="@+id/M1S2A"
             app:layout_constraintTop_toTopOf="@+id/M1S2A" />
@@ -146,7 +151,9 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/M1S2H"
             app:layout_constraintEnd_toEndOf="@+id/M1S3H"
             app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
@@ -154,11 +161,11 @@
         <Button
             android:id="@+id/M1HI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="centerInside"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="@+id/M1HD"
             app:layout_constraintStart_toEndOf="@+id/M1HD"
@@ -168,11 +175,11 @@
         <Button
             android:id="@+id/M1AI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="@+id/M1AD"
             app:layout_constraintStart_toEndOf="@+id/M1AD"
@@ -181,15 +188,15 @@
         <Button
             android:id="@+id/M1HD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:text="-"
             android:textAllCaps="false"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M1S3H"
@@ -199,14 +206,13 @@
         <Button
             android:id="@+id/M1AD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:text="-"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M1S3A"
@@ -215,11 +221,14 @@
 
         <TextView
             android:id="@+id/Match2header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:background="@android:drawable/alert_light_frame"
             android:text="Match 2"
-            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Match1AwayPlayer2" />
@@ -228,7 +237,9 @@
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/M2S2H"
             app:layout_constraintEnd_toEndOf="@+id/M2S3H"
             app:layout_constraintTop_toBottomOf="@+id/Match2header" />
@@ -237,48 +248,48 @@
             android:id="@+id/M2HomePlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M2S1H"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Match2header" />
+            app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
         <TextView
             android:id="@+id/M2AwayPlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M2S1A"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/M2HomePlayer2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
         <TextView
             android:id="@+id/M2S1H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M2HomePlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/M2HomePlayer2" />
+            app:layout_constraintTop_toTopOf="@+id/M2HomePlayer1" />
 
         <TextView
             android:id="@+id/M2S1A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="0"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/M2AwayPlayer1"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M2AwayPlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/M2AwayPlayer1" />
@@ -289,7 +300,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M2S1H"
             app:layout_constraintStart_toEndOf="@+id/M2S1H"
             app:layout_constraintTop_toTopOf="@+id/M2S1H" />
@@ -300,7 +311,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M2S2H"
             app:layout_constraintStart_toEndOf="@+id/M2S2H"
             app:layout_constraintTop_toTopOf="@+id/M2S2H" />
@@ -311,7 +322,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M2S1A"
             app:layout_constraintStart_toEndOf="@+id/M2S1A"
             app:layout_constraintTop_toTopOf="@+id/M2S1A" />
@@ -322,7 +333,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M2S2A"
             app:layout_constraintStart_toEndOf="@+id/M2S2A"
             app:layout_constraintTop_toTopOf="@+id/M2S2A" />
@@ -330,12 +341,12 @@
         <Button
             android:id="@+id/M2HI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_up_float"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="@+id/M2HD"
             app:layout_constraintStart_toEndOf="@+id/M2HD"
@@ -344,12 +355,12 @@
         <Button
             android:id="@+id/M2AI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_up_float"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toTopOf="@+id/M2AD"
             app:layout_constraintStart_toEndOf="@+id/M2AD"
@@ -358,7 +369,7 @@
         <Button
             android:id="@+id/M2HD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
@@ -366,7 +377,7 @@
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_down_float"
             android:text="-"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M2S3H"
@@ -376,15 +387,14 @@
         <Button
             android:id="@+id/M2AD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_down_float"
             android:text="-"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M2S3A"
@@ -393,13 +403,14 @@
 
         <TextView
             android:id="@+id/Match3header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
+            android:background="@android:drawable/alert_light_frame"
             android:text="Match 3"
-            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/M2AwayPlayer2" />
@@ -408,41 +419,39 @@
             android:id="@+id/M3HomePlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M3S1H"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Match3header" />
+            app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
         <TextView
             android:id="@+id/M3AwayPlayer1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M3S1A"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
         <TextView
             android:id="@+id/M3S1H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M3HomePlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/M3HomePlayer2" />
+            app:layout_constraintTop_toTopOf="@+id/M3HomePlayer1" />
 
         <TextView
             android:id="@+id/M3S2H"
@@ -450,7 +459,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M3S1H"
             app:layout_constraintStart_toEndOf="@+id/M3S1H"
             app:layout_constraintTop_toTopOf="@+id/M3S1H" />
@@ -461,7 +470,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M3S2H"
             app:layout_constraintStart_toEndOf="@+id/M3S2H"
             app:layout_constraintTop_toTopOf="@+id/M3S2H" />
@@ -470,9 +479,10 @@
             android:id="@+id/M3S1A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="0"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/M3AwayPlayer1"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M3AwayPlayer2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/M3AwayPlayer1" />
@@ -483,7 +493,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M3S1A"
             app:layout_constraintStart_toEndOf="@+id/M3S1A"
             app:layout_constraintTop_toTopOf="@+id/M3S1A" />
@@ -494,7 +504,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M3S2A"
             app:layout_constraintStart_toEndOf="@+id/M3S2A"
             app:layout_constraintTop_toTopOf="@+id/M3S2A" />
@@ -503,7 +513,9 @@
             android:id="@+id/textView72"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/M3S2H"
             app:layout_constraintEnd_toEndOf="@+id/M3S3H"
             app:layout_constraintTop_toBottomOf="@+id/Match3header" />
@@ -511,12 +523,12 @@
         <Button
             android:id="@+id/M3HI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_up_float"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="@+id/M3HD"
             app:layout_constraintStart_toEndOf="@+id/M3HD"
@@ -525,12 +537,12 @@
         <Button
             android:id="@+id/M3AI"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_up_float"
             android:text="+"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             app:layout_constraintBottom_toBottomOf="@+id/M3AD"
             app:layout_constraintStart_toEndOf="@+id/M3AD"
@@ -539,7 +551,7 @@
         <Button
             android:id="@+id/M3HD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
@@ -547,7 +559,7 @@
             android:scaleType="fitXY"
             android:src="@android:drawable/arrow_down_float"
             android:text="-"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M3S3H"
@@ -557,15 +569,13 @@
         <Button
             android:id="@+id/M3AD"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            android:src="@android:drawable/arrow_down_float"
             android:text="-"
-            android:textSize="36sp"
+            android:textSize="48sp"
             android:tint="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/M3S3A"
@@ -578,7 +588,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Doubles Matches"
-            android:textSize="27sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -589,6 +600,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M2S1H"
@@ -601,6 +613,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M2S1A"
@@ -613,6 +626,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M3S1H"
@@ -625,6 +639,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/M3S1A"
@@ -641,75 +656,42 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Singles Matches"
-            android:textSize="27sp"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/M3AwayPlayer2" />
 
         <TextView
-            android:id="@+id/M4HomePlayer1"
+            android:id="@+id/M4HomePlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SinglesHeader" />
+            app:layout_constraintTop_toBottomOf="@+id/textView49" />
 
         <TextView
-            android:id="@+id/textView31"
+            android:id="@+id/M4AwayPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="46dp"
-            android:layout_marginLeft="46dp"
-            android:layout_marginTop="200dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SinglesHeader" />
-
-        <TextView
-            android:id="@+id/M4HomePlayer2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@android:drawable/editbox_background"
             android:text="Sample Name"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/M4HomePlayer1"
-            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer1" />
-
-        <TextView
-            android:id="@+id/M4AwayPlayer1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Sample Name"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/M4HomePlayer2"
-            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer2" />
-
-        <TextView
-            android:id="@+id/M4AwayPlayer2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sample Name"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/M4AwayPlayer1"
-            app:layout_constraintTop_toBottomOf="@+id/M4AwayPlayer1" />
+            app:layout_constraintStart_toStartOf="@+id/M4HomePlayer"
+            app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
         <TextView
             android:id="@+id/M4S1H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             android:text="0"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/M4AwayPlayer1"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4HomePlayer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer1" />
+            app:layout_constraintTop_toTopOf="@+id/M4HomePlayer" />
 
         <TextView
             android:id="@+id/M4S2H"
@@ -718,7 +700,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M4S1H"
             app:layout_constraintStart_toEndOf="@+id/M4S1H"
             app:layout_constraintTop_toTopOf="@+id/M4S1H"
@@ -731,7 +713,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:text="0"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/M4S2H"
             app:layout_constraintStart_toEndOf="@+id/M4S2H"
             app:layout_constraintTop_toTopOf="@+id/M4S2H" />
@@ -741,24 +723,1177 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
-            tools:layout_editor_absoluteX="183dp"
-            tools:layout_editor_absoluteY="805dp" />
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M4AwayPlayer" />
 
         <TextView
             android:id="@+id/M4S2A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="219dp"
-            tools:layout_editor_absoluteY="727dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S1A"
+            app:layout_constraintStart_toEndOf="@+id/M4S1A"
+            app:layout_constraintTop_toTopOf="@+id/M4S1A" />
 
         <TextView
             android:id="@+id/M4S3A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="278dp"
-            tools:layout_editor_absoluteY="824dp" />
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S2A"
+            app:layout_constraintStart_toEndOf="@+id/M4S2A"
+            app:layout_constraintTop_toTopOf="@+id/M4S2A" />
+
+        <Button
+            android:id="@+id/M4HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S3H"
+            app:layout_constraintStart_toEndOf="@+id/M4S3H"
+            app:layout_constraintTop_toTopOf="@+id/M4S3H" />
+
+        <Button
+            android:id="@+id/M4AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4S3A"
+            app:layout_constraintStart_toEndOf="@+id/M4S3A"
+            app:layout_constraintTop_toTopOf="@+id/M4S3A" />
+
+        <Button
+            android:id="@+id/M4HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4HD"
+            app:layout_constraintStart_toEndOf="@+id/M4HD"
+            app:layout_constraintTop_toTopOf="@+id/M4HD"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/M4AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M4AD"
+            app:layout_constraintStart_toEndOf="@+id/M4AD"
+            app:layout_constraintTop_toTopOf="@+id/M4AD"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M4S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M4S3H"
+            app:layout_constraintTop_toBottomOf="@+id/textView50" />
+
+        <TextView
+            android:id="@+id/textView43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match1HomePlayer2" />
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match1Header" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match2header" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M2HomePlayer2" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Match3header" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M3HomePlayer2" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView50" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 1"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SinglesHeader" />
+
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M4HomePlayer" />
+
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 2"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M4AwayPlayer" />
+
+        <TextView
+            android:id="@+id/textView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+        <TextView
+            android:id="@+id/M5HomePlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M5S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView53" />
+
+        <TextView
+            android:id="@+id/textView55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M5HomePlayer" />
+
+        <TextView
+            android:id="@+id/M5AwayPlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M5S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
+        <TextView
+            android:id="@+id/M5S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5HomePlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M5HomePlayer" />
+
+        <TextView
+            android:id="@+id/M5S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S1H"
+            app:layout_constraintStart_toEndOf="@+id/M5S1H"
+            app:layout_constraintTop_toTopOf="@+id/M5S1H" />
+
+        <TextView
+            android:id="@+id/M5S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S2H"
+            app:layout_constraintStart_toEndOf="@+id/M5S2H"
+            app:layout_constraintTop_toTopOf="@+id/M5S2H" />
+
+        <TextView
+            android:id="@+id/M5S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M5AwayPlayer" />
+
+        <TextView
+            android:id="@+id/M5S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S1A"
+            app:layout_constraintStart_toEndOf="@+id/M5S1A"
+            app:layout_constraintTop_toTopOf="@+id/M5S1A" />
+
+        <TextView
+            android:id="@+id/M5S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S2A"
+            app:layout_constraintStart_toEndOf="@+id/M5S2A"
+            app:layout_constraintTop_toTopOf="@+id/M5S2A" />
+
+        <Button
+            android:id="@+id/M5HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S3H"
+            app:layout_constraintStart_toEndOf="@+id/M5S3H"
+            app:layout_constraintTop_toTopOf="@+id/M5S3H" />
+
+        <Button
+            android:id="@+id/M5HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5HD"
+            app:layout_constraintStart_toEndOf="@+id/M5HD"
+            app:layout_constraintTop_toTopOf="@+id/M5HD"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/M5AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5S3A"
+            app:layout_constraintStart_toEndOf="@+id/M5S3A"
+            app:layout_constraintTop_toTopOf="@+id/M5S3A" />
+
+        <Button
+            android:id="@+id/M5AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M5AD"
+            app:layout_constraintStart_toEndOf="@+id/M5AD"
+            app:layout_constraintTop_toTopOf="@+id/M5AD" />
+
+        <TextView
+            android:id="@+id/textView63"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M5S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M5S3H"
+            app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+        <TextView
+            android:id="@+id/textView64"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 3"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M5AwayPlayer" />
+
+        <TextView
+            android:id="@+id/textView65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView64" />
+
+        <TextView
+            android:id="@+id/M6HomePlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M6S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M6HomePlayer" />
+
+        <TextView
+            android:id="@+id/M6AwayPlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M6S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView67" />
+
+        <TextView
+            android:id="@+id/M6S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6HomePlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M6HomePlayer" />
+
+        <TextView
+            android:id="@+id/M6S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S1H"
+            app:layout_constraintStart_toEndOf="@+id/M6S1H"
+            app:layout_constraintTop_toTopOf="@+id/M6S1H" />
+
+        <TextView
+            android:id="@+id/M6S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S2H"
+            app:layout_constraintStart_toEndOf="@+id/M6S2H"
+            app:layout_constraintTop_toTopOf="@+id/M6S2H" />
+
+        <TextView
+            android:id="@+id/M6S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M6AwayPlayer" />
+
+        <TextView
+            android:id="@+id/M6S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S1A"
+            app:layout_constraintStart_toEndOf="@+id/M6S1A"
+            app:layout_constraintTop_toTopOf="@+id/M6S1A" />
+
+        <TextView
+            android:id="@+id/M6S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S2A"
+            app:layout_constraintStart_toEndOf="@+id/M6S2A"
+            app:layout_constraintTop_toTopOf="@+id/M6S2A" />
+
+        <Button
+            android:id="@+id/M6HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S3H"
+            app:layout_constraintStart_toEndOf="@+id/M6S3H"
+            app:layout_constraintTop_toTopOf="@+id/M6S3H" />
+
+        <Button
+            android:id="@+id/M6HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6HD"
+            app:layout_constraintStart_toEndOf="@+id/M6HD"
+            app:layout_constraintTop_toTopOf="@+id/M6HD" />
+
+        <Button
+            android:id="@+id/M6AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6S3A"
+            app:layout_constraintStart_toEndOf="@+id/M6S3A"
+            app:layout_constraintTop_toTopOf="@+id/M6S3A" />
+
+        <Button
+            android:id="@+id/M6AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M6AD"
+            app:layout_constraintStart_toEndOf="@+id/M6AD"
+            app:layout_constraintTop_toTopOf="@+id/M6AD" />
+
+        <TextView
+            android:id="@+id/textView76"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M6S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M6S3H"
+            app:layout_constraintTop_toBottomOf="@+id/textView64" />
+
+        <TextView
+            android:id="@+id/textView77"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 4"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/M6AwayPlayer" />
+
+        <TextView
+            android:id="@+id/textView78"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView77" />
+
+        <TextView
+            android:id="@+id/M7HomePlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M7S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView78" />
+
+        <TextView
+            android:id="@+id/textView80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M7HomePlayer" />
+
+        <TextView
+            android:id="@+id/M7AwayPlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M7S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView80" />
+
+        <TextView
+            android:id="@+id/M7S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7HomePlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M7HomePlayer" />
+
+        <TextView
+            android:id="@+id/M7S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S1H"
+            app:layout_constraintStart_toEndOf="@+id/M7S1H"
+            app:layout_constraintTop_toTopOf="@+id/M7S1H" />
+
+        <TextView
+            android:id="@+id/M7S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S2H"
+            app:layout_constraintStart_toEndOf="@+id/M7S2H"
+            app:layout_constraintTop_toTopOf="@+id/M7S2H" />
+
+        <TextView
+            android:id="@+id/M7S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M7AwayPlayer" />
+
+        <TextView
+            android:id="@+id/M7S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S1A"
+            app:layout_constraintStart_toEndOf="@+id/M7S1A"
+            app:layout_constraintTop_toTopOf="@+id/M7S1A" />
+
+        <TextView
+            android:id="@+id/M7S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S2A"
+            app:layout_constraintStart_toEndOf="@+id/M7S2A"
+            app:layout_constraintTop_toTopOf="@+id/M7S2A" />
+
+        <Button
+            android:id="@+id/M7HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S3H"
+            app:layout_constraintStart_toEndOf="@+id/M7S3H"
+            app:layout_constraintTop_toTopOf="@+id/M7S3H" />
+
+        <Button
+            android:id="@+id/M7HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7HD"
+            app:layout_constraintStart_toEndOf="@+id/M7HD"
+            app:layout_constraintTop_toTopOf="@+id/M7HD" />
+
+        <Button
+            android:id="@+id/M7AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7S3A"
+            app:layout_constraintStart_toEndOf="@+id/M7S3A"
+            app:layout_constraintTop_toTopOf="@+id/M7S3A" />
+
+        <Button
+            android:id="@+id/M7AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M7AD"
+            app:layout_constraintStart_toEndOf="@+id/M7AD"
+            app:layout_constraintTop_toTopOf="@+id/M7AD" />
+
+        <TextView
+            android:id="@+id/textView88"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M7S1H"
+            app:layout_constraintEnd_toEndOf="@+id/M7S3H"
+            app:layout_constraintTop_toBottomOf="@+id/textView77" />
+
+        <TextView
+            android:id="@+id/textView89"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 5"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/M7AwayPlayer" />
+
+        <TextView
+            android:id="@+id/textView90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView89" />
+
+        <TextView
+            android:id="@+id/M8HomePlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M8S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView90" />
+
+        <TextView
+            android:id="@+id/textView92"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M8HomePlayer" />
+
+        <TextView
+            android:id="@+id/M8AwayPlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M8S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView92" />
+
+        <TextView
+            android:id="@+id/M8S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8HomePlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M8HomePlayer" />
+
+        <TextView
+            android:id="@+id/M8S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S1H"
+            app:layout_constraintStart_toEndOf="@+id/M8S1H"
+            app:layout_constraintTop_toTopOf="@+id/M8S1H" />
+
+        <TextView
+            android:id="@+id/M8S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S2H"
+            app:layout_constraintStart_toEndOf="@+id/M8S2H"
+            app:layout_constraintTop_toTopOf="@+id/M8S2H" />
+
+        <TextView
+            android:id="@+id/M8S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M8AwayPlayer" />
+
+        <TextView
+            android:id="@+id/M8S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S1A"
+            app:layout_constraintStart_toEndOf="@+id/M8S1A"
+            app:layout_constraintTop_toTopOf="@+id/M8S1A" />
+
+        <TextView
+            android:id="@+id/M8S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S2A"
+            app:layout_constraintStart_toEndOf="@+id/M8S2A"
+            app:layout_constraintTop_toTopOf="@+id/M8S2A" />
+
+        <Button
+            android:id="@+id/M8HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S3H"
+            app:layout_constraintStart_toEndOf="@+id/M8S3H"
+            app:layout_constraintTop_toTopOf="@+id/M8S3H" />
+
+        <Button
+            android:id="@+id/M8HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8HD"
+            app:layout_constraintStart_toEndOf="@+id/M8HD"
+            app:layout_constraintTop_toTopOf="@+id/M8HD"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/M8AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8S3A"
+            app:layout_constraintStart_toEndOf="@+id/M8S3A"
+            app:layout_constraintTop_toTopOf="@+id/M8S3A" />
+
+        <Button
+            android:id="@+id/M8AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M8AD"
+            app:layout_constraintStart_toEndOf="@+id/M8AD"
+            app:layout_constraintTop_toTopOf="@+id/M8AD"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="   Set: \n1   2   3"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/M8S2H"
+            app:layout_constraintEnd_toEndOf="@+id/M8S3H"
+            app:layout_constraintTop_toBottomOf="@+id/textView89" />
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@android:drawable/alert_light_frame"
+            android:text="Match 6"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/M8AwayPlayer" />
+
+        <TextView
+            android:id="@+id/textView102"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Home:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView101" />
+
+        <TextView
+            android:id="@+id/M9HomePlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M9S1H"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView102" />
+
+        <TextView
+            android:id="@+id/textView104"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Away:"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/M9HomePlayer" />
+
+        <TextView
+            android:id="@+id/M9AwayPlayer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_background"
+            android:text="Sample Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/M9S1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView104" />
+
+        <TextView
+            android:id="@+id/M9S1H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9HomePlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M9HomePlayer" />
+
+        <TextView
+            android:id="@+id/M9S2H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S1H"
+            app:layout_constraintStart_toEndOf="@+id/M9S1H"
+            app:layout_constraintTop_toTopOf="@+id/M9S1H" />
+
+        <TextView
+            android:id="@+id/M9S3H"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S2H"
+            app:layout_constraintStart_toEndOf="@+id/M9S2H"
+            app:layout_constraintTop_toTopOf="@+id/M9S2H" />
+
+        <TextView
+            android:id="@+id/M9S1A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9AwayPlayer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/M9AwayPlayer" />
+
+        <TextView
+            android:id="@+id/M9S2A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S1A"
+            app:layout_constraintStart_toEndOf="@+id/M9S1A"
+            app:layout_constraintTop_toTopOf="@+id/M9S1A" />
+
+        <TextView
+            android:id="@+id/M9S3A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S2A"
+            app:layout_constraintStart_toEndOf="@+id/M9S2A"
+            app:layout_constraintTop_toTopOf="@+id/M9S2A"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/M9HD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S3H"
+            app:layout_constraintStart_toEndOf="@+id/M9S3H"
+            app:layout_constraintTop_toTopOf="@+id/M9S3H" />
+
+        <Button
+            android:id="@+id/M9HI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9HD"
+            app:layout_constraintStart_toEndOf="@+id/M9HD"
+            app:layout_constraintTop_toTopOf="@+id/M9HD" />
+
+        <Button
+            android:id="@+id/M9AD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@android:color/transparent"
+            android:text="-"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9S3A"
+            app:layout_constraintStart_toEndOf="@+id/M9S3A"
+            app:layout_constraintTop_toTopOf="@+id/M9S3A" />
+
+        <Button
+            android:id="@+id/M9AI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/M9AD"
+            app:layout_constraintStart_toEndOf="@+id/M9AD"
+            app:layout_constraintTop_toTopOf="@+id/M9AD" />
 
 
     </android.support.constraint.ConstraintLayout>
