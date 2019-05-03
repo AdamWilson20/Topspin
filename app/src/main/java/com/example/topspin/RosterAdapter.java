@@ -22,7 +22,7 @@ public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
     ImageLoader imageLoader;
-    //ImageLoader imageLoader = RequestHandler.getInstance().getImageLoader();
+
 
 
 
@@ -56,7 +56,6 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             LayoutInflater inflator = context.getLayoutInflater();
             convertView = inflator.inflate(R.layout.adapter_player, null);
             viewHolder = new RosterAdapter.ViewHolder();
-            //viewHolder.playerImage = (ImageView) convertView.findViewById(R.id.imageView5);
             viewHolder.fullName = (TextView) convertView.findViewById(R.id.textView15);
             viewHolder.height = (TextView) convertView.findViewById(R.id.textView18);
             viewHolder.weight = (TextView) convertView.findViewById(R.id.textView19);
@@ -72,7 +71,7 @@ public class RosterAdapter extends ArrayAdapter<Player>{
                 }
             });*/
             convertView.setTag(viewHolder);
-            //convertView.setTag(R.id.imageView5, viewHolder.playerImage);
+
 
 
             convertView.setTag(R.id.textView15, viewHolder.fullName);
@@ -94,11 +93,7 @@ public class RosterAdapter extends ArrayAdapter<Player>{
                 .findViewById(R.id.imageView5);
         Player p = list.get(position);
         thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
-        //thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
-        // viewHolder.checkbox.setTag(position); // This line is important.
-        //viewHolder.playerImage.setImageURI(Uri.parse(list.get(position).getPlayerImage()));
         viewHolder.fullName.setText(list.get(position).getFullName());
-        //thumbNail.setPlayerImage(list.getPlayerImage(),imageLoader);
         viewHolder.height.setText(list.get(position).getHeight());
         viewHolder.weight.setText(list.get(position).getWeight());
         viewHolder.year.setText(list.get(position).getYear());

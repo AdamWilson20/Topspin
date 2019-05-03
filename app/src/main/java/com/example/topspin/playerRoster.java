@@ -52,6 +52,12 @@ public class playerRoster extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listPlayer);
         new playerRoster.FetchRosterAsyncTask().execute();
         Button buttonAdd = findViewById(R.id.addPlayer);
+        buttonAdd.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                openActivity2();
+            }
+        });
+
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisk(true).cacheInMemory(true)
@@ -149,5 +155,10 @@ public class playerRoster extends AppCompatActivity {
                     }
                 });
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
+    private void openActivity2() {
+        Intent intent2 = new Intent(this, AddPlayerEntry.class);
+        startActivity(intent2);
     }
 }

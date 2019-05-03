@@ -35,7 +35,7 @@ public class AddPlayerEntry extends AppCompatActivity {
         submitPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //adapter = new ArrayAdapter<Player>(this,android.R.layout.simple_1ist_item_1, players);
+
                 openActivity2();
             }
         });

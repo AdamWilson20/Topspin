@@ -2,7 +2,6 @@ package com.example.topspin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,21 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.annotation.Target;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class ViewSchedule extends AppCompatActivity {
@@ -182,7 +176,7 @@ public class ViewSchedule extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
                 //This settings menu is just a placeholder for Player Roster.
-            case R.id.Settings:
+            case R.id.Roster:
                 startActivity(new Intent(this, playerRoster.class));
                 break;
 

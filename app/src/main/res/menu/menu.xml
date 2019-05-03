@@ -18,9 +18,9 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/Settings"
-        android:title="Settings"
-        app:showAsAction="never"/>
+        android:id="@+id/Roster"
+        android:title="Roster"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/VolunteerPage"
