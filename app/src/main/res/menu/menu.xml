@@ -8,32 +8,17 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/myAccount"
-        android:title="My Account"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/EditProfile"
-        android:title="Edit Profile"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/Roster"
         android:title="Roster"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/VolunteerPage"
-        android:title="Volunteer"
-        app:showAsAction="never"/>
-
-    <item
-    android:id="@+id/scoring_doubles"
-    android:title="Scoring Doubles"/>
-
-    <item
         android:id="@+id/scoring_singles"
         android:title="Scoring Singles"/>
+
+    <item
+        android:id="@+id/scoring_doubles"
+        android:title="Scoring Doubles"/>
 
     <item
         android:id="@+id/menuLogout"

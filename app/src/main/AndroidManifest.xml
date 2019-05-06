@@ -26,14 +26,10 @@
         </activity>
         <activity android:name=".ScoreByGame" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".scoring" />
-        <activity android:name=".admin_main_page" />
-        <activity android:name=".matchEvent" />
-        <activity android:name=".volunteer" />
         <activity android:name=".ModifyTournament" />
         <activity android:name=".ViewScheduleEntry" />
         <activity android:name=".AddScheduleEntry" />
-        <activity android:name=".playerRoster" />
+        <activity android:name=".PlayerRoster" />
         <activity android:name=".AddPlayerEntry" />
         <activity
             android:name=".ViewSchedule"

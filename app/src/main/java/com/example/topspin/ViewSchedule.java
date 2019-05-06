@@ -164,22 +164,23 @@ public class ViewSchedule extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-            case R.id.scoring_doubles:
-                startActivity(new Intent(this, ScoreByGameDoubles.class));
+            case R.id.home:
+                startActivity(new Intent(this, ViewSchedule.class));
                 break;
             case R.id.scoring_singles:
                 startActivity(new Intent(this, ScoreByGameSingles.class));
+                break;
+            case R.id.scoring_doubles:
+                startActivity(new Intent(this, ScoreByGameDoubles.class));
+                break;
+            case R.id.Roster:
+                startActivity(new Intent(this, PlayerRoster.class));
                 break;
             case R.id.menuLogout:
                 SharedPrefManager.getInstance(this).logout();
                 finish();
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
-                //This settings menu is just a placeholder for Player Roster.
-            case R.id.Roster:
-                startActivity(new Intent(this, playerRoster.class));
-                break;
-
         }
         return true;
     }

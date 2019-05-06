@@ -2,12 +2,10 @@ package com.example.topspin;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,8 +14,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -25,16 +21,12 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.StringReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
-public class playerRoster extends AppCompatActivity {
+public class PlayerRoster extends AppCompatActivity {
 
     private ArrayList<Player> players;
     private Player target;
@@ -50,7 +42,7 @@ public class playerRoster extends AppCompatActivity {
         setContentView(R.layout.activity_player_roster);
 
         listView = (ListView) findViewById(R.id.listPlayer);
-        new playerRoster.FetchRosterAsyncTask().execute();
+        new PlayerRoster.FetchRosterAsyncTask().execute();
         Button buttonAdd = findViewById(R.id.addPlayer);
         buttonAdd.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -78,7 +70,7 @@ public class playerRoster extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             //Display progress bar
-            progressDialog = new ProgressDialog(playerRoster.this);
+            progressDialog = new ProgressDialog(PlayerRoster.this);
             progressDialog.setMessage("Please wait...");
             //progressDialog.setIndeterminate(false);
             //progressDialog.setCancelable(false);
