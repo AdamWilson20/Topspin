@@ -165,6 +165,7 @@ public class AddScheduleEntry extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, ViewSchedule.class));
+        finish();
     }
 }
 

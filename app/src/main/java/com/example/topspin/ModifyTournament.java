@@ -25,6 +25,10 @@ public class ModifyTournament extends AppCompatActivity {
     EditText opposingTeam;
     EditText homeAway;
 
+    public ModifyTournament(){
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

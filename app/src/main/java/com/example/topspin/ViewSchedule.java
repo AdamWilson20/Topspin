@@ -148,9 +148,8 @@ public class ViewSchedule extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    public void addEntry(View view){
+    public void addEntry(View view) {
         Intent addEntry = new Intent(this, AddScheduleEntry.class);
-        //saveData();
         startActivity(addEntry);
         finish();
     }
@@ -165,7 +164,7 @@ public class ViewSchedule extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.home:
-                startActivity(new Intent(this, ViewSchedule.class));
+                recreate();
                 break;
             case R.id.scoring_singles:
                 startActivity(new Intent(this, ScoreByGameSingles.class));
@@ -186,11 +185,11 @@ public class ViewSchedule extends AppCompatActivity {
     }
 
 
-    public void launchMatch(View view){
+    /*public void launchMatch(View view){
         Intent goNext = new Intent(getApplicationContext(), ScoreByGame.class);
         goNext.putExtra("eventID", eventID);
 
         startActivity(goNext);
-    }
+    }*/
 }
 
