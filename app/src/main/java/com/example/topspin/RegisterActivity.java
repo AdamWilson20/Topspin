@@ -97,7 +97,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 return params;
             }
         };
-
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
