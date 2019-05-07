@@ -1,5 +1,6 @@
 package com.example.topspin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -10,31 +11,37 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewScheduleEntry extends AppCompatActivity implements android.support.v7.widget.PopupMenu.OnMenuItemClickListener {
 
-    ArrayList<Tournament> tournaments;
-
-    int targetIndex;
     Integer targetID;
     TextView date;
     TextView time;
     TextView vsat;
     TextView oppTeam;
     TextView location;
-    boolean tournFound = false;
 
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_schedule_entry);
-        loadData();
         Intent pullId = getIntent();
         targetID = pullId.getIntExtra("ID", -1);
 
@@ -44,34 +51,84 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         oppTeam = findViewById(R.id.VETournamentOppTeam);
         location = findViewById(R.id.VETournamentLocation);
 
-        for(int i =0; i < tournaments.size(); i++){
-            if(tournaments.get(i).gettID()== targetID) {
-                targetIndex = i;
-                tournFound = true;
-                break;
-            }
-        }
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
 
-        if((targetID == -1) || (!tournFound)){
+        if(targetID == -1){
             Intent badID = new Intent(this, ViewSchedule.class);
-            Toast.makeText(this, "Error in locating selected Tournament, returning to schedule view.", Toast.LENGTH_SHORT).show();
             startActivity(badID);
             finish();
         }else {
-            date.setText(tournaments.get(targetIndex).getDate());
-            time.setText(tournaments.get(targetIndex).getTime());
-            oppTeam.setText(tournaments.get(targetIndex).getOppTeam());
-            location.setText(tournaments.get(targetIndex).getLocation());
-
-            if(tournaments.get(targetIndex).getHome()) {
-                vsat.setText("VS");
-            }else{vsat.setText("AT");}
+            getTournament(targetID);
         }
 
     }
 
+    private void getTournament(Integer tournamentID){
+        final String tourneyID = tournamentID.toString();
 
+        progressDialog.show();
 
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GET_EVENT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            if(!obj.getBoolean("error")){
+                                int tID = obj.getInt("tID");
+                                date.setText(obj.getString("date"));
+                                time.setText(obj.getString("time"));
+                                oppTeam.setText(obj.getString("oppTeam"));
+                                location.setText(obj.getString("location"));
+
+                                Integer thomeaway = obj.getInt("isHome");
+                                Boolean boolHomeAway = true;
+                                if (thomeaway == 0) {
+                                    boolHomeAway = false;
+                                }
+                                if(boolHomeAway) {
+                                    vsat.setText("VS");
+                                }else{vsat.setText("AT");}
+                            }else{
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        obj.getString("message"),
+                                        Toast.LENGTH_LONG
+                                ).show();
+                                Intent badID = new Intent(ViewScheduleEntry.this, ViewSchedule.class);
+                                startActivity(badID);
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(
+                                getApplicationContext(),
+                                error.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("eventID", tourneyID);
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
 
     public void showMenu(View view){
 
@@ -81,7 +138,7 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         tournMenu.show();
 
     }
-
+    /*
     private void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -90,7 +147,8 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         editor.putString("tournament schedule", json);
         editor.apply();
     }
-
+    */
+    /*
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -103,7 +161,7 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
             tournaments = new ArrayList<>();
         }
     }
-
+    */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
@@ -118,8 +176,8 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
 
             case R.id.VEdelete: {
                 Toast.makeText(this,"Delete Selected", Toast.LENGTH_SHORT).show();
-                tournaments.remove(targetIndex);
-                saveData();
+                //tournaments.remove(targetIndex);
+                //saveData();
                 Intent backToViewSchedule= new Intent(getApplicationContext(),ViewSchedule.class);
                 startActivity(backToViewSchedule);
                 finish();
