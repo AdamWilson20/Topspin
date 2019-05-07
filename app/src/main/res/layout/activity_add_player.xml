@@ -9,11 +9,7 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="@string/add_new_player"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,92 +22,75 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:ems="10"
+        android:hint="@string/first_name"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        tools:text="@string/first_name" />
 
     <EditText
         android:id="@+id/addClassYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="33dp"
         android:ems="10"
-        android:inputType="date"
-        android:text="Class Year"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPlayerName" />
+        android:inputType="date|datetime|text"
+        app:layout_constraintStart_toStartOf="@+id/addLastName"
+        app:layout_constraintTop_toBottomOf="@+id/addLastName"
+        tools:text="@string/classYear" />
 
     <EditText
-        android:id="@+id/addMajor"
+        android:id="@+id/addLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textShortMessage"
-        android:text="Major"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addClassYear" />
+        app:layout_constraintStart_toStartOf="@+id/addPlayerName"
+        app:layout_constraintTop_toBottomOf="@+id/addPlayerName"
+        tools:text="@string/last_name" />
 
     <EditText
         android:id="@+id/addHometown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Hometown"
-        app:layout_constraintStart_toStartOf="@+id/addMajor"
-        app:layout_constraintTop_toBottomOf="@+id/addMajor" />
+        app:layout_constraintStart_toStartOf="@+id/addClassYear"
+        app:layout_constraintTop_toBottomOf="@+id/addClassYear"
+        tools:text="@string/hometown" />
 
     <EditText
         android:id="@+id/addHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginTop="31dp"
         android:ems="10"
-        android:inputType="number"
-        android:text="Height"
-        app:layout_constraintBottom_toTopOf="@+id/addWeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:inputType="textUri|number|phone"
+        app:layout_constraintStart_toStartOf="@+id/addHometown"
+        app:layout_constraintTop_toBottomOf="@+id/addHometown"
+        tools:text="@string/height" />
 
     <EditText
         android:id="@+id/addWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="19dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Weight"
-        app:layout_constraintBottom_toTopOf="@+id/button11"
-        app:layout_constraintStart_toStartOf="@+id/addHeight" />
+        app:layout_constraintStart_toStartOf="@+id/addHeight"
+        app:layout_constraintTop_toBottomOf="@+id/addHeight"
+        tools:text="@string/weight" />
 
     <Button
         android:id="@+id/button11"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="18dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

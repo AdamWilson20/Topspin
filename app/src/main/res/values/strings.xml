@@ -23,6 +23,10 @@
     <string name="tAdd_oppteam">Opposing Team:</string>
     <string name="tAdd_Header">New Tournament Details</string>
     <string name="ModiffyTHeader">Modify Tournament</string>
+    <string name="hometown">Hometown</string>
+    <string name="classYear">Class Standing</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
 
     <!-- Strings related to admin main page -->
     <string name="view">View Event</string>
