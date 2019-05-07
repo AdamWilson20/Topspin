@@ -80,8 +80,8 @@ public class PlayerRoster extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             getRoster();
-            while (status == false) {
-            }
+            //Temporary solution due to the asynchronous nature of the Volley request
+            while (status == false) {}
             return null;
         }
 

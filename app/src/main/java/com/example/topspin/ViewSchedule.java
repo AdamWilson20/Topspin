@@ -61,6 +61,7 @@ public class ViewSchedule extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             getSchedule();
+            //Temporary solution due to the asynchronous nature of the Volley request
             while (status == false){}
             return null;
         }
@@ -90,7 +91,7 @@ public class ViewSchedule extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 int tempID = tournaments.get(position).gettID();
-                Toast.makeText(getApplicationContext(), String.valueOf(tempID), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), String.valueOf(tempID), Toast.LENGTH_SHORT).show();
                 Intent startViewModify;
                 startViewModify = new Intent(getApplicationContext(), ViewScheduleEntry.class);
                 startViewModify.putExtra("ID",tempID);

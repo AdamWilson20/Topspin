@@ -30,12 +30,7 @@ import static java.lang.Math.abs;
 
 public class AddScheduleEntry extends AppCompatActivity {
 
-    private ArrayList<Tournament> tournaments;
-    private Tournament temp;
     private EditText date, time, location, opposingTeam, homeAway;
-    private Boolean vSAT = false;
-    private int tID;
-    private boolean uniqueID = true;
 
     private ProgressDialog progressDialog;
 
@@ -51,9 +46,6 @@ public class AddScheduleEntry extends AppCompatActivity {
         homeAway = findViewById(R.id.taddHomeAway);
 
         progressDialog = new ProgressDialog(this);
-
-        loadData();
-
     }
 
     private void createEvent(){
@@ -63,6 +55,13 @@ public class AddScheduleEntry extends AppCompatActivity {
         final String tlocation = location.getText().toString().trim();
         final String topposingteam = opposingTeam.getText().toString().trim();
         final String thomeaway = homeAway.getText().toString().trim();
+        final String haConversion;
+
+        if(thomeaway.equals("home")||thomeaway.equals("Home")){
+            haConversion = "1";
+        }else{
+            haConversion = "0";
+        }
 
         progressDialog.setMessage("Creating event...");
         progressDialog.show();
@@ -97,7 +96,7 @@ public class AddScheduleEntry extends AppCompatActivity {
                 params.put("time", ttime);
                 params.put("location", tlocation);
                 params.put("opposingTeam", topposingteam);
-                params.put("homeOrAway", thomeaway);
+                params.put("homeOrAway", haConversion);
                 return params;
             }
         };
@@ -108,60 +107,11 @@ public class AddScheduleEntry extends AppCompatActivity {
     public void submitEntry(View view){
         createEvent();
         Intent backToSchedule= new Intent(getApplicationContext(),ViewSchedule.class);
-
-        final String tdate = date.getText().toString().trim();
-        final String ttime = time.getText().toString().trim();
-        final String tlocation = location.getText().toString().trim();
-        final String topposingteam = opposingTeam.getText().toString().trim();
-        final String thomeaway = homeAway.getText().toString().trim();
-
-        //Remove once database is integrated into view schedule
-        Random rand = new Random();
-        tID=rand.nextInt();
-        while(!uniqueID){
-            tID=abs(rand.nextInt());
-            for(int i = 0; i < tournaments.size(); i++){
-                if (tournaments.get(i).gettID() == tID){
-                    uniqueID = false;
-                    break;
-                }
-            }
-            //Toast.makeText(this,String.valueOf(tID),Toast.LENGTH_SHORT).show();
-        }
-        if((thomeaway.equals("home")) || (thomeaway.equals("Home"))){
-            vSAT = true;
-        }
-
-        temp = new Tournament(tID, topposingteam, tlocation, tdate, ttime, vSAT);
-        tournaments.add(temp);
-        saveData();
-
         startActivity(backToSchedule);
         finish();
 
     }
 
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(tournaments);
-        editor.putString("tournament schedule", json);
-        editor.apply();
-    }
-
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("tournament schedule", null);
-        Type type = new TypeToken<ArrayList<Tournament>>() {
-        }.getType();
-        tournaments = gson.fromJson(json, type);
-
-        if (tournaments == null) {
-            tournaments = new ArrayList<>();
-        }
-    }
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, ViewSchedule.class));

@@ -86,13 +86,9 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
                                 location.setText(obj.getString("location"));
 
                                 Integer thomeaway = obj.getInt("isHome");
-                                Boolean boolHomeAway = true;
                                 if (thomeaway == 0) {
-                                    boolHomeAway = false;
-                                }
-                                if(boolHomeAway) {
-                                    vsat.setText("VS");
-                                }else{vsat.setText("AT");}
+                                    vsat.setText("AT");
+                                }else{vsat.setText("VS");}
                             }else{
                                 Toast.makeText(
                                         getApplicationContext(),
@@ -130,6 +126,48 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    public void deleteTournament(Integer tournamentID){
+        final String tourneyID = tournamentID.toString();
+
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DELETE_EVENT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(
+                                getApplicationContext(),
+                                error.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("eventID", tourneyID);
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
     public void showMenu(View view){
 
         PopupMenu tournMenu = new PopupMenu(this,view);
@@ -138,30 +176,7 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
         tournMenu.show();
 
     }
-    /*
-    private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(tournaments);
-        editor.putString("tournament schedule", json);
-        editor.apply();
-    }
-    */
-    /*
-    private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("tournament schedule", null);
-        Type type = new TypeToken<ArrayList<Tournament>>() {
-        }.getType();
-        tournaments = gson.fromJson(json, type);
 
-        if (tournaments == null) {
-            tournaments = new ArrayList<>();
-        }
-    }
-    */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
@@ -176,8 +191,7 @@ public class ViewScheduleEntry extends AppCompatActivity implements android.supp
 
             case R.id.VEdelete: {
                 Toast.makeText(this,"Delete Selected", Toast.LENGTH_SHORT).show();
-                //tournaments.remove(targetIndex);
-                //saveData();
+                deleteTournament(targetID);
                 Intent backToViewSchedule= new Intent(getApplicationContext(),ViewSchedule.class);
                 startActivity(backToViewSchedule);
                 finish();

@@ -11,11 +11,7 @@ public class Tournament {
     private String location;
     private String date;
     private String time;
-    private Boolean isHome = true;
-    private Boolean isIndoor = true;
-
-    public Tournament(){}
-
+    private Boolean isHome;
 
     public Tournament(int id, String oppTeam, String location, String date, String time, Boolean isHome) {
         this.tID = id;
@@ -24,7 +20,6 @@ public class Tournament {
         this.date = date;
         this.time = time;
         this.isHome= isHome;
-        //this.isIndoor = isIndoor;
     }
 
     @Override
@@ -35,7 +30,6 @@ public class Tournament {
                 ", date=" + date +
                 ", time=" + time +
                 ", isHome=" + isHome +
-                ", isIndoor=" + isIndoor +
                 '}';
     }
 
@@ -80,19 +74,11 @@ public class Tournament {
         this.time = time;
     }
 
-    public Boolean getIndoor() {
-        return isIndoor;
-    }
-
     public Boolean getHome() {
         return isHome;
     }
 
     public void setHome(Boolean home) {
         isHome = home;
-    }
-
-    public void setIndoor(Boolean indoor) {
-        isIndoor = indoor;
     }
 }
