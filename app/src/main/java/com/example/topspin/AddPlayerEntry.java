@@ -37,23 +37,20 @@ public class AddPlayerEntry extends AppCompatActivity {
         setContentView(R.layout.activity_add_player);
 
         final Button submitPlayer = findViewById(R.id.button11);
-        submitPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                firstName = (EditText) findViewById(R.id.addPlayerName);
-                lastName = (EditText) findViewById(R.id.addLastName);
-                classYear = (EditText) findViewById(R.id.addClassYear);
-                hometown = (EditText) findViewById(R.id.addHometown);
-                height = (EditText) findViewById(R.id.addHeight);
-                weight = (EditText) findViewById(R.id.addWeight);
 
                 requestQueue = Volley.newRequestQueue(getApplicationContext());
 
                 submitPlayer.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View view) {
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_ROSTER, new Response.Listener<String>() {
+
+                        firstName = (EditText) findViewById(R.id.addPlayerName);
+                        lastName = (EditText) findViewById(R.id.addLastName);
+                        classYear = (EditText) findViewById(R.id.addClassYear);
+                        hometown = (EditText) findViewById(R.id.addHometown);
+                        height = (EditText) findViewById(R.id.addHeight);
+                        weight = (EditText) findViewById(R.id.addWeight);
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_SET_ROSTER, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
 
@@ -81,30 +78,5 @@ public class AddPlayerEntry extends AppCompatActivity {
                 } );
 
             }
-        });
-
-
-
-    }
-
-
-
-    /*
-    public void getData() {
-
-        TempName = firstName.getText().toString();
-        TempClassYear = classYear.getText().toString();
-        TempMajor = major.getText().toString();
-        TempHometown = hometown.getText().toString();
-        TempHeight = height.getText().toString();
-        TempWeight = weight.getText().toString();
-
-    }
-*/
-    private void openActivity2() {
-        Intent intent2 = new Intent(this, AddPlayerEntry.class);
-        startActivity(intent2);
-    }
-
-}
+        }
 
