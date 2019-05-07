@@ -21,6 +21,10 @@
         android:title="Scoring Doubles"/>
 
     <item
+        android:id="@+id/scores_view"
+        android:title="View Live Scores"/>
+
+    <item
         android:id="@+id/menuLogout"
         android:title="Logout"
         />

@@ -173,6 +173,9 @@ public class ViewSchedule extends AppCompatActivity {
             case R.id.scoring_doubles:
                 startActivity(new Intent(this, ScoreByGameDoubles.class));
                 break;
+            case R.id.scores_view:
+                startActivity(new Intent(this, ViewScores.class));
+                break;
             case R.id.Roster:
                 startActivity(new Intent(this, PlayerRoster.class));
                 break;

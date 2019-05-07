@@ -176,16 +176,6 @@ public class ScoreByGameSingles extends AppCompatActivity {
 
 
 
-        getMatches();
-        getSetsM1();
-        getSetsM2();
-        getSetsM3();
-        getSetsM4();
-        getSetsM5();
-        getSetsM6();
-
-
-
         //Set textViews
         m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
@@ -252,6 +242,13 @@ public class ScoreByGameSingles extends AppCompatActivity {
         updateSet(m6set3);
 
 
+        getMatches();
+        getSetsM1();
+        getSetsM2();
+        getSetsM3();
+        getSetsM4();
+        getSetsM5();
+        getSetsM6();
 
 
         /**
@@ -782,6 +779,12 @@ public class ScoreByGameSingles extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed(){
+
+        finish();
+    }
     public void updateSet( final MatchSet changedSet){
 
 

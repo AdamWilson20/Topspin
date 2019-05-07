@@ -123,12 +123,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
 
 
-
-        getMatches();
-        getSetsM1();
-        getSetsM2();
-        getSetsM3();
-
         //Set textViews
         m1hp1.setText(match1.getHomePlayer1()); m1ap1.setText(match1.getAwayPlayer1());
         m1hp2.setText(match1.getHomePlayer2()); m1ap2.setText(match2.getAwayPlayer1());
@@ -170,6 +164,10 @@ public class ScoreByGameDoubles extends AppCompatActivity {
         updateSet(m3set2);
         updateSet(m3set3);
 
+        getMatches();
+        getSetsM1();
+        getSetsM2();
+        getSetsM3();
 
 
 
@@ -441,6 +439,11 @@ public class ScoreByGameDoubles extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
     }
 
     public void updateSet( final MatchSet changedSet){
@@ -1104,6 +1107,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("matchID", String.valueOf(match1.getMatchID()));
+                params.put("matchType", "Singles");
 
 
 
