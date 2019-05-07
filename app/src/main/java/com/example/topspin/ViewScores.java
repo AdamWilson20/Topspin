@@ -1,5 +1,6 @@
 package com.example.topspin;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -96,6 +97,17 @@ public class ViewScores extends AppCompatActivity {
     private TextView m8resultHead;
     private TextView m9resultHead;
 
+    private TextView m1Header;
+    private TextView m2Header;
+    private TextView m3Header;
+    private TextView m4Header;
+    private TextView m5Header;
+    private TextView m6Header;
+    private TextView m7Header;
+    private TextView m8Header;
+    private TextView m9Header;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,6 +195,16 @@ public class ViewScores extends AppCompatActivity {
         m8resultHead.setVisibility(View.INVISIBLE); m8result.setVisibility(View.INVISIBLE);
         m9resultHead.setVisibility(View.INVISIBLE); m9result.setVisibility(View.INVISIBLE);
 
+        m1Header = findViewById(R.id.Match1Header);
+        m2Header = findViewById(R.id.Match2header);
+        m3Header = findViewById(R.id.Match3header);
+        m4Header = findViewById(R.id.Match4header);
+        m5Header = findViewById(R.id.Match5header);
+        m6Header = findViewById(R.id.Match6header);
+        m7Header = findViewById(R.id.Match7header);
+        m8Header = findViewById(R.id.Match8header);
+        m9Header = findViewById(R.id.Match9header);
+
 
 
 
@@ -238,6 +260,7 @@ public class ViewScores extends AppCompatActivity {
 
 
 
+
         m1stat.setText(match1.getResult());
         m2stat.setText(match2.getResult());
         m3stat.setText(match3.getResult());
@@ -254,6 +277,7 @@ public class ViewScores extends AppCompatActivity {
 
         getSetsM1();
 
+        setHeaders();
         updateWinners();
         startTimer();
 
@@ -378,6 +402,53 @@ public class ViewScores extends AppCompatActivity {
         return number;
     }
 
+    public void setHeaders(){
+        if(match1.getResult().equals("In Progress")){
+            m1Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m1Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match2.getResult().equals("In Progress")){
+            m2Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m2Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match3.getResult().equals("In Progress")){
+            m3Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m3Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match4.getResult().equals("In Progress")){
+            m4Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m4Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match5.getResult().equals("In Progress")){
+            m5Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m5Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match6.getResult().equals("In Progress")){
+            m6Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m6Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match7.getResult().equals("In Progress")){
+            m7Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m7Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match8.getResult().equals("In Progress")){
+            m8Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m8Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+        if(match9.getResult().equals("In Progress")){
+            m9Header.setBackgroundColor(Color.parseColor("#0fff00"));
+        }else{m9Header.setBackgroundColor(Color.parseColor("#ff0000"));
+        }
+
+    }
     public void  getMatches(){
 
 
@@ -496,49 +567,73 @@ public class ViewScores extends AppCompatActivity {
                                 if (temp.getResult().equals("Complete - Home")) {
                                     switch (temp.getMatchID()) {
                                         case 1:
+                                            match1.setResult(temp.getResult());
                                             m1resultHead.setVisibility(View.VISIBLE);m1result.setVisibility(View.VISIBLE);
                                             m1result.setText(temp.getHomePlayer1() + "\n" + temp.getHomePlayer2());
                                             m1stat.setText("Finished");
+                                            setHeaders();
                                             break;
                                         case 2:
+                                            match2.setResult(temp.getResult());
                                             m2resultHead.setVisibility(View.VISIBLE);m2result.setVisibility(View.VISIBLE);
                                             m2result.setText(temp.getHomePlayer1() + "\n" + temp.getHomePlayer2());
                                             m2stat.setText("Finished");
+                                            setHeaders();
                                             break;
                                         case 3:
+                                            match3.setResult(temp.getResult());
                                             m3resultHead.setVisibility(View.VISIBLE);m3result.setVisibility(View.VISIBLE);
                                             m3result.setText(temp.getHomePlayer1() + "\n" + temp.getHomePlayer2());
                                             m3stat.setText("Finished");
+                                            setHeaders();
                                             break;
                                         case 4:
+                                            match4.setResult(temp.getResult());
                                             m4resultHead.setVisibility(View.VISIBLE);m4result.setVisibility(View.VISIBLE);
                                             m4result.setText(temp.getHomePlayer1());
                                             m4stat.setText(match1.getResult());
+                                            setHeaders();
+
                                             break;
                                         case 5:
+                                            match5.setResult(temp.getResult());
                                             m5resultHead.setVisibility(View.VISIBLE);m5result.setVisibility(View.VISIBLE);
                                             m5result.setText(temp.getHomePlayer1());
                                             m5stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 6:
+                                            match6.setResult(temp.getResult());
                                             m6resultHead.setVisibility(View.VISIBLE);m6result.setVisibility(View.VISIBLE);
                                             m6result.setText(temp.getHomePlayer1());
                                             m6stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 7:
+                                            match7.setResult(temp.getResult());
                                             m7resultHead.setVisibility(View.VISIBLE);m7result.setVisibility(View.VISIBLE);
                                             m7result.setText(temp.getHomePlayer1());
                                             m7stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 8:
+                                            match8.setResult(temp.getResult());
                                             m8resultHead.setVisibility(View.VISIBLE);m8result.setVisibility(View.VISIBLE);
                                             m8result.setText(temp.getHomePlayer1());
                                             m8stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 9:
+                                            match9.setResult(temp.getResult());
                                             m9resultHead.setVisibility(View.VISIBLE);m9result.setVisibility(View.VISIBLE);
                                             m9result.setText(temp.getHomePlayer1());
                                             m9stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
 
                                     }
@@ -546,53 +641,79 @@ public class ViewScores extends AppCompatActivity {
                                 if (temp.getResult().equals("Complete - Away")) {
                                     switch (temp.getMatchID()) {
                                         case 1:
+                                            match1.setResult(temp.getResult());
                                             m1resultHead.setVisibility(View.VISIBLE);m1result.setVisibility(View.VISIBLE);
                                             m1result.setText(temp.getAwayPlayer1() + "\n" + temp.getAwayPlayer2());
                                             m1stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 2:
+                                            match2.setResult(temp.getResult());
                                             m2resultHead.setVisibility(View.VISIBLE);m2result.setVisibility(View.VISIBLE);
                                             m2result.setText(temp.getAwayPlayer1() + "\n" + temp.getAwayPlayer2());
                                             m2stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 3:
+                                            match3.setResult(temp.getResult());
                                             m3resultHead.setVisibility(View.VISIBLE);m3result.setVisibility(View.VISIBLE);
                                             m3result.setText(temp.getAwayPlayer1() + "\n" + temp.getAwayPlayer2());
                                             m3stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 4:
+                                            match4.setResult(temp.getResult());
                                             m4resultHead.setVisibility(View.VISIBLE);m4result.setVisibility(View.VISIBLE);
                                             m4result.setText(temp.getAwayPlayer1());
                                             m4stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 5:
+                                            match5.setResult(temp.getResult());
                                             m5resultHead.setVisibility(View.VISIBLE);m5result.setVisibility(View.VISIBLE);
                                             m5result.setText(temp.getAwayPlayer1());
                                             m5stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 6:
+                                            match6.setResult(temp.getResult());
                                             m6resultHead.setVisibility(View.VISIBLE);m6result.setVisibility(View.VISIBLE);
                                             m6result.setText(temp.getAwayPlayer1());
                                             m6stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 7:
+                                            match7.setResult(temp.getResult());
                                             m7resultHead.setVisibility(View.VISIBLE);m7result.setVisibility(View.VISIBLE);
                                             m7result.setText(temp.getAwayPlayer1());
                                             m7stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 8:
+                                            match8.setResult(temp.getResult());
                                             m8resultHead.setVisibility(View.VISIBLE);m8result.setVisibility(View.VISIBLE);
                                             m8result.setText(temp.getAwayPlayer1());
                                             m8stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                         case 9:
+                                            match9.setResult(temp.getResult());
                                             m9resultHead.setVisibility(View.VISIBLE);m9result.setVisibility(View.VISIBLE);
                                             m9result.setText(temp.getAwayPlayer1());
                                             m9stat.setText("Finished");
+                                            setHeaders();
+
                                             break;
                                     }
                                 }
-
 
 
                             }else{
