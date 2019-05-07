@@ -1104,7 +1104,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("matchID", String.valueOf(match1.getMatchID()));
-                params.put("matchType", "Singles");
 
 
 

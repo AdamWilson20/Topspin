@@ -38,7 +38,7 @@ public class ScoreByGameSingles extends AppCompatActivity {
 
     private String matchType = "Singles";
 
-    ArrayList<Matches> matchList = new ArrayList<>();
+
     ArrayList<MatchSet> setList = new ArrayList<>();
 
 
@@ -184,6 +184,8 @@ public class ScoreByGameSingles extends AppCompatActivity {
         getSetsM5();
         getSetsM6();
 
+
+
         //Set textViews
         m1hp.setText(match1.getHomePlayer1()); m1ap.setText(match1.getAwayPlayer1());
 
@@ -260,8 +262,10 @@ public class ScoreByGameSingles extends AppCompatActivity {
             public void onClick(View v) {
                 setNumberm1 = findSetNumber(m1set1,m1set2,m1set3);
 
+
                 incrementScoreHome(match1,m1set1,m1set2,m1set3,setNumberm1);
 
+                Toast.makeText(getApplicationContext(), String.valueOf(m1set1.getSetID()), Toast.LENGTH_LONG).show();
                 switch(setNumberm1){
                     case 1:{
                         m1s1h.setText(String.valueOf(m1set1.getHomeScore()));
@@ -780,8 +784,8 @@ public class ScoreByGameSingles extends AppCompatActivity {
 
     public void updateSet( final MatchSet changedSet){
 
-        progressDialog.setMessage("Updating Set...");
-        progressDialog.show();
+
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -789,7 +793,6 @@ public class ScoreByGameSingles extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -1015,6 +1018,7 @@ public class ScoreByGameSingles extends AppCompatActivity {
                 }else{ //increment
                     changedSet1.setHomeScore(changedSet1.getHomeScore()+1);
                     updateSet(changedSet1);
+                   //Toast.makeText(getApplicationContext(), "this is here",Toast.LENGTH_LONG).show();
                 }
                 break;
             }
@@ -1318,7 +1322,7 @@ public class ScoreByGameSingles extends AppCompatActivity {
                         try {
                             Log.i("tagconvertstr", "["+response+"]");
                             JSONArray array = new JSONArray(response);
-
+                            ArrayList<Matches> matchList = new ArrayList<>();
                             for(int i = 0; i < array.length(); i++){
                                 JSONObject obj = array.getJSONObject(i);
                                 Matches temp = new Matches(obj.getInt("matchID"),
@@ -1405,7 +1409,7 @@ public class ScoreByGameSingles extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            Log.i("tagconvertstr", "["+response+"]");
+                            Log.i("tagSetResponse", "["+response+"]");
                             JSONArray array = new JSONArray(response);
 
                             for(int i = 0; i < array.length(); i++){
@@ -1418,7 +1422,6 @@ public class ScoreByGameSingles extends AppCompatActivity {
                                 setList.add(temp);}
 
                             m1set1 = setList.get(0); m1set2 = setList.get(1); m1set3 = setList.get(2);
-
                             m1s1h.setText(String.valueOf(m1set1.getHomeScore())); m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
                             m1s2h.setText(String.valueOf(m1set2.getHomeScore())); m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
                             m1s3h.setText(String.valueOf(m1set3.getHomeScore())); m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
@@ -1445,7 +1448,6 @@ public class ScoreByGameSingles extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("matchID", String.valueOf(match1.getMatchID()));
-                params.put("matchType", "Singles");
 
 
 

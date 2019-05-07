@@ -13,7 +13,7 @@ public class MatchSet {
 
     public MatchSet(){}
 
-    public MatchSet(int matchID, int setID, int homeScore, int awayScore, String result) {
+    public MatchSet(int setID, int matchID,  int homeScore, int awayScore, String result) {
 
 
 
