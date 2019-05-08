@@ -22,12 +22,12 @@ import java.util.List;
 public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
-    ImageLoader imageLoader;
+   // ImageLoader imageLoader;
 
 
     // View lookup cache
     static class ViewHolder {
-        protected ImageView playerImage;
+        //protected ImageView playerImage;
         protected TextView fullName;
         protected TextView height;
         protected TextView weight;
@@ -49,11 +49,11 @@ public class RosterAdapter extends ArrayAdapter<Player>{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        RosterAdapter.ViewHolder viewHolder = null;
+        ViewHolder viewHolder = null;
         if (convertView == null) {
             LayoutInflater inflator = context.getLayoutInflater();
             convertView = inflator.inflate(R.layout.adapter_player, null);
-            viewHolder = new RosterAdapter.ViewHolder();
+            viewHolder = new ViewHolder();
             viewHolder.fullName = (TextView) convertView.findViewById(R.id.textView15);
             viewHolder.height = (TextView) convertView.findViewById(R.id.textView18);
             viewHolder.weight = (TextView) convertView.findViewById(R.id.textView19);
@@ -80,17 +80,17 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             // convertView.setTag(R.id.check, viewHolder.checkbox);
 
         }else{
-            viewHolder = (RosterAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
 
         }
-        if(imageLoader == null)
+        /*if(imageLoader == null)
         {
             imageLoader = RequestHandler.getInstance(context).getImageLoader();
-        }
-        NetworkImageView thumbNail = (NetworkImageView) convertView
-                .findViewById(R.id.imageView5);
-        Player p = list.get(position);
-        thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
+        }*/
+        //NetworkImageView thumbNail = (NetworkImageView) convertView
+        //        .findViewById(R.id.imageView5);
+        //Player p = list.get(position);
+        //thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
         viewHolder.fullName.setText(list.get(position).getFullName());
         viewHolder.height.setText(list.get(position).getHeight());
         viewHolder.weight.setText(list.get(position).getWeight());

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -42,17 +44,8 @@ public class PlayerRoster extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_roster);
 
-        listView = (ListView) findViewById(R.id.listPlayer);
-        new PlayerRoster.FetchRosterAsyncTask().execute();
-        Button buttonAdd = findViewById(R.id.addPlayer);
-
-        buttonAdd.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                openActivity2();
-            }
-        });
-
-
+        listView = findViewById(R.id.listPlayer);
+        /*
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisk(true).cacheInMemory(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
@@ -65,18 +58,8 @@ public class PlayerRoster extends AppCompatActivity {
                 .discCacheSize(100 * 1024 * 1024).build();
 
         ImageLoader.getInstance().init(config);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),ModifyPlayer.class);
-                int playerID = players.get(position).getPlayerID();
-                        intent.putExtra("ID",playerID);
-                        Toast.makeText(getApplicationContext(),String.valueOf(playerID),Toast.LENGTH_LONG).show();
-                startActivity(intent);
-
-            }
-        });
+        */
+        new FetchRosterAsyncTask().execute();
     }
 
     private class FetchRosterAsyncTask extends AsyncTask<String, Void, String> {
@@ -115,6 +98,31 @@ public class PlayerRoster extends AppCompatActivity {
     private void populateRoster() {
         roster = new RosterAdapter(this, players);
         listView.setAdapter(roster);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int playerID = players.get(position).getPlayerID();
+                Intent intent = new Intent(getApplicationContext(),ModifyPlayer.class);
+                intent.putExtra("ID",playerID);
+                //Toast.makeText(getApplicationContext(),String.valueOf(playerID),Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
+        /*
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisk(true).cacheInMemory(true)
+                .imageScaleType(ImageScaleType.EXACTLY)
+                .displayer(new FadeInBitmapDisplayer(300)).build();
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                getApplicationContext())
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new WeakMemoryCache())
+                .discCacheSize(100 * 1024 * 1024).build();
+
+        ImageLoader.getInstance().init(config);
+        */
     }
 
     public void getRoster() {
@@ -163,8 +171,43 @@ public class PlayerRoster extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    private void openActivity2() {
-        Intent intent3 = new Intent(this, AddPlayerEntry.class);
-        startActivity(intent3);
+    public void addPlayer(View view) {
+        Intent addEntry = new Intent(this, AddPlayerEntry.class);
+        startActivity(addEntry);
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.home:
+                startActivity(new Intent(this, ViewSchedule.class));
+                finish();
+                break;
+            case R.id.scoring_singles:
+                startActivity(new Intent(this, ScoreByGameSingles.class));
+                break;
+            case R.id.scoring_doubles:
+                startActivity(new Intent(this, ScoreByGameDoubles.class));
+                break;
+            case R.id.scores_view:
+                startActivity(new Intent(this, ViewScores.class));
+                break;
+            case R.id.Roster:
+                recreate();
+                break;
+            case R.id.menuLogout:
+                SharedPrefManager.getInstance(this).logout();
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+        }
+        return true;
     }
 }

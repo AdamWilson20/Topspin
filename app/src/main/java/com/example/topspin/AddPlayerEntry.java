@@ -121,7 +121,7 @@ public class AddPlayerEntry extends AppCompatActivity implements View.OnClickLis
             addPlayer();
             Intent intent = new Intent(this, PlayerRoster.class);
             startActivity(intent);
-
+            finish();
 
     }
 }

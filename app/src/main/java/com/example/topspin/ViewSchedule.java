@@ -32,8 +32,6 @@ public class ViewSchedule extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
-    private String eventID;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,6 +176,7 @@ public class ViewSchedule extends AppCompatActivity {
                 break;
             case R.id.Roster:
                 startActivity(new Intent(this, PlayerRoster.class));
+                finish();
                 break;
             case R.id.menuLogout:
                 SharedPrefManager.getInstance(this).logout();
