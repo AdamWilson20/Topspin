@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,15 +77,15 @@ public class ViewScores extends AppCompatActivity {
     private TextView m8s1h, m8s2h, m8s3h, m8s1a, m8s2a, m8s3a;
     private TextView m9s1h, m9s2h, m9s3h, m9s1a, m9s2a, m9s3a;
 
-    private TextView m1stat, m1result;
-    private TextView m2stat, m2result;
-    private TextView m3stat, m3result;
-    private TextView m4stat, m4result;
-    private TextView m5stat, m5result;
-    private TextView m6stat, m6result;
-    private TextView m7stat, m7result;
-    private TextView m8stat, m8result;
-    private TextView m9stat, m9result;
+    private TextView m1result;
+    private TextView m2result;
+    private TextView m3result;
+    private TextView m4result;
+    private TextView m5result;
+    private TextView m6result;
+    private TextView m7result;
+    private TextView m8result;
+    private TextView m9result;
 
     private TextView m1resultHead;
     private TextView m2resultHead;
@@ -95,6 +97,7 @@ public class ViewScores extends AppCompatActivity {
     private TextView m8resultHead;
     private TextView m9resultHead;
 
+    private TextView singlesHeader;
     private TextView m1Header;
     private TextView m2Header;
     private TextView m3Header;
@@ -167,15 +170,15 @@ public class ViewScores extends AppCompatActivity {
         m9s1a = findViewById(R.id.M9S1A); m9s2a = findViewById(R.id.M9S2A); m9s3a = findViewById(R.id.M9S3A);
 
 
-        m1stat = findViewById(R.id.M1Status); m1result = findViewById(R.id.M1Result);
-        m2stat = findViewById(R.id.M2Status); m2result = findViewById(R.id.M2Result);
-        m3stat = findViewById(R.id.M3Status); m3result = findViewById(R.id.M3Result);
-        m4stat = findViewById(R.id.M4Status); m4result = findViewById(R.id.M4Result);
-        m5stat = findViewById(R.id.M5Status); m5result = findViewById(R.id.M5Result);
-        m6stat = findViewById(R.id.M6Status); m6result = findViewById(R.id.M6Result);
-        m7stat = findViewById(R.id.M7Status); m7result = findViewById(R.id.M7Result);
-        m8stat = findViewById(R.id.M8Status); m8result = findViewById(R.id.M8Result);
-        m9stat = findViewById(R.id.M9Status); m9result = findViewById(R.id.M9Result);
+        m1result = findViewById(R.id.M1Result);
+        m2result = findViewById(R.id.M2Result);
+        m3result = findViewById(R.id.M3Result);
+        m4result = findViewById(R.id.M4Result);
+        m5result = findViewById(R.id.M5Result);
+        m6result = findViewById(R.id.M6Result);
+        m7result = findViewById(R.id.M7Result);
+        m8result = findViewById(R.id.M8Result);
+        m9result = findViewById(R.id.M9Result);
 
         m1resultHead = findViewById(R.id.M1ResultHead);
         m2resultHead = findViewById(R.id.M2ResultHead);
@@ -197,6 +200,7 @@ public class ViewScores extends AppCompatActivity {
         m8resultHead.setVisibility(View.INVISIBLE); m8result.setVisibility(View.INVISIBLE);
         m9resultHead.setVisibility(View.INVISIBLE); m9result.setVisibility(View.INVISIBLE);
 
+        singlesHeader = findViewById(R.id.SinglesHeader);
         m1Header = findViewById(R.id.Match1Header);
         m2Header = findViewById(R.id.Match2header);
         m3Header = findViewById(R.id.Match3header);
@@ -206,8 +210,6 @@ public class ViewScores extends AppCompatActivity {
         m7Header = findViewById(R.id.Match7header);
         m8Header = findViewById(R.id.Match8header);
         m9Header = findViewById(R.id.Match9header);
-
-
 
 
 
@@ -259,19 +261,6 @@ public class ViewScores extends AppCompatActivity {
         m9set1 = new MatchSet(0,0, 0,0,"In Progress");
         m9set2 = new MatchSet(0,0, 0,0,"In Progress");
         m9set3 = new MatchSet(0,0, 0,0,"In Progress");
-
-
-
-
-        m1stat.setText(match1.getResult());
-        m2stat.setText(match2.getResult());
-        m3stat.setText(match3.getResult());
-        m4stat.setText(match4.getResult());
-        m5stat.setText(match5.getResult());
-        m6stat.setText(match6.getResult());
-        m7stat.setText(match7.getResult());
-        m8stat.setText(match8.getResult());
-        m9stat.setText(match9.getResult());
 
         startTimer();
 
@@ -359,67 +348,116 @@ public class ViewScores extends AppCompatActivity {
 
     public void setResults(){
 
+        ConstraintLayout.LayoutParams newLayoutParams;
+
         String result1 = getResults(match1);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m2Header.getLayoutParams();
         if(!result1.equals("In Progress")){
             m1resultHead.setVisibility(View.VISIBLE);m1result.setVisibility(View.VISIBLE);
             m1result.setText(result1);
-            m1stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m2Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m2Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result2 = getResults(match2);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m3Header.getLayoutParams();
         if(!result2.equals("In Progress")){
             m2resultHead.setVisibility(View.VISIBLE);m2result.setVisibility(View.VISIBLE);
             m2result.setText(result2);
-            m2stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m3Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m3Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result3 = getResults(match3);
+        newLayoutParams = (ConstraintLayout.LayoutParams) singlesHeader.getLayoutParams();
         if(!result3.equals("In Progress")){
             m3resultHead.setVisibility(View.VISIBLE);m3result.setVisibility(View.VISIBLE);
             m3result.setText(result3);
-            m3stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            singlesHeader.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 64;
+            singlesHeader.setLayoutParams(newLayoutParams);
         }
 
+
         String result4 = getResults(match4);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m5Header.getLayoutParams();
         if(!result4.equals("In Progress")){
             m4resultHead.setVisibility(View.VISIBLE);m4result.setVisibility(View.VISIBLE);
             m4result.setText(result4);
-            m4stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m5Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m5Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result5 = getResults(match5);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m6Header.getLayoutParams();
         if(!result5.equals("In Progress")){
             m5resultHead.setVisibility(View.VISIBLE);m5result.setVisibility(View.VISIBLE);
             m5result.setText(result5);
-            m5stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m6Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m6Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result6 = getResults(match6);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m7Header.getLayoutParams();
         if(!result6.equals("In Progress")){
             m6resultHead.setVisibility(View.VISIBLE);m6result.setVisibility(View.VISIBLE);
             m6result.setText(result6);
-            m6stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m7Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m7Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result7 = getResults(match7);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m8Header.getLayoutParams();
         if(!result7.equals("In Progress")){
             m7resultHead.setVisibility(View.VISIBLE);m7result.setVisibility(View.VISIBLE);
             m7result.setText(result7);
-            m7stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m8Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m8Header.setLayoutParams(newLayoutParams);
         }
 
+
         String result8 = getResults(match8);
+        newLayoutParams = (ConstraintLayout.LayoutParams) m9Header.getLayoutParams();
         if(!result8.equals("In Progress")){
             m8resultHead.setVisibility(View.VISIBLE);m8result.setVisibility(View.VISIBLE);
             m8result.setText(result8);
-            m8stat.setText("Finished");
+            newLayoutParams.topMargin = 300;
+            m9Header.setLayoutParams(newLayoutParams);
+        }else{
+            newLayoutParams.topMargin = 48;
+            m9Header.setLayoutParams(newLayoutParams);
         }
+
 
         String result9 = getResults(match9);
         if(!result9.equals("In Progress")){
             m9resultHead.setVisibility(View.VISIBLE);m9result.setVisibility(View.VISIBLE);
             m9result.setText(result9);
-            m9stat.setText("Finished");
         }
 
     }
