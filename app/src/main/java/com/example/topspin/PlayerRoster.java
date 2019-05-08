@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class PlayerRoster extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listPlayer);
         new PlayerRoster.FetchRosterAsyncTask().execute();
         Button buttonAdd = findViewById(R.id.addPlayer);
+
         buttonAdd.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 openActivity2();
@@ -63,6 +65,18 @@ public class PlayerRoster extends AppCompatActivity {
                 .discCacheSize(100 * 1024 * 1024).build();
 
         ImageLoader.getInstance().init(config);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),ModifyPlayer.class);
+                int playerID = players.get(position).getPlayerID();
+                        intent.putExtra("ID",playerID);
+                        Toast.makeText(getApplicationContext(),String.valueOf(playerID),Toast.LENGTH_LONG).show();
+                startActivity(intent);
+
+            }
+        });
     }
 
     private class FetchRosterAsyncTask extends AsyncTask<String, Void, String> {

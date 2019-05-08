@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,12 +27,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddPlayerEntry extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editFirstName, editLastName, editYear, editHometown, editHeight, editWeight;
     private Button submitPlayer;
+    private Button updatePlayer;
+    ListView listView;
 
     private ProgressDialog progressDialog;
 
@@ -38,6 +45,9 @@ public class AddPlayerEntry extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_add_player);
 
         submitPlayer = (Button) findViewById(R.id.button11);
+        updatePlayer = (Button) findViewById(R.id.updatePlayer);
+        listView = (ListView) findViewById(R.id.listPlayer);
+
 
         editFirstName = (EditText) findViewById(R.id.addPlayerName);
         editLastName = (EditText) findViewById(R.id.addLastName);
@@ -49,7 +59,12 @@ public class AddPlayerEntry extends AppCompatActivity implements View.OnClickLis
         progressDialog = new ProgressDialog(this);
 
         submitPlayer.setOnClickListener(this);
+
+
+
     }
+
+
 
     private void addPlayer(){
         final String firstName = editFirstName.getText().toString().trim();
@@ -104,6 +119,8 @@ public class AddPlayerEntry extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         if (view == submitPlayer)
             addPlayer();
+
+
     }
 }
 

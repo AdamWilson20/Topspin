@@ -32,6 +32,7 @@
         <activity android:name=".AddScheduleEntry" />
         <activity android:name=".PlayerRoster" />
         <activity android:name=".AddPlayerEntry" />
+        <activity android:name=".ModifyPlayer" />
         <activity
             android:name=".ViewSchedule"
             android:label="Schedule" />

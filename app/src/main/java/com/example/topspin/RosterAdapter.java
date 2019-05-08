@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 //import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -22,9 +23,6 @@ public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
     ImageLoader imageLoader;
-
-
-
 
 
     // View lookup cache
