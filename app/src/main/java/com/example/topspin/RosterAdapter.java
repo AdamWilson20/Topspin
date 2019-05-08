@@ -22,7 +22,7 @@ import java.util.List;
 public class RosterAdapter extends ArrayAdapter<Player>{
     private final List<Player> list;
     private final Activity context;
-   // ImageLoader imageLoader;
+    ImageLoader imageLoader;
 
 
     // View lookup cache
@@ -83,14 +83,14 @@ public class RosterAdapter extends ArrayAdapter<Player>{
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
-        /*if(imageLoader == null)
+        if(imageLoader == null)
         {
             imageLoader = RequestHandler.getInstance(context).getImageLoader();
-        }*/
-        //NetworkImageView thumbNail = (NetworkImageView) convertView
-        //        .findViewById(R.id.imageView5);
-        //Player p = list.get(position);
-        //thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
+        }
+        NetworkImageView thumbNail = (NetworkImageView) convertView
+                .findViewById(R.id.imageView5);
+        Player p = list.get(position);
+        thumbNail.setImageUrl(p.getPlayerImage(), imageLoader);
         viewHolder.fullName.setText(list.get(position).getFullName());
         viewHolder.height.setText(list.get(position).getHeight());
         viewHolder.weight.setText(list.get(position).getWeight());

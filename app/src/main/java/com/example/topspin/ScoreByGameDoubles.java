@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -1270,4 +1272,40 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.home:
+                startActivity(new Intent(this, ViewSchedule.class));
+                finish();
+                break;
+            case R.id.scoring_singles:
+                startActivity(new Intent(this, ScoreByGameSingles.class));
+                finish();
+                break;
+            case R.id.scoring_doubles:
+                recreate();
+                finish();
+                break;
+            case R.id.scores_view:
+                startActivity(new Intent(this, ViewScores.class));
+                finish();
+                break;
+            case R.id.Roster:
+                startActivity(new Intent(this, PlayerRoster.class));
+                break;
+            case R.id.menuLogout:
+                SharedPrefManager.getInstance(this).logout();
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
+        }
+        return true;
+    }
 }

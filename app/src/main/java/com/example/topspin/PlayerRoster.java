@@ -76,6 +76,7 @@ public class PlayerRoster extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
+            //????Debugging mode and breakpoint needed here to reload roster properly????
             getRoster();
             //Temporary solution due to the asynchronous nature of the Volley request
             while (status == false) {}
@@ -84,11 +85,13 @@ public class PlayerRoster extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            //Toast.makeText(getApplicationContext(),"you got here",Toast.LENGTH_LONG).show();
             status = false;
             progressDialog.dismiss();
             runOnUiThread(new Runnable() {
                 public void run() {
                     populateRoster();
+
                 }
             });
         }
@@ -125,6 +128,7 @@ public class PlayerRoster extends AppCompatActivity {
         */
     }
 
+    //Pull roster from database
     public void getRoster() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_GET_ROSTER,
@@ -135,7 +139,7 @@ public class PlayerRoster extends AppCompatActivity {
 
                         try {
                             JSONObject obj = new JSONObject(response);
-                            if (!obj.getBoolean("error")) {
+                            if(!obj.getBoolean("error")) {
                                 players = new ArrayList<>();
                                 final int num_rows = obj.getInt("num_rows");
                                 for (int i = 0; i < num_rows; i++) {
@@ -192,12 +196,15 @@ public class PlayerRoster extends AppCompatActivity {
                 break;
             case R.id.scoring_singles:
                 startActivity(new Intent(this, ScoreByGameSingles.class));
+                finish();
                 break;
             case R.id.scoring_doubles:
                 startActivity(new Intent(this, ScoreByGameDoubles.class));
+                finish();
                 break;
             case R.id.scores_view:
                 startActivity(new Intent(this, ViewScores.class));
+                finish();
                 break;
             case R.id.Roster:
                 recreate();

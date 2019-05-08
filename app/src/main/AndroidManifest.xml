@@ -15,9 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewScores"></activity>
-        <activity android:name=".ScoreByGameSingles" />
-        <activity android:name=".ScoreByGameDoubles" />
+        <activity
+            android:name=".ViewScores"
+            android:label="Live Scores"></activity>
+        <activity
+            android:name=".ScoreByGameSingles"
+            android:label="Scoring Singles"/>
+        <activity
+            android:name=".ScoreByGameDoubles"
+            android:label="Scoring Doubles"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +36,9 @@
         <activity android:name=".ModifyTournament" />
         <activity android:name=".ViewScheduleEntry" />
         <activity android:name=".AddScheduleEntry" />
-        <activity android:name=".PlayerRoster" />
+        <activity
+            android:name=".PlayerRoster"
+            android:label="Roster"/>
         <activity android:name=".AddPlayerEntry" />
         <activity android:name=".ModifyPlayer" />
         <activity
