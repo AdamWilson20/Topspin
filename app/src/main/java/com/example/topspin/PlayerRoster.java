@@ -164,7 +164,7 @@ public class PlayerRoster extends AppCompatActivity {
     }
 
     private void openActivity2() {
-        Intent intent2 = new Intent(this, AddPlayerEntry.class);
-        startActivity(intent2);
+        Intent intent3 = new Intent(this, AddPlayerEntry.class);
+        startActivity(intent3);
     }
 }

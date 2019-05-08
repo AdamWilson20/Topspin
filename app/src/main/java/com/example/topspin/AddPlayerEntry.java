@@ -119,6 +119,8 @@ public class AddPlayerEntry extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         if (view == submitPlayer)
             addPlayer();
+            Intent intent = new Intent(this, PlayerRoster.class);
+            startActivity(intent);
 
 
     }

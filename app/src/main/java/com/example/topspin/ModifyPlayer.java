@@ -224,9 +224,9 @@ public class ModifyPlayer extends AppCompatActivity {
 
     public void deletePlayer(View view) {
         deletePlayer(playerID);
-        Intent intent = new Intent(this, PlayerRoster.class);
-        startActivity(intent);
-        
+        Intent intent2 = new Intent(this, PlayerRoster.class);
+        startActivity(intent2);
+        finish();
     }
 
 
