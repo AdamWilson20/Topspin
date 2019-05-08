@@ -25,6 +25,7 @@ public class Constants {
     public static final String URL_SET_ROSTER = ROOT_URL+"setRoster.php";
     public static final String URL_UPDATE_ROSTER = ROOT_URL+"updateRoster.php";
     public static final String URL_GET_PLAYER = ROOT_URL+"get_player.php";
+    public static final String URL_DELETE_PLAYER= ROOT_URL+"deletePlayer.php";
 
 
 

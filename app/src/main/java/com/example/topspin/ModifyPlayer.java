@@ -172,12 +172,61 @@ public class ModifyPlayer extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
+    public void deletePlayer(Integer playerID){
+        final String playersID = playerID.toString();
+
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DELETE_PLAYER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(
+                                getApplicationContext(),
+                                error.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("player_ID", playersID);
+                return params;
+            }
+        };
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+
     public void submitPlayer(View view) {
             modifyPlayer(playerID);
             Intent intent = new Intent(this, PlayerRoster.class);
             startActivity(intent);
             finish();
 
+    }
+
+    public void deletePlayer(View view) {
+        deletePlayer(playerID);
+        Intent intent = new Intent(this, PlayerRoster.class);
+        startActivity(intent);
+        
     }
 
 
