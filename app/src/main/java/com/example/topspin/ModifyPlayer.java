@@ -172,7 +172,7 @@ public class ModifyPlayer extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    public void finalizeChanges(View view) {
+    public void submitPlayer(View view) {
             modifyPlayer(playerID);
             Intent intent = new Intent(this, PlayerRoster.class);
             startActivity(intent);
