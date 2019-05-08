@@ -1,6 +1,8 @@
 package com.example.topspin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,9 +27,11 @@ import java.util.Map;
 
 public class ScoreByGameDoubles extends AppCompatActivity {
 
+    public boolean status =false;
+
     private ProgressDialog progressDialog;
 
-    private int eventID = 1;
+    private int eventID;
     private int setNumberm1;
     private int setNumberm2;
     private int setNumberm3;
@@ -36,7 +40,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
     private String matchType = "Doubles";
 
     ArrayList<Matches> matchList = new ArrayList<>();
-    ArrayList<MatchSet> setList = new ArrayList<>();
+
 
 
 
@@ -63,11 +67,11 @@ public class ScoreByGameDoubles extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_by_game_doubles);
-/*
+
         //Get the eventID from the calling activity
         Intent getID = getIntent();
         eventID = getID.getIntExtra("eventID", 1);
-        matchType = getID.getStringExtra("MATCHTYPE");*/
+
 
 
         //Set player Views 'm' = match number, 'h' = home, 'a' = away, 'p' = player
@@ -105,21 +109,21 @@ public class ScoreByGameDoubles extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         // Load dummy matches, will be removed or commented out when database connected
-        match1 = new Matches(1, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
-        match2 = new Matches(2, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
-        match3 = new Matches(3, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
+        match1 = new Matches(0,1, "Doubles", null, null, null,null, 0, 0, "In Progress");
+        match2 = new Matches(0, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
+        match3 = new Matches(0, 1, "Doubles", null, null, null,null, 0, 0, "In Progress");
 
-        m1set1 = new  MatchSet(1,1, 0,0,"In Progress");
-        m1set2 = new MatchSet(1,2,0,0,"In Progress");
-        m1set3 = new MatchSet(1,3,0,0,"In Progress");
+        m1set1 = new  MatchSet(0,0, 0,0,"In Progress");
+        m1set2 = new MatchSet(0,0,0,0,"In Progress");
+        m1set3 = new MatchSet(0,0,0,0,"In Progress");
 
-        m2set1 = new MatchSet(2,4,0,0,"In Progress");
-        m2set2 = new MatchSet(2,5, 0,0,"In Progress");
-        m2set3 = new MatchSet(2,6,0,0,"In Progress");
+        m2set1 = new MatchSet(0,0,0,0,"In Progress");
+        m2set2 = new MatchSet(0,0, 0,0,"In Progress");
+        m2set3 = new MatchSet(0,0,0,0,"In Progress");
 
-        m3set1 = new MatchSet(3,7, 0,0,"In Progress");
-        m3set2 = new MatchSet(3,8, 0,0,"In Progress");
-        m3set3 = new MatchSet(3,9, 0,0,"In Progress");
+        m3set1 = new MatchSet(0,0, 0,0,"In Progress");
+        m3set2 = new MatchSet(0,0, 0,0,"In Progress");
+        m3set3 = new MatchSet(0,0, 0,0,"In Progress");
 
 
 
@@ -146,28 +150,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
         m3s3h.setText(String.valueOf(m3set3.getHomeScore())); m3s3a.setText(String.valueOf(m3set3.getAwayScore()));
 //
 
-
-
-        updateMatch(match1);
-        updateMatch(match2);
-        updateMatch(match3);
-
-        updateSet(m1set1);
-        updateSet(m1set2);
-        updateSet(m1set3);
-
-        updateSet(m2set1);
-        updateSet(m2set2);
-        updateSet(m2set3);
-
-        updateSet(m3set1);
-        updateSet(m3set2);
-        updateSet(m3set3);
-
-        getMatches();
-        getSetsM1();
-        getSetsM2();
-        getSetsM3();
+        new getMatchesAsyncTask().execute();
 
 
 
@@ -177,6 +160,8 @@ public class ScoreByGameDoubles extends AppCompatActivity {
         m1hi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), String.valueOf(match1.getMatchID()),Toast.LENGTH_LONG).show();
+
                 setNumberm1 = findSetNumber(m1set1,m1set2,m1set3);
 
                 incrementScoreHome(match1,m1set1,m1set2,m1set3,setNumberm1);
@@ -438,6 +423,42 @@ public class ScoreByGameDoubles extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private class getMatchesAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Display progress bar
+            //progressDialog = new ProgressDialog(ViewSchedule.this);
+            //progressDialog.setMessage("Please wait...");
+            //progressDialog.setIndeterminate(false);
+            //progressDialog.setCancelable(false);
+          //  progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            getMatches();
+            //Temporary solution due to the asynchronous nature of the Volley request
+            while (status == false){}
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            status = false;
+            //progressDialog.dismiss();
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    getSetsM1();
+                    getSetsM2();
+                    getSetsM3();
+
+                }
+            });
+        }
 
     }
 
@@ -972,7 +993,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
     }
 
     public void  getMatches(){
-        progressDialog.show();
+      //  progressDialog.show();
 
 
 
@@ -982,7 +1003,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         try {
                             Log.i("tagconvertstr", "["+response+"]");
                             JSONArray array = new JSONArray(response);
@@ -1003,12 +1024,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
 
 
-                              /*  for(int i = 0; i < matchList.size(); i++){
-                                    matchNum = String.valueOf(i+1);
-                                    matchPlayerSet = "m" + matchNum + "hp";
-                                    matchPlayerSet.toString().setText("");
-                                }*/
-
                             match1 = matchList.get(0);
                             match2 = matchList.get(1);
                             match3 = matchList.get(2);
@@ -1023,9 +1038,11 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                             m3hp2.setText(match3.getHomePlayer2()); m3ap2.setText(match3.getAwayPlayer2());
 
 
+                            status = true;
 
 
                         } catch (JSONException e) {
+                            status = true;
                             //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
                             e.printStackTrace();
@@ -1035,8 +1052,7 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                      //  progressDialog.dismiss();
                     }
                 }
         ){
@@ -1067,7 +1083,8 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            Log.i("tagconvertstr", "["+response+"]");
+                            Log.i("tagGetSet", "["+response+"]");
+                            ArrayList<MatchSet> setList = new ArrayList<>();
                             JSONArray array = new JSONArray(response);
 
                             for(int i = 0; i < array.length(); i++){
@@ -1079,8 +1096,8 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                                         obj.getString("result"));
                                 setList.add(temp);}
 
-                            m1set1 = setList.get(0); m1set2 = setList.get(1); m1set3 = setList.get(2);
 
+                            m1set1 = setList.get(0); m1set2 = setList.get(1); m1set3 = setList.get(2);
                             m1s1h.setText(String.valueOf(m1set1.getHomeScore())); m1s1a.setText(String.valueOf(m1set1.getAwayScore()));
                             m1s2h.setText(String.valueOf(m1set2.getHomeScore())); m1s2a.setText(String.valueOf(m1set2.getAwayScore()));
                             m1s3h.setText(String.valueOf(m1set3.getHomeScore())); m1s3a.setText(String.valueOf(m1set3.getAwayScore()));
@@ -1089,7 +1106,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
-                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
                             e.printStackTrace();
                         }
@@ -1099,7 +1115,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -1134,7 +1149,8 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            Log.i("tagconvertstr", "["+response+"]");
+                            Log.i("tagGetSet", "["+response+"]");
+                            ArrayList<MatchSet> setList = new ArrayList<>();
                             JSONArray array = new JSONArray(response);
 
                             for(int i = 0; i < array.length(); i++){
@@ -1155,7 +1171,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
-                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
                             e.printStackTrace();
                         }
@@ -1165,7 +1180,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
@@ -1200,8 +1214,11 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            Log.i("tagconvertstr", "["+response+"]");
+
+                            Log.i("tagGetSet", "["+response+"]");
+                            ArrayList<MatchSet> setList = new ArrayList<>();
                             JSONArray array = new JSONArray(response);
+
 
                             for(int i = 0; i < array.length(); i++){
                                 JSONObject obj = array.getJSONObject(i);
@@ -1223,7 +1240,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
-                            //Toast.makeText(getApplicationContext(), "here",Toast.LENGTH_LONG).show();
 
                             e.printStackTrace();
                         }
@@ -1233,7 +1249,6 @@ public class ScoreByGameDoubles extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ){
